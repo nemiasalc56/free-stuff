@@ -8,7 +8,7 @@ The same way people will have only one place that can go online and make sure th
 
 Keep in mind that all the items in this site for free for the user.
 
-# How to use the app
+## How to use the app
 
 * When you access to the site you can see all the posts.
 * You can also see posts separated by diferent categories.
@@ -16,19 +16,17 @@ Keep in mind that all the items in this site for free for the user.
 * If you wish to post an item, you must register or log in.
 * If you wish to leave a comment, you must log in or register.
 
-# Tables
+## Tables
 
-User
+
 ![alt text](https://i.imgur.com/dpxOAG9.png?1)
 
-Item
 ![alt text](https://i.imgur.com/pPIViIN.png?1)
 
-Comment
 ![alt text](https://i.imgur.com/2pHk4YQ.png)
 
 # Models
-![alt text](https://i.imgur.com/lNIFbll.png)
+![alt text](https://i.imgur.com/Q27tIuk.png)
 ![alt text](https://i.imgur.com/ql4bm0i.png)
 ![alt text](https://i.imgur.com/crs22j3.png)
 ![alt text](https://i.imgur.com/2fZMtYh.png)
@@ -37,36 +35,36 @@ Comment
 ![alt text](https://i.imgur.com/VYsh4l1.png)
 ![alt text](https://i.imgur.com/KOYfbfH.png)
 
-# API routes
+## API routes
 
-Item
+--Item
 
-HTTP method		URL path			Description
-
-GET 			/items 				list of items
-GET 			/items/<id>			show one item
-POST			/items				create item
-PUT 			/items/<id> 		update an item
-DELETE 			/items/<id> 		delete an item
-
-
-User
-
-HTTP method		URL path			Description
-
-GET 			/users				user profile
-POST 			/users/login 		log user in
-POST 			/register 			register user
-PUT 			/users/<id> 		update user account
-DELETE 			/users/<id>			delete the account
+| HTTP method	| URL path			| Description	 |
+| ------------- |:-----------------:| --------------:|
+| GET 			| /items 			| list of items	 |
+| GET 			| /items/<id>		| show one item  |
+| POST			| /items			| create item 	 |
+| PUT 			| /items/<id> 		| update an item |
+| DELETE 		| /items/<id> 		| delete an item |
 
 
+--User
 
-# User Stories
+| HTTP method	|	URL path		| Description		  |
+| ------------- |:-----------------:| -------------------:|
+| GET 			| /users			| user profile		  |
+| POST 			| /users/login 		| log user in 		  |
+| POST 			| /register 		| register user 	  |
+| PUT 			| /users/<id> 		| update user account |
+| DELETE 		| /users/<id>		| delete the account  |
 
-* user can enter a name on the search bar if they want.
-* user can can filter their research by category (Home, Music-Books, Sport, Electronic, etc...).
-* user can click one of the post to see all the information about it.
+
+
+## User Stories
+
+* User can enter a name on the search bar if they want.
+* User can can filter their research by category (Home, Music-Books, Sport, Electronic, etc...).
+* User can click one of the post to see all the information about it.
 * User will need their email and password to log in.
 * User can register with their first name, last name, profile picure, email address, password and address (addr1, addr2, ste/apt, city, state and zip).
 * User can leave a message on the item only if they are logged in.
@@ -75,14 +73,14 @@ DELETE 			/users/<id>			delete the account
 * User can edit their account by clicking edit account.
 
 
-# Nice to have
+## Nice to have
 
--- Allow user to upload more than one picture of the item.
--- Add related items. I.e. when the user select the item that was posted, they will be able to see more items similar to that one.
--- Add a drop down that let you search by location.
--- Add sort by, i.e. Date (most recent)
+* Allow user to upload more than one picture of the item.
+* Add related items. I.e. when the user select the item that was posted, they will be able to see more items similar to that one.
+* Add a drop down that let you search by location.
+* Add sort by, i.e. Date (most recent)
 
-# Technology used
+## Technology used
 
 * Flask
 * React.js
