@@ -78,10 +78,18 @@ class Comment(Model):
 | ------------- |:-----------------:| -------------------:|
 | GET 			| /users			| user profile		  |
 | POST 			| /users/login 		| log user in 		  |
-| POST 			| /register 		| register user 	  |
+| GET 			| /users/logout 	| log user out 		  |
+| POST 			| /users/register 	| register user 	  |
 | PUT 			| /users/<id> 		| update user account |
 | DELETE 		| /users/<id>		| delete the account  |
 
+
+--Comment
+| HTTP method	|	URL path		| Description		  |
+| ------------- |:-----------------:| -------------------:|
+| GET 			| /comments			| list the commnets	  |
+| POST 			| /comments 		| create a comment 	  |
+| DELETE 		| /comments/<id> 	| delete a commnet 	  |
 
 
 ## User Stories
