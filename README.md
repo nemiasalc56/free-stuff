@@ -26,7 +26,7 @@ $ create-react-app joke-app
 
 ![alt text](https://i.imgur.com/HvRBgjA.png)
 
-![alt text](https://i.imgur.com/HEgmupq.png)
+![alt text](https://i.imgur.com/ConrMcQ.png)
 
 ![alt text](https://i.imgur.com/2pHk4YQ.png)
 
@@ -34,7 +34,7 @@ $ create-react-app joke-app
 
 ## Wireframes
 ![alt text](https://i.imgur.com/Q27tIuk.png)
-![alt text](https://i.imgur.com/ConrMcQ.png)
+![alt text](https://i.imgur.com/ql4bm0i.png)
 ![alt text](https://i.imgur.com/crs22j3.png)
 ![alt text](https://i.imgur.com/2fZMtYh.png)
 ![alt text](https://i.imgur.com/nwqlQBV.png)
