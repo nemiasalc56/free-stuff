@@ -1,68 +1,90 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Free Stuff
 
-## Available Scripts
+This is an app where someone that has something that someone else might need or like it, but the owner doesn't want to sell it, they can just post it on the website and someone may actually like it or need.
 
-In the project directory, you can run:
+The main idea behind this, is that there are many people that in their house might have many things that they don't need anymore, and they would like to give it someone. There are also many people needed everywhere, they don't have the money to buy some of the things that they need.
 
-### `npm start`
+The same way people will have only one place that can go online and make sure that everything that they see there is for free.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Keep in mind that all the items in this site for free for the user.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# How to use the app
 
-### `npm test`
+* When you access to the site you can see all the posts.
+* You can also see posts separated by diferent categories.
+* When you click a post you will see all the information related to that post.
+* If you wish to post an item, you must register or log in.
+* If you wish to leave a comment, you must log in or register.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Tables
 
-### `npm run build`
+User
+![alt text](https://i.imgur.com/dpxOAG9.png?1)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Item
+![alt text](https://i.imgur.com/pPIViIN.png?1)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Comment
+![alt text](https://i.imgur.com/2pHk4YQ.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Models
+![alt text](https://i.imgur.com/lNIFbll.png)
+![alt text](https://i.imgur.com/ql4bm0i.png)
+![alt text](https://i.imgur.com/crs22j3.png)
+![alt text](https://i.imgur.com/2fZMtYh.png)
+![alt text](https://i.imgur.com/nwqlQBV.png)
+![alt text](https://i.imgur.com/lMihKbh.png)
+![alt text](https://i.imgur.com/VYsh4l1.png)
+![alt text](https://i.imgur.com/KOYfbfH.png)
 
-### `npm run eject`
+# API routes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Item
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+HTTP method		URL path			Description
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+GET 			/items 				list of items
+GET 			/items/<id>			show one item
+POST			/items				create item
+PUT 			/items/<id> 		update an item
+DELETE 			/items/<id> 		delete an item
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+User
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+HTTP method		URL path			Description
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+GET 			/users				user profile
+POST 			/users/login 		log user in
+POST 			/register 			register user
+PUT 			/users/<id> 		update user account
+DELETE 			/users/<id>			delete the account
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+# User Stories
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* user can enter a name on the search bar if they want.
+* user can can filter their research by category (Home, Music-Books, Sport, Electronic, etc...).
+* user can click one of the post to see all the information about it.
+* User will need their email and password to log in.
+* User can register with their first name, last name, profile picure, email address, password and address (addr1, addr2, ste/apt, city, state and zip).
+* User can leave a message on the item only if they are logged in.
+* Registered users may post a free item by clicking make a post and fill out the form.
+* User can delete their account by clicking delete account.
+* User can edit their account by clicking edit account.
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+# Nice to have
 
-### Advanced Configuration
+-- Allow user to upload more than one picture of the item.
+-- Add related items. I.e. when the user select the item that was posted, they will be able to see more items similar to that one.
+-- Add a drop down that let you search by location.
+-- Add sort by, i.e. Date (most recent)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+# Technology used
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Flask
+* React.js
+* Sqlite -- Postgres
+* Python
