@@ -25,7 +25,7 @@ Keep in mind that all the items in this site for free for the user.
 
 ![alt text](https://i.imgur.com/2pHk4YQ.png)
 
-# Models
+## Wireframes
 ![alt text](https://i.imgur.com/Q27tIuk.png)
 ![alt text](https://i.imgur.com/ql4bm0i.png)
 ![alt text](https://i.imgur.com/crs22j3.png)
@@ -34,6 +34,30 @@ Keep in mind that all the items in this site for free for the user.
 ![alt text](https://i.imgur.com/lMihKbh.png)
 ![alt text](https://i.imgur.com/VYsh4l1.png)
 ![alt text](https://i.imgur.com/KOYfbfH.png)
+
+## Models
+```
+class User(UserMixin, Model):
+	first_name = CharField()
+	last_name = CharField()
+	picture = CharField()
+	address = CharField()
+	email = CharField(unique=True)
+	password = CharField()
+
+class Item(Model):
+	name = CharField()
+	picture = CharField()
+	address = CharField()
+	owner = ForeignKeyField(User, backref='items')
+	created_at = DateTimeField(default=datetime.datetime.now)
+
+class Comment(Model):
+	comment = CharField()
+	author = ForeignKeyField(User, backref='items')
+	item = ForeignKeyField(Item, backref='items')
+	created_at = DateTimeField(default=datetime.datetime.now)
+```
 
 ## API routes
 
@@ -66,7 +90,7 @@ Keep in mind that all the items in this site for free for the user.
 * User can can filter their research by category (Home, Music-Books, Sport, Electronic, etc...).
 * User can click one of the post to see all the information about it.
 * User will need their email and password to log in.
-* User can register with their first name, last name, profile picure, email address, password and address (addr1, addr2, ste/apt, city, state and zip).
+* User can register with their first name, last name, profile picure, email address, password and address (addr1, addr2, ste/apt, city, state and zip code).
 * User can leave a message on the item only if they are logged in.
 * Registered users may post a free item by clicking make a post and fill out the form.
 * User can delete their account by clicking delete account.
