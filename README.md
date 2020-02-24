@@ -6,7 +6,7 @@ The main idea behind this, is that there are many people that in their house mig
 
 The same way people will have only one place that can go online and make sure that everything that they see there is for free.
 
-Keep in mind that all the items in this site for free for the user.
+Keep in mind that all the items in this site are for free for the user.
 
 ## How to use the app
 
@@ -16,18 +16,25 @@ Keep in mind that all the items in this site for free for the user.
 * If you wish to post an item, you must register or log in.
 * If you wish to leave a comment, you must log in or register.
 
+## Installation
+```
+$ create-react-app joke-app
+```
+
 ## Tables
 
 
-![alt text](https://i.imgur.com/dpxOAG9.png?1)
+![alt text](https://i.imgur.com/HvRBgjA.png)
 
-![alt text](https://i.imgur.com/pPIViIN.png?1)
+![alt text](https://i.imgur.com/HEgmupq.png)
 
 ![alt text](https://i.imgur.com/2pHk4YQ.png)
 
+![alt text](https://i.imgur.com/qa5zi7n.png)
+
 ## Wireframes
 ![alt text](https://i.imgur.com/Q27tIuk.png)
-![alt text](https://i.imgur.com/ql4bm0i.png)
+![alt text](https://i.imgur.com/ConrMcQ.png)
 ![alt text](https://i.imgur.com/crs22j3.png)
 ![alt text](https://i.imgur.com/2fZMtYh.png)
 ![alt text](https://i.imgur.com/nwqlQBV.png)
@@ -37,24 +44,33 @@ Keep in mind that all the items in this site for free for the user.
 
 ## Models
 ```
+class Address(Model):
+	address_1 = CharField()
+	address_2 = CharField()
+	city = CharField()
+	state = CharField()
+	zip_code = CharField()
+
 class User(UserMixin, Model):
 	first_name = CharField()
 	last_name = CharField()
 	picture = CharField()
-	address = CharField()
+	address = ForeignKeyField(Address, backref='address')
 	email = CharField(unique=True)
 	password = CharField()
 
 class Item(Model):
 	name = CharField()
 	picture = CharField()
-	address = CharField()
+	category = CharField()
+	description = CharField()
+	address = ForeignKeyField(Address, backref='address')
 	owner = ForeignKeyField(User, backref='items')
 	created_at = DateTimeField(default=datetime.datetime.now)
 
 class Comment(Model):
 	comment = CharField()
-	author = ForeignKeyField(User, backref='items')
+	author = ForeignKeyField(User, backref='user')
 	item = ForeignKeyField(Item, backref='items')
 	created_at = DateTimeField(default=datetime.datetime.now)
 ```
@@ -98,7 +114,7 @@ class Comment(Model):
 * User can can filter their research by category (Home, Music-Books, Sport, Electronic, etc...).
 * User can click one of the post to see all the information about it.
 * User will need their email and password to log in.
-* User can register with their first name, last name, profile picure, email address, password and address (addr1, addr2, ste/apt, city, state and zip code).
+* User can register with their first name, last name, profile picure, email address, password and address (addr1, addr2, st/apt, city, state and zip code).
 * User can leave a message on the item only if they are logged in.
 * Registered users may post a free item by clicking make a post and fill out the form.
 * User can delete their account by clicking delete account.
@@ -118,3 +134,4 @@ class Comment(Model):
 * React.js
 * Sqlite -- Postgres
 * Python
+* GoogleMaps API
