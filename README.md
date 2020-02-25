@@ -34,7 +34,7 @@ $ create-react-app joke-app
 
 ## Wireframes
 ![alt text](https://i.imgur.com/Q27tIuk.png)
-![alt text](https://i.imgur.com/ql4bm0i.png)
+![alt text](https://i.imgur.com/pYKgXKL.png)
 ![alt text](https://i.imgur.com/crs22j3.png)
 ![alt text](https://i.imgur.com/2fZMtYh.png)
 ![alt text](https://i.imgur.com/nwqlQBV.png)
@@ -92,7 +92,7 @@ class Comment(Model):
 
 | HTTP method	|	URL path		| Description		  |
 | ------------- |:-----------------:| -------------------:|
-| GET 			| /users			| user profile		  |
+| GET 			| /users/profile	| user profile		  |
 | POST 			| /users/login 		| log user in 		  |
 | GET 			| /users/logout 	| log user out 		  |
 | POST 			| /users/register 	| register user 	  |
