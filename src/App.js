@@ -47,9 +47,27 @@ class App extends Component {
 	}
 
 	// login method
-	login = (loginInfo) => {
-		console.log(loginInfo);
-	}
+	login = async (loginInfo) => {
+		// get our url from our enviroment variable
+		const url = process.env.REACT_APP_API_URL + '/api/v1/users/login'
+
+		try {
+			// fetch our url
+			const loginResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'POST',
+				body: JSON.stringify(loginInfo),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(loginResponse);
+			
+
+		}catch(err) {
+			console.error(err);
+		}
+ 	}
   
   	render() {
   		return (
