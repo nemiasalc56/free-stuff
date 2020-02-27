@@ -45,12 +45,20 @@ class App extends Component {
 			console.error(err);
 		}
 	}
+
+	// login method
+	login = (loginInfo) => {
+		console.log(loginInfo);
+	}
   
   	render() {
   		return (
 	    	<div className="App">
 	      		<h1>Free Stuff App</h1>
-	      	<LoginRegisterForm register={this.register}/>
+	      	<LoginRegisterForm 
+	      		register={this.register}
+	      		login={this.login}
+	      	/>
 	    	</div>
   		)
   	}
