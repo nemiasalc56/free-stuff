@@ -13,8 +13,27 @@ class ItemsContainer extends Component {
 	}
 
 	// post items
-	postItem = (itemInfo) => {
-		console.log(itemInfo);
+	postItem = async (itemInfo) => {
+		// get the url
+		const url = process.env.REACT_APP_API_URL + '/api/v1/items/'
+
+		try {
+			// fetch our url
+			const itemResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'POST',
+				body: JSON.stringify(itemInfo),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			// console.log(itemResponse);
+			// 
+			const itemJson = await itemResponse.json()
+
+			}catch(err) {
+			console.error(err);
+		}
 	}
 
 
