@@ -23,7 +23,7 @@ class App extends Component {
   		return (
 	    	<div className="App">
 	      		<h1>Free Stuff App</h1>
-	      	<LoginRegisterForm />
+	      	<LoginRegisterForm register={this.register}/>
 	    	</div>
   		)
   	}

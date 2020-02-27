@@ -40,8 +40,30 @@ class LoginRegisterForm extends Component {
 	// handle submit
 	handleSubmit = (e) => {
 		e.preventDefault()
-		console.log(e.target)
+
+		if(this.state.action === "register") {
+			this.props.register({
+				firstName: this.state.firstName,
+				lastName: this.state.lastName,
+				picture: this.state.picture,
+				address1: this.state.address1,
+				address2: this.state.address2,
+				city: this.state.city,
+				state: this.state.state,
+				zipcode: this.state.zipcode,
+				email: this.state.email,
+				password: this.state.password
+			})
+
+		} else if(this.state.action === "login") {
+			this.props.register({
+				email: this.state.email,
+				password: this.state.password
+			})
+		}
+
 	}
+
 
 	render() {
 		return (
@@ -55,7 +77,7 @@ class LoginRegisterForm extends Component {
 							}
 						</h2>
 					</Grid.Row>
-					<Form>
+					<Form onSubmit={this.handleSubmit}>
 						{this.state.action === 'register'
 							?
 							<div>
