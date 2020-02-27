@@ -62,8 +62,25 @@ class LoginRegisterForm extends Component {
 			})
 		}
 
+		this.clearForm()
 	}
 
+	// clear form
+	clearForm = () => {
+		this.setState({
+			firstName: '',
+			lastName: '',
+			picture: '',
+			address1: '',
+			address2: '',
+			city: '',
+			state: '',
+			zipcode: '',
+			email: '',
+			password: '',
+			action: 'login'
+		})
+	}
 
 	render() {
 		return (
