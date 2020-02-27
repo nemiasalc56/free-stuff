@@ -143,7 +143,7 @@ class LoginRegisterForm extends Component {
 								<Form.Field>
 									<Form.Input 
 										label="Image"
-										type="text" 
+										type="file" 
 										name="picture"
 										value={this.state.picture}
 										onChange={this.handleChange}

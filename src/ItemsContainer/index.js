@@ -22,7 +22,7 @@ class ItemsContainer extends Component {
 		return(
 			<div>
 				<h2>ItemsContainer</h2>
-				<NewItemForm />
+				<NewItemForm postItem={this.postItem}/>
 			</div>
 			)
 	}

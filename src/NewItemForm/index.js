@@ -43,6 +43,12 @@ class NewItemForm extends Component {
 		})
 	}
 
+	// handle submit
+	handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.postItem(this.state)
+	}
+
 	render() {
 
 		return(
@@ -126,7 +132,7 @@ class NewItemForm extends Component {
 								<Form.Field>
 									<Form.Input 
 										label="Image"
-										type="text" 
+										type="file" 
 										name="picture"
 										value={this.state.picture}
 										onChange={this.handleChange}
