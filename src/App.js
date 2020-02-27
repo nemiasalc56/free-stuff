@@ -15,7 +15,9 @@ class App extends Component {
 	}
 
 	// register method
-	
+	register = async (registerInfo) =>{
+		console.log(registerInfo);
+	}
   
   	render() {
   		return (
