@@ -50,28 +50,38 @@ class Address(Model):
 	city = CharField()
 	state = CharField()
 	zip_code = CharField()
+	lat = IntegerField()
+	lng = IntegerField()
+
 
 class User(UserMixin, Model):
 	first_name = CharField()
 	last_name = CharField()
 	picture = CharField()
-	address = ForeignKeyField(Address, backref='address')
 	email = CharField(unique=True)
 	password = CharField()
+	address = ForeignKeyField(Address, backref='address')
+
 
 class Item(Model):
 	name = CharField()
 	picture = CharField()
 	category = CharField()
 	description = CharField()
-	address = ForeignKeyField(Address, backref='address')
-	owner = ForeignKeyField(User, backref='items')
+	lat = IntegerField()
+	lng = IntegerField()
+	address_1 = CharField()
+	address_2 = CharField()
+	city = CharField()
+	state = CharField()
+	zip_code = CharField()
+	owner = ForeignKeyField(User, backref='items', on_delete='CASCADE')
 	created_at = DateTimeField(default=datetime.datetime.now)
 
 class Comment(Model):
 	comment = CharField()
-	author = ForeignKeyField(User, backref='user')
-	item = ForeignKeyField(Item, backref='items')
+	author = ForeignKeyField(User, backref='comments')
+	item = ForeignKeyField(Item, backref='items', on_delete='CASCADE')
 	created_at = DateTimeField(default=datetime.datetime.now)
 ```
 
@@ -81,11 +91,12 @@ class Comment(Model):
 
 | HTTP method	| URL path			| Description	 |
 | ------------- |:-----------------:| --------------:|
-| GET 			| /items 			| list of items	 |
-| GET 			| /items/<id>		| show one item  |
-| POST			| /items			| create item 	 |
-| PUT 			| /items/<id> 		| update an item |
-| DELETE 		| /items/<id> 		| delete an item |
+| GET 			| `/items` 			| list of items	 |
+| GET 			| `/items/search` 	| list of items by category	 |
+| GET 			| `/items/<id>`		| show one item  |
+| POST			| `/items`			| create item 	 |
+| PUT 			| `/items/<id>` 		| update an item |
+| DELETE 		| `/items/<id>` 		| delete an item |
 
 
 --User
@@ -101,11 +112,12 @@ class Comment(Model):
 
 
 --Comment
+
 | HTTP method	|	URL path		| Description		  |
 | ------------- |:-----------------:| -------------------:|
-| GET 			| /comments			| list the commnets	  |
-| POST 			| /comments 		| create a comment 	  |
-| DELETE 		| /comments/<id> 	| delete a commnet 	  |
+| GET 			| `/comments/<item_id>`	| list the comments	for an item |
+| POST 			| `/comments/<item_id>` 		| create a comment 	  |
+| DELETE 		| `/comments/<id>` 	| delete a comment 	  |
 
 
 ## User Stories
