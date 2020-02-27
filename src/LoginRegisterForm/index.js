@@ -17,9 +17,7 @@ class LoginRegisterForm extends Component {
 			zip_code: '',
 			email: '',
 			password: '',
-			action: 'login',
-			lat: 12,
-			lng:2.2
+			action: 'login'
 		}
 	}
 

@@ -30,7 +30,17 @@ class App extends Component {
         		}
 			})
 
-			console.log(registerResponse);
+			// convert to json
+			const registerJson = await registerResponse.json()
+			console.log(registerJson);
+			if(registerJson.status === 200) {
+				this.setState({
+					loggedId: true,
+					userId: registerJson.data.id,
+					message: registerJson.message
+				})
+			}
+
 		}catch(err) {
 			console.error(err);
 		}
