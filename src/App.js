@@ -84,6 +84,7 @@ class App extends Component {
   		return (
 	    	<div className="App">
 	      		<h1>Free Stuff App</h1>
+	      		{/* this is so that we can render conditionally */}
 	      		{!this.state.loggedId
 	      			? <LoginRegisterForm 
 	      				register={this.register}
