@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Grid } from 'semantic-ui-react'
 import './index.css'
 
 class LoginRegisterForm extends Component {
@@ -9,6 +9,7 @@ class LoginRegisterForm extends Component {
 		this.state = {
 			firstName: '',
 			lastName: '',
+			picture: '',
 			address1: '',
 			address2: '',
 			city: '',
@@ -36,78 +37,101 @@ class LoginRegisterForm extends Component {
 		}
 	}
 
+	// handle submit
+	handleSubmit = (e) => {
+		e.preventDefault()
+		console.log(e.target)
+	}
+
 	render() {
 		return (
-			<div>
-				<div className="login-register-container">
-					<h2>LoginRegisterForm</h2>
+			<div className="login-register-container">
+				<Grid className="center aligned">
+					<Grid.Row>
+						<h2>
+							{this.state.action === "login"
+								? "Login"
+								: "Create A New Account"
+							}
+						</h2>
+					</Grid.Row>
 					<Form>
-						<Form.Field>
-							<label>First name</label>
-							<input 
-								type="text" 
-								name="firstName"
-								value={this.state.firstName}
-								onChange={this.handleChange}
-								placehoder="First name" />
-						</Form.Field>
-						<Form.Field>
-							<label>Last name</label>
-							<input 
-								type="text"
-								name="lastName"
-								value={this.state.lastName}
-								onChange={this.handleChange} 
-								placehoder="Last name" />
-						</Form.Field>
-						<Form.Field>
-							<label>Address 1</label>
-							<input 
-								type="text" 
-								name="address1"
-								value={this.state.address1}
-								onChange={this.handleChange}
-								placehoder="Address 1" />
-						</Form.Field>
+						{this.state.action === 'register'
+							?
+							<div>
+								<Form.Group>
+								<Form.Input 
+									label="First name"
+									type="text" 
+									name="firstName"
+									value={this.state.firstName}
+									onChange={this.handleChange}
+									placeholder="First name" />
+								<Form.Input 
+									label="Last name"
+									type="text"
+									name="lastName"
+									value={this.state.lastName}
+									onChange={this.handleChange} 
+									placeholder="Last name" />
+							</Form.Group>
+							<Form.Group>
+								
+								<Form.Input 
+									label="Address 1"
+									type="text" 
+									name="address1"
+									value={this.state.address1}
+									onChange={this.handleChange}
+									placeholder="Address 1" />
+							
+								<Form.Input 
+									label="Address 2" 
+									type="text" 
+									name="address2"
+									value={this.state.address2}
+									onChange={this.handleChange}
+									placeholder="Address 2" />
+							
+								<Form.Input 
+									label="City"
+									type="text" 
+									name="city"
+									value={this.state.city}
+									onChange={this.handleChange}
+									placeholder="City" />
+							
+								<Form.Input 
+									label="State" 
+									type="text" 
+									name="state"
+									value={this.state.state}
+									onChange={this.handleChange}
+									placeholder="state" />
+							
+								<Form.Input 
+									label="Zipcode"
+									type="text" 
+									name="zipcode"
+									value={this.state.zipcode}
+									onChange={this.handleChange}
+									placeholder="Zipcode" />
+							</Form.Group>
 
-						<Form.Field>
-							<label>Address 2</label>
-							<input 
-								type="text" 
-								name="address2"
-								value={this.state.address2}
-								onChange={this.handleChange}
-								placehoder="Address 2" />
-						</Form.Field>
-						<Form.Field>
-							<label>City</label>
-							<input 
-								type="text" 
-								name="city"
-								value={this.state.city}
-								onChange={this.handleChange}
-								placehoder="City" />
-						</Form.Field>
+							<Form.Field>
+								<Form.Input 
+									label="Image"
+									type="text" 
+									name="picture"
+									value={this.state.picture}
+									onChange={this.handleChange}
+									placeholder='Image' />
+							</Form.Field>
+							</div>
+							: null
+						} 
 
-						<Form.Field>
-							<label>State</label>
-							<input 
-								type="text" 
-								name="state"
-								value={this.state.state}
-								onChange={this.handleChange}
-								placehoder="state" />
-						</Form.Field>
-
-						<Form.Field>
-							<label>Zipcode</label>
-							<input 
-								type="text" 
-								name="zipcode"
-								value={this.state.zipcode}
-								onChange={this.handleChange}
-								placehoder="Zipcode" />
-						</Form.Field>
+							
 
 						<Form.Field>
 							<label>Email</label>
@@ -116,24 +140,36 @@ class LoginRegisterForm extends Component {
 								name="email"
 								value={this.state.email}
 								onChange={this.handleChange}
-								placehoder="Enter email" />
+								placeholder="Enter email" />
 						</Form.Field>
 
 						<Form.Field>
 							<label>Password</label>
 							<input 
-									type="password" 
-									name="password"
-									value={this.state.password}
-									onChange={this.handleChange}
-								placehoder="Enter password" />
+								type="password" 
+								name="password"
+								value={this.state.password}
+								onChange={this.handleChange}
+								placeholder="Enter password" />
 						</Form.Field>
 
-						<Button type='submit'>Submit</Button>
-						<p onClick={this.switch}>Register</p>
+						<Button color="green" className="big" type='submit'>
+							{this.state.action === "login"
+								? "Sign In"
+								: "Sign Up"
+							}
+						</Button>
+						<Grid className="center aligned option">
+							<p onClick={this.switchForm}>
+								{this.state.action === "login"
+									? "Already have an account?"
+									: "login"
+								}
+							</p>	
+						</Grid>
 					</Form>
 					
-				</div>
+				</Grid>
 			</div>
 			)
 	}

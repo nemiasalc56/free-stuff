@@ -1,8 +1,11 @@
 .login-register-container {
-	width: 500px;
-	position: absolute;
 	background-color: white;
-	top: 30%;
-	right: 40%;
-	left: 35%;
+}
+
+Button {
+	width: 100%;
+}
+
+.option p {
+	margin-top: 30px;
 }
