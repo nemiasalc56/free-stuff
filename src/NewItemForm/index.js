@@ -36,6 +36,13 @@ class NewItemForm extends Component {
 		return categoryOptions
 	}
 
+	// handle change
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
+
 	render() {
 
 		return(
@@ -60,6 +67,7 @@ class NewItemForm extends Component {
 										type="text" 
 										name="name"
 										value={this.state.name}
+										onChange={this.handleChange}
 										placeholder="Name" />
 									
 								</Form.Field>
@@ -133,6 +141,7 @@ class NewItemForm extends Component {
 								name="description"
 								value={this.state.description}
 								placeholder="Description"
+								onChange={this.handleChange}
 							/>
 								
 
