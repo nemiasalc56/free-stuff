@@ -9,9 +9,13 @@ class App extends Component {
 
 		this.state = {
 			loggedId: false,
-			userId: -1
+			userId: -1,
+			message: ''
 		}
 	}
+
+	// register method
+	
   
   	render() {
   		return (
