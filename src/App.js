@@ -61,8 +61,16 @@ class App extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(loginResponse);
-			
+			// convert our response to json
+			const loginJson = await loginResponse.json()
+			console.log(loginJson);
+			if(loginJson.status === 200) {
+				this.setState({
+					loggedId: true,
+					userId: loginJson.data.id,
+					message: loginJson.message
+				})
+			}
 
 		}catch(err) {
 			console.error(err);
