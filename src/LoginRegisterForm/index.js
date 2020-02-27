@@ -35,6 +35,7 @@ class LoginRegisterForm extends Component {
 		} else if(this.state.action === 'register') {
 			this.setState({action: 'login'})
 		}
+		this.clearForm()
 	}
 
 	// handle submit

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginRegisterForm from './LoginRegisterForm'
+import ItemsContainer from './ItemsContainer'
 
 
 class App extends Component {
@@ -76,15 +77,22 @@ class App extends Component {
 			console.error(err);
 		}
  	}
+
+ 	
   
   	render() {
   		return (
 	    	<div className="App">
 	      		<h1>Free Stuff App</h1>
-	      	<LoginRegisterForm 
-	      		register={this.register}
-	      		login={this.login}
-	      	/>
+	      		{!this.state.loggedId
+	      			? <LoginRegisterForm 
+	      				register={this.register}
+	      				login={this.login}
+	      			/>
+	      		: <ItemsContainer />
+
+	      		}
+	      	
 	    	</div>
   		)
   	}
