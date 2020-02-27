@@ -6,8 +6,23 @@ class LoginRegisterForm extends Component {
 		super(props)
 
 		this.state = {
-			name: ''
+			firstName: '',
+			lastName: '',
+			address1: '',
+			address2: '',
+			city: '',
+			state: '',
+			zipcode: '',
+			email: '',
+			password: ''
 		}
+	}
+
+	// handle changes
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
 	}
 
 	render() {
@@ -20,13 +35,17 @@ class LoginRegisterForm extends Component {
 						<input 
 							type="text" 
 							name="firstName"
+							value={this.state.firstName}
+							onChange={this.handleChange}
 							placehoder="First name" />
 					</Form.Field>
 					<Form.Field>
 						<label>Last name</label>
 						<input 
 							type="text"
-							name="lastName" 
+							name="lastName"
+							value={this.state.lastName}
+							onChange={this.handleChange} 
 							placehoder="Last name" />
 					</Form.Field>
 					<Form.Field>
@@ -34,6 +53,8 @@ class LoginRegisterForm extends Component {
 						<input 
 							type="text" 
 							name="address1"
+							value={this.state.address1}
+							onChange={this.handleChange}
 							placehoder="Address 1" />
 					</Form.Field>
 
@@ -42,6 +63,8 @@ class LoginRegisterForm extends Component {
 						<input 
 							type="text" 
 							name="address2"
+							value={this.state.address2}
+							onChange={this.handleChange}
 							placehoder="Address 2" />
 					</Form.Field>
 					<Form.Field>
@@ -49,6 +72,8 @@ class LoginRegisterForm extends Component {
 						<input 
 							type="text" 
 							name="city"
+							value={this.state.city}
+							onChange={this.handleChange}
 							placehoder="City" />
 					</Form.Field>
 
@@ -57,6 +82,8 @@ class LoginRegisterForm extends Component {
 						<input 
 							type="text" 
 							name="state"
+							value={this.state.state}
+							onChange={this.handleChange}
 							placehoder="state" />
 					</Form.Field>
 
@@ -65,6 +92,8 @@ class LoginRegisterForm extends Component {
 						<input 
 							type="text" 
 							name="zipcode"
+							value={this.state.zipcode}
+							onChange={this.handleChange}
 							placehoder="Zipcode" />
 					</Form.Field>
 
@@ -73,6 +102,8 @@ class LoginRegisterForm extends Component {
 						<input 
 							type="text" 
 							name="email"
+							value={this.state.email}
+							onChange={this.handleChange}
 							placehoder="Enter email" />
 					</Form.Field>
 
@@ -81,6 +112,8 @@ class LoginRegisterForm extends Component {
 						<input 
 								type="password" 
 								name="password"
+								value={this.state.password}
+								onChange={this.handleChange}
 							placehoder="Enter password" />
 					</Form.Field>
 
