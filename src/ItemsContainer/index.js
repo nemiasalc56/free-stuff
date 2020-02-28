@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import NewItemForm from '../NewItemForm'
-import ItemList from '../ItemList'
+import NewItemForm from './NewItemForm'
+import ItemList from './ItemList'
+import ShowItemContainer from './ShowItemContainer'
 import { Header } from 'semantic-ui-react'
+
 
 
 
@@ -87,6 +89,7 @@ class ItemsContainer extends Component {
 				}
 				
 				<ItemList items={this.state.items}/>
+				<ShowItemContainer />
 			</div>
 			)
 	}
