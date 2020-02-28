@@ -11,27 +11,30 @@ function ItemList(props) {
 
 		return(
 			<Card key={item.id}>
+
 				<Image
-						    src={item.picture}
-						    as='a'
-						    size='medium'
-						    href='http://localhost:3000'
-						    target='_blank'
-						    wrapped ui={false}
-						  />
+					src={item.picture}
+					as='a'
+					size='medium'
+					href='http://localhost:3000'
+					target='_blank'
+					wrapped ui={false}
+				/>
 				<Card.Content>
 					<Card.Header key={item.id}>
-						
 						{item.name}
 					</Card.Header>
+					<Card.Meta>
+        				<span className='city'>{item.city}, {item.state}</span>
+      				</Card.Meta>
 				</Card.Content>
 			</Card>
 			)
 	})
 
 	return(
-		<div>
-			<h2>ItemList</h2>
+		<div className="item-list-container">
+			
 			<Card.Group itemsPerRow={3}>
 				{item}
 			</Card.Group>

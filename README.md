@@ -147,3 +147,28 @@ class Comment(Model):
 * Sqlite -- Postgres
 * Python
 * GoogleMaps API
+
+
+## Development process
+
+* Feb 25th-27th, 
+	- Auth complete api
+	- Item complete api
+	- Comment complete api
+	- Auth Client C
+	- Item CR Client
+
+
+* Feb 28th - March 1st
+	- CRUD items
+	- CRUD user
+	- Set up Cloudinary API
+	- Set up GoogleMaps API
+	- List items by category
+	- Search
+
+
+
+
+
+

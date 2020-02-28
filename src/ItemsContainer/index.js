@@ -80,7 +80,7 @@ class ItemsContainer extends Component {
 	render() {
 		return(
 			<div>
-				<h2>ItemsContainer</h2>
+				
 				{this.state.NewItemForm
 					? <NewItemForm postItem={this.postItem}/>
 					:null

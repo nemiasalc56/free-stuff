@@ -1,5 +1,5 @@
 body {
-	background-color: orange;
+	background-color: white;
 }
 
 .nav-container2 {
@@ -8,13 +8,18 @@ body {
 	margin-top: 30px;
 }
 
-
-.nav-container a {
+.nav p {
 	margin-left: 10px;
 	margin-right: 10px;
-	color: black;
+	display: inline-block;
 }
 
-.header {
-	background-color: white;
+
+.search {
+	width: 600px;
+}
+
+.nav-header {
+	background-color: rgb(95, 158, 160);
+	border-bottom: 1px solid black;
 }

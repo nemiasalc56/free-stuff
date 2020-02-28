@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LoginRegisterForm from './LoginRegisterForm'
 import ItemsContainer from './ItemsContainer'
-import { Search, Grid, Header, Segment, Button } from 'semantic-ui-react'
+import { Search, Grid, Header, Segment, Button, Input } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -13,7 +13,8 @@ class App extends Component {
 			loggedId: false,
 			loginOpen: false,
 			userId: -1,
-			message: ''
+			message: '',
+			category: ''
 		}
 	}
 
@@ -83,19 +84,21 @@ class App extends Component {
 		}
  	}
 
-
  	
   
   	render() {
   		return (
 	    	<div className="App">
-	    		<div className="header">
+	    		<div className="nav-header">
 		    		<Header>
 		    			<div className="main">
-							<Grid>
 								<Grid>
+									<Grid.Row>
 									<h1>Free Stuff</h1>
-									<Search />
+									
+									<Search size="large"
+										style={{width:"400px"}}
+									/>
 									<Button>Search</Button>
 									{this.state.loggedId
 										?<h2>{this.state.user.first_name}</h2>
@@ -103,24 +106,25 @@ class App extends Component {
 				    					onClick={()=>this.setState({loginOpen:true})}
 				    				>Login</h2>
 										}
+										
+									</Grid.Row>
 								</Grid>
-							</Grid>
 
 		    			</div>
 		    			<div className="nav-container">
 		    				<div className="nav-container2">
-								<nav>
-									<a>All</a>
-									<a>Electronics</a>
-									<a>Collectibles & Art</a>
-									<a>Home & Garden</a>
-									<a>Clothing</a>
-									<a>Sport</a>
-									<a>Toys</a>
-									<a>Music & Books</a>
-									<a>Entertaitment</a>
-									<a>Others</a>
-								</nav>
+								<div className="nav">
+									<p>All</p>
+									<p>Electronics</p>
+									<p>Collectibles & Art</p>
+									<p>Home & Garden</p>
+									<p>Clothing</p>
+									<p>Sport</p>
+									<p>Toys</p>
+									<p>Music & Books</p>
+									<p>Entertaitment</p>
+									<p>Others</p>
+								</div>
 		    					
 		    				</div>
 		    				
