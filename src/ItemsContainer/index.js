@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NewItemForm from '../NewItemForm'
+import ItemList from '../ItemList'
 
 
 
@@ -11,6 +12,8 @@ class ItemsContainer extends Component {
 			items: []
 		}
 	}
+
+	
 
 	// post items
 	postItem = async (itemInfo) => {
@@ -27,10 +30,9 @@ class ItemsContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			// console.log(itemResponse);
 			// 
 			const itemJson = await itemResponse.json()
-
+			console.log(itemJson);
 			}catch(err) {
 			console.error(err);
 		}
@@ -42,6 +44,7 @@ class ItemsContainer extends Component {
 			<div>
 				<h2>ItemsContainer</h2>
 				<NewItemForm postItem={this.postItem}/>
+				<ItemList />
 			</div>
 			)
 	}
