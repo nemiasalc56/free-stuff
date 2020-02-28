@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LoginRegisterForm from './LoginRegisterForm'
 import ItemsContainer from './ItemsContainer'
+import { Search, Grid, Header, Segment, Button } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
 
 		this.state = {
 			loggedId: false,
+			loginOpen: false,
 			userId: -1,
 			message: ''
 		}
@@ -38,7 +40,8 @@ class App extends Component {
 				this.setState({
 					loggedId: true,
 					userId: registerJson.data.id,
-					message: registerJson.message
+					message: registerJson.message,
+					user: registerJson.data
 				})
 			}
 
@@ -68,8 +71,10 @@ class App extends Component {
 			if(loginJson.status === 200) {
 				this.setState({
 					loggedId: true,
+					loginOpen: false,
 					userId: loginJson.data.id,
-					message: loginJson.message
+					message: loginJson.message,
+					user: loginJson.data
 				})
 			}
 
@@ -78,14 +83,53 @@ class App extends Component {
 		}
  	}
 
+
  	
   
   	render() {
   		return (
 	    	<div className="App">
-	      		<h1>Free Stuff App</h1>
+	    		<div className="header">
+		    		<Header>
+		    			<div className="main">
+							<Grid>
+								<Grid>
+									<h1>Free Stuff</h1>
+									<Search />
+									<Button>Search</Button>
+									{this.state.loggedId
+										?<h2>{this.state.user.first_name}</h2>
+										:<h2
+				    					onClick={()=>this.setState({loginOpen:true})}
+				    				>Login</h2>
+										}
+								</Grid>
+							</Grid>
+
+		    			</div>
+		    			<div className="nav-container">
+		    				<div className="nav-container2">
+								<nav>
+									<a>All</a>
+									<a>Electronics</a>
+									<a>Collectibles & Art</a>
+									<a>Home & Garden</a>
+									<a>Clothing</a>
+									<a>Sport</a>
+									<a>Toys</a>
+									<a>Music & Books</a>
+									<a>Entertaitment</a>
+									<a>Others</a>
+								</nav>
+		    					
+		    				</div>
+		    				
+		    			</div>
+					</Header>
+	    			
+	    		</div>
 	      		{/* this is so that we can render conditionally */}
-	      		{!this.state.loggedId
+	      		{this.state.loginOpen
 	      			? <LoginRegisterForm 
 	      				register={this.register}
 	      				login={this.login}

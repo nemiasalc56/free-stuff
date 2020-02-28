@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewItemForm from '../NewItemForm'
 import ItemList from '../ItemList'
+import { Header } from 'semantic-ui-react'
 
 
 
@@ -9,11 +10,19 @@ class ItemsContainer extends Component {
 		super(props)
 
 		this.state = {
-			items: []
+			items: [],
+			NewItemForm: false
 		}
 	}
 
-	
+	componentDidMount() {
+		this.getItems()
+	}
+
+	// get get all the items
+	getItems = () => {
+		console.log("get items is runing");
+	}
 
 	// post items
 	postItem = async (itemInfo) => {
@@ -33,6 +42,10 @@ class ItemsContainer extends Component {
 			// 
 			const itemJson = await itemResponse.json()
 			console.log(itemJson);
+
+			this.setState({
+				NewItemForm: false
+			})
 			}catch(err) {
 			console.error(err);
 		}
@@ -43,7 +56,11 @@ class ItemsContainer extends Component {
 		return(
 			<div>
 				<h2>ItemsContainer</h2>
-				<NewItemForm postItem={this.postItem}/>
+				{this.state.NewItemForm
+					? <NewItemForm postItem={this.postItem}/>
+					:null
+				}
+				
 				<ItemList />
 			</div>
 			)

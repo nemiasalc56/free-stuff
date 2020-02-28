@@ -175,7 +175,7 @@ class LoginRegisterForm extends Component {
 									placeholder="Enter password" />
 							</Form.Field>
 
-							<Button color="green" className="big" type='submit'>
+							<Button color="green" className="big login-button" type='submit'>
 								{this.state.action === "login"
 									? "Sign In"
 									: "Sign Up"

@@ -1,3 +1,20 @@
 body {
 	background-color: orange;
 }
+
+.nav-container2 {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+
+.nav-container a {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: black;
+}
+
+.header {
+	background-color: white;
+}
