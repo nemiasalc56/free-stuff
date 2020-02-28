@@ -86,7 +86,7 @@ class ItemsContainer extends Component {
 					:null
 				}
 				
-				<ItemList />
+				<ItemList items={this.state.items}/>
 			</div>
 			)
 	}
