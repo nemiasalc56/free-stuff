@@ -13,7 +13,8 @@ class ItemsContainer extends Component {
 
 		this.state = {
 			items: [],
-			NewItemForm: false
+			NewItemForm: false,
+			itemtoShowId: -1
 		}
 	}
 
@@ -54,7 +55,7 @@ class ItemsContainer extends Component {
 	// get item to show
 	getItemToShow = (itemId) => {
 		console.log("Trying to show an item");
-		console.log(itemId);
+		this.setState({itemtoShowId: itemId})
 	}
 
 	// post items
@@ -98,7 +99,13 @@ class ItemsContainer extends Component {
 					items={this.state.items}
 					getItemToShow={this.getItemToShow}
 				/>
-				<ShowItemContainer />
+				{this.state.itemtoShowId !== -1
+					?
+					<ShowItemContainer 
+					item={this.state.items.find((item)=>item.id === this.state.itemtoShowId)}
+					/>
+					:null
+				}
 			</div>
 			)
 	}

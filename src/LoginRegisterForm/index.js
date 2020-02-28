@@ -32,7 +32,7 @@ class LoginRegisterForm extends Component {
 	switchForm = () => {
 		if(this.state.action === 'login'){
 			this.setState({action: 'register'})
-		} else if(this.state.action === 'register') {
+		} else {
 			this.setState({action: 'login'})
 		}
 		this.clearForm()
@@ -57,7 +57,19 @@ class LoginRegisterForm extends Component {
 
 	// clear form
 	clearForm = () => {
-		this.setState(this.state)
+		this.setState({
+			first_name: '',
+			last_name: '',
+			picture: '',
+			address_1: '',
+			address_2: '',
+			city: '',
+			state: '',
+			zip_code: '',
+			email: '',
+			password: '',
+			action: 'login'
+		})
 	}
 
 	render() {
