@@ -20,8 +20,33 @@ class ItemsContainer extends Component {
 	}
 
 	// get get all the items
-	getItems = () => {
-		console.log("get items is runing");
+	getItems = async () => {
+		// get the url from our enviroment variable
+		const url = process.env.REACT_APP_API_URL + '/api/v1/items/'
+		try {
+			// fetch url
+			const itemsResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log("this is itemsResponse");
+			console.log(itemsResponse);
+			// convert data to json
+			const itemsJson = await itemsResponse.json()
+			console.log(itemsJson);
+
+			if(itemsJson.status === 200) {
+				this.setState({
+					items: itemsJson.data
+				})
+			}
+		}catch(err) {
+			console.error(err);
+		}
+
 	}
 
 	// post items
