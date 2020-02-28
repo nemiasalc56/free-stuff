@@ -51,6 +51,12 @@ class ItemsContainer extends Component {
 
 	}
 
+	// get item to show
+	getItemToShow = (itemId) => {
+		console.log("Trying to show an item");
+		console.log(itemId);
+	}
+
 	// post items
 	postItem = async (itemInfo) => {
 		// get the url
@@ -88,7 +94,10 @@ class ItemsContainer extends Component {
 					:null
 				}
 				
-				<ItemList items={this.state.items}/>
+				<ItemList 
+					items={this.state.items}
+					getItemToShow={this.getItemToShow}
+				/>
 				<ShowItemContainer />
 			</div>
 			)

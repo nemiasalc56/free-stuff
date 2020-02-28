@@ -10,13 +10,11 @@ function ItemList(props) {
 	const item = props.items.map((item) => {
 
 		return(
-			<Card key={item.id}>
+			<Card key={item.id} onClick={()=> props.getItemToShow(item.id)}>
 
 				<Image
 					src={item.picture}
-					as='a'
 					size='medium'
-					href='http://localhost:3000'
 					target='_blank'
 					wrapped ui={false}
 				/>
