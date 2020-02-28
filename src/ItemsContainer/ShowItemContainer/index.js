@@ -1,18 +1,50 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Button, Grid, Image } from 'semantic-ui-react'
+import './index.css'
 
 
 
 
-class ShowItemContainer extends Component {
+function ShowItemContainer(props){
 
+	console.log(props.item);
+	
+	return(
+		<div>
+			<h2>ShowItemContainer</h2>
+			<Grid>
+				<Grid.Column width={8}>
+					<Image
+						src={props.item.picture}
+					/>
 
-	render() {
-		return(
-			<div>
-				<h2>ShowItemContainer</h2>
-			</div>
-			)
-	}
+					<div width={8} className="map-container">
+						<h2>Map will go down here</h2>
+					</div>
+						
+				</Grid.Column>
+				<Grid.Column width={8}>
+					<h1>{props.item.name}</h1>
+
+					<div className="addres-container">
+						<p>{props.item.address_1}, apt/unit {props.item.address_2}, {props.item.city}, {props.item.state}, {props.item.zipcode}</p>					
+						
+					</div>
+					<div className="description-container">
+						<p>{props.item.description}</p>
+					</div>
+
+					<div width={8}>
+						<div width={4} className="comment-container">
+							<h2>Comment container will go here</h2>
+						</div>
+						
+					</div>
+				</Grid.Column>
+			</Grid>
+		</div>
+		)
+	
 }
 
 
