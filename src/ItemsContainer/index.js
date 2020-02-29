@@ -243,6 +243,7 @@ class ItemsContainer extends Component {
 						item={this.state.items.find((item)=>item.id === this.state.itemtoShowId)}
 						user={this.props.user}
 						itemToEdit={this.getItemToEdit}
+						deleteItem={this.deleteItem}
 					/>
 					:null
 				}

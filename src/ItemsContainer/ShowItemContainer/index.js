@@ -20,7 +20,10 @@ function ShowItemContainer(props){
 					{props.user.id===props.item.owner.id
 						? <div>
 							<Button onClick={()=>props.itemToEdit(props.item.id)}>Edit</Button>
-							<Button color="red">Delete</Button>
+							<Button 
+								color="red"
+								onClick={()=>props.deleteItem(props.item.id)}
+							>Delete</Button>
 						</div>
 						: null
 					}
