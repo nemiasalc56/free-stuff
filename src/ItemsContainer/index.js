@@ -124,6 +124,11 @@ class ItemsContainer extends Component {
 		}
 	}
 
+	// get item to edit
+	getItemToEdit = (itemToEditId) => {
+		console.log("getItemToEdit is being called");
+	}
+
 	render() {
 		console.log('props in ItemsContainer');
 		console.log(this.props.user);
@@ -167,6 +172,8 @@ class ItemsContainer extends Component {
 					?
 					<ShowItemContainer 
 					item={this.state.items.find((item)=>item.id === this.state.itemtoShowId)}
+					user={this.props.user}
+					itemToEdit={this.getItemToEdit}
 					/>
 					:null
 				}
@@ -175,6 +182,7 @@ class ItemsContainer extends Component {
 					? <ProfileContainer 
 						user={this.props.user}
 						switcher={this.switcher}
+						getItemToShow={this.getItemToShow}
 						/>
 					: null
 				}

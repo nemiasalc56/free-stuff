@@ -88,6 +88,7 @@ class ProfileContainer extends Component {
 						?
 						<ItemList 
 						items={this.state.myItems}
+						getItemToShow={this.props.getItemToShow}
 						/>
 						: <h1>You have not post a free item.</h1>
 					}

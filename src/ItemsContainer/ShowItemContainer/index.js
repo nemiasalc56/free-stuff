@@ -17,7 +17,13 @@ function ShowItemContainer(props){
 					<Image
 						src={props.item.picture}
 					/>
-
+					{props.user.id===props.item.owner.id
+						? <div>
+							<Button onClick={props.itemToEdit}>Edit</Button>
+							<Button color="red">Delete</Button>
+						</div>
+						: null
+					}
 					<div width={8} className="map-container">
 						<h2>Map will go down here</h2>
 					</div>
@@ -37,9 +43,9 @@ function ShowItemContainer(props){
 					<div width={8}>
 						<div width={4} className="comment-container">
 							<h2>Comment container will go here</h2>
-						</div>
-						
+						</div>	
 					</div>
+
 				</Grid.Column>
 			</Grid>
 		</div>
