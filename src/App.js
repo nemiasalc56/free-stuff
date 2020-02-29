@@ -3,6 +3,14 @@ import './App.css';
 import LoginRegisterForm from './LoginRegisterForm'
 import ItemsContainer from './ItemsContainer'
 import { Search, Grid, Header, Segment, Button, Input } from 'semantic-ui-react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import ProfileContainer from './ProfileContainer'
+
 
 
 class App extends Component {
@@ -10,7 +18,7 @@ class App extends Component {
 		super()
 
 		this.state = {
-			loggedId: false,
+			loggedIn: false,
 			loginOpen: false,
 			userId: -1,
 			message: '',
@@ -39,7 +47,7 @@ class App extends Component {
 			console.log(registerJson);
 			if(registerJson.status === 200) {
 				this.setState({
-					loggedId: true,
+					loggedIn: false,
 					userId: registerJson.data.id,
 					message: registerJson.message,
 					user: registerJson.data
@@ -71,7 +79,7 @@ class App extends Component {
 			console.log(loginJson);
 			if(loginJson.status === 200) {
 				this.setState({
-					loggedId: true,
+					loggedIn: true,
 					loginOpen: false,
 					userId: loginJson.data.id,
 					message: loginJson.message,
@@ -89,59 +97,50 @@ class App extends Component {
   	render() {
   		return (
 	    	<div className="App">
-	    		<div className="nav-header">
-		    		<Header>
-		    			<div className="main">
-								<Grid>
-									<Grid.Row>
-									<h1>Free Stuff</h1>
-									
-									<Search size="large"
-										style={{width:"400px"}}
-									/>
-									<Button>Search</Button>
-									{this.state.loggedId
-										?<h2>{this.state.user.first_name}</h2>
-										:<h2
-				    					onClick={()=>this.setState({loginOpen:true})}
-				    				>Login</h2>
-										}
+	    		<Router>
+		    		<div className="nav-header">
+			    		<Header>
+			    			<div className="main">
+									<Grid>
+										<Grid.Row>
+											<Link to='/'>
+												<h1 onClick={()=>this.setState({loginOpen:false})}>Free Stuff</h1>	
+											</Link>
 										
-									</Grid.Row>
-								</Grid>
+										<Search size="large"
+											style={{width:"400px"}}
+										/>
+										{this.state.loggedIn
+											?null
+											:<Link to='/login'
+					    					onClick={()=>this.setState({loginOpen:true})}
+					    					>Login</Link>
+										}
+											
+										</Grid.Row>
+									</Grid>
+			    			</div>
+						</Header>
+		    			
+		    		</div>
+		      		{/* this is so that we can render conditionally */}
+		      		<Switch>
+		      			<Route path='/login'>
+		      				<LoginRegisterForm 
+		      					register={this.register}
+		      					login={this.login}
+		      				/>
+		      			</Route>
+		      			
+		      			<Route path='/'>
+		      				<ItemsContainer user={this.state}/>	
+		      			</Route>
+		      		</Switch>
 
-		    			</div>
-		    			<div className="nav-container">
-		    				<div className="nav-container2">
-								<div className="nav">
-									<p>All</p>
-									<p>Electronics</p>
-									<p>Collectibles & Art</p>
-									<p>Home & Garden</p>
-									<p>Clothing</p>
-									<p>Sport</p>
-									<p>Toys</p>
-									<p>Music & Books</p>
-									<p>Entertaitment</p>
-									<p>Others</p>
-								</div>
-		    					
-		    				</div>
-		    				
-		    			</div>
-					</Header>
-	    			
-	    		</div>
-	      		{/* this is so that we can render conditionally */}
-	      		{this.state.loginOpen
-	      			? <LoginRegisterForm 
-	      				register={this.register}
-	      				login={this.login}
-	      			/>
-	      		: <ItemsContainer />
-
-	      		}
-	      	
+		      		
+	      		
+	      			
+	      		</Router>
 	    	</div>
   		)
   	}

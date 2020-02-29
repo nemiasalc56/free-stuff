@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 import { Card, Image } from 'semantic-ui-react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
 
 
 
@@ -10,7 +16,7 @@ function ItemList(props) {
 	const item = props.items.map((item) => {
 
 		return(
-			<Card key={item.id} onClick={()=> props.getItemToShow(item.id)}>
+			<Card key={item.id}>
 
 				<Image
 					src={item.picture}
@@ -20,7 +26,9 @@ function ItemList(props) {
 				/>
 				<Card.Content>
 					<Card.Header key={item.id}>
-						{item.name}
+						<Link to='/show' onClick={()=> props.getItemToShow(item.id)}>
+							{item.name}	
+						</Link>
 					</Card.Header>
 					<Card.Meta>
         				<span className='city'>{item.city}, {item.state}</span>

@@ -3,6 +3,13 @@ import NewItemForm from './NewItemForm'
 import ItemList from './ItemList'
 import ShowItemContainer from './ShowItemContainer'
 import { Header } from 'semantic-ui-react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
+import ProfileContainer from '../ProfileContainer'
 
 
 
@@ -14,7 +21,8 @@ class ItemsContainer extends Component {
 		this.state = {
 			items: [],
 			NewItemForm: false,
-			itemtoShowId: -1
+			itemtoShowId: -1,
+			itemListOpen: false
 		}
 	}
 
@@ -49,7 +57,6 @@ class ItemsContainer extends Component {
 		}catch(err) {
 			console.error(err);
 		}
-
 	}
 
 	// get item to show
@@ -87,29 +94,77 @@ class ItemsContainer extends Component {
 
 
 	render() {
+		console.log(this.props);
 		return(
 			<div>
+
+				<Router>
+					{this.props.user.loggedIn
+						?<Link to='/profile'><h3 className="user-name-link">{this.props.user.user.first_name}</h3></Link>
+						:null
+					}
+					
+					<div className="nav-container">
+		    			<div className="nav-container2">
+							<div className="nav">
+								<Link to='/all' onClick={()=>this.setState({itemListOpen:true})}>
+									<p>All</p>
+								</Link>
+								<p>Electronics</p>
+								<p>Collectibles & Art</p>
+								<p>Home & Garden</p>
+								<p>Clothing</p>
+								<p>Sport</p>
+								<p>Toys</p>
+								<p>Music & Books</p>
+								<p>Entertaitment</p>
+								<p>Others</p>
+							</div>
+		    					
+		    			</div>
+			    				
+			    	</div>
+					<Switch>
+						<Route path='/new'>
+							{this.state.NewItemForm
+								? <NewItemForm postItem={this.postItem}/>
+								:null
+							}
+							
+						</Route>
+						
+						<Route path='/all'>
+							{this.state.itemListOpen
+								?<ItemList 
+									items={this.state.items}
+									getItemToShow={this.getItemToShow}
+								/>
+								:null
+							}
+							
+						</Route>
+
+						<Route path='/show'>
+							{this.state.itemtoShowId !== -1
+								?
+								<ShowItemContainer 
+								item={this.state.items.find((item)=>item.id === this.state.itemtoShowId)}
+								/>
+								:null
+							}
+							
+						</Route>
+
+						<Route path='/profile'>
+		      				<ProfileContainer />	
+		      			</Route>
+			
+						
+					</Switch>
+					
+					
+				</Router>
 				
-				{this.state.NewItemForm
-					? <NewItemForm postItem={this.postItem}/>
-					:null
-				}
-				
-				{this.state.itemtoShowId !== -1
-					? null
-					: <ItemList 
-					items={this.state.items}
-					getItemToShow={this.getItemToShow}
-				/>
-				}
-	
-				{this.state.itemtoShowId !== -1
-					?
-					<ShowItemContainer 
-					item={this.state.items.find((item)=>item.id === this.state.itemtoShowId)}
-					/>
-					:null
-				}
 			</div>
 			)
 	}

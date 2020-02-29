@@ -23,3 +23,10 @@ body {
 	background-color: rgb(95, 158, 160);
 	border-bottom: 1px solid black;
 }
+
+.user-name-link {
+	position: absolute;
+	color: black;
+	top: 7px;
+	right: 5px;
+}
