@@ -20,6 +20,20 @@ class EditItemForm extends Component {
 		}
 	}
 
+	// update info on state with current item
+	componentDidMount(){
+		this.setState({
+			name: this.props.itemToEdit.name,
+			description: this.props.itemToEdit.description,
+			picture: this.props.itemToEdit.picture,
+			category: this.props.itemToEdit.category,
+			address_1: this.props.itemToEdit.address_1,
+			address_2: this.props.itemToEdit.address_2,
+			city: this.props.itemToEdit.city,
+			state: this.props.itemToEdit.state,
+			zip_code: this.props.itemToEdit.zip_code
+		})
+	}
 
 
 	// options for our category
@@ -38,8 +52,25 @@ class EditItemForm extends Component {
 		return categoryOptions
 	}
 
-	render() {
 
+
+	// method to allow user to type
+	handleChange = (e)=>{
+		console.log(e.target.value);
+		this.setState({
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value
+		})
+	}
+	render() {
+		console.log(this.props);
 		return(
 			<div>
 				<Grid className="center aligned">
@@ -60,6 +91,7 @@ class EditItemForm extends Component {
 										type="text" 
 										name="name"
 										value={this.state.name}
+										onChange={this.handleChange}
 										placeholder="Name" />
 									
 								</Form.Field>
@@ -79,6 +111,7 @@ class EditItemForm extends Component {
 										type="text" 
 										name="address_1"
 										value={this.state.address_1}
+										onChange={this.handleChange}
 										placeholder="Address 1" />
 								
 									<Form.Input 
@@ -86,6 +119,7 @@ class EditItemForm extends Component {
 										type="text" 
 										name="address_2"
 										value={this.state.address_2}
+										onChange={this.handleChange}
 										placeholder="Address 2" />
 								
 									<Form.Input 
@@ -93,6 +127,7 @@ class EditItemForm extends Component {
 										type="text" 
 										name="city"
 										value={this.state.city}
+										onChange={this.handleChange}
 										placeholder="City" />
 								
 									<Form.Input 
@@ -100,6 +135,7 @@ class EditItemForm extends Component {
 										type="text" 
 										name="state"
 										value={this.state.state}
+										onChange={this.handleChange}
 										placeholder="state" />
 								
 									<Form.Input 
@@ -107,6 +143,7 @@ class EditItemForm extends Component {
 										type="text" 
 										name="zip_code"
 										value={this.state.zip_code}
+										onChange={this.handleChange}
 										placeholder="Zipcode" />
 								</Form.Group>
 
@@ -116,6 +153,7 @@ class EditItemForm extends Component {
 										type="text" 
 										name="picture"
 										value={this.state.picture}
+										onChange={this.handleChange}
 										placeholder='Image' />
 								</Form.Field>
 								</div>
@@ -127,6 +165,7 @@ class EditItemForm extends Component {
 								name="description"
 								value={this.state.description}
 								placeholder="Description"
+								onChange={this.handleChange}
 							/>
 								
 
