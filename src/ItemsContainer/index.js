@@ -83,13 +83,19 @@ class ItemsContainer extends Component {
 			})
 			// 
 			const itemJson = await itemResponse.json()
-			
+			console.log(itemJson);
+			if(itemJson.status === 200){
+				// this is so that we can the item that was added showing on the page
+				const newItemsArray = this.state.items
+				newItemsArray.push(itemJson.data)
 
-			this.setState({
-				itemListOpen: true,
-				profileOpen: false,
-				NewItemForm: false
-			})
+				this.setState({
+					items: newItemsArray,
+				})
+
+				this.switcher("all")
+			}
+
 			}catch(err) {
 			console.error(err);
 		}
@@ -110,7 +116,8 @@ class ItemsContainer extends Component {
 				itemListOpen: true,
 				profileOpen: false,
 				NewItemForm: false,
-				itemToEditId: -1
+				itemToEditId: -1,
+				itemtoShowId: -1
 			})
 		} else if(action === "profile") {
 			this.setState({
