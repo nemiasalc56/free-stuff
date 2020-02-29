@@ -156,7 +156,7 @@ class ItemsContainer extends Component {
 						</Route>
 
 						<Route path='/profile'>
-		      				<ProfileContainer />	
+		      				<ProfileContainer user={this.props.user.user}/>	
 		      			</Route>
 			
 						

@@ -47,7 +47,8 @@ class App extends Component {
 			console.log(registerJson);
 			if(registerJson.status === 200) {
 				this.setState({
-					loggedIn: false,
+					loggedIn: true,
+					loginOpen: false,
 					userId: registerJson.data.id,
 					message: registerJson.message,
 					user: registerJson.data
