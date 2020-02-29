@@ -95,14 +95,10 @@ class ItemsContainer extends Component {
 					:null
 				}
 				
-				{this.state.itemtoShowId !== -1
-					? null
-					: <ItemList 
+				<ItemList 
 					items={this.state.items}
 					getItemToShow={this.getItemToShow}
 				/>
-				}
-	
 				{this.state.itemtoShowId !== -1
 					?
 					<ShowItemContainer 

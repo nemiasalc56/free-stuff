@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Image, Button, Select } from 'semantic-ui-react'
 import ItemList from '../ItemsContainer/ItemList'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom"
+
 
 
 class ProfileContainer extends Component {
@@ -62,7 +57,6 @@ class ProfileContainer extends Component {
 		console.log(this.state.user);
 		return(
 			<Grid>
-				<Router>
 					<Grid.Column width={8}>
 						<Image
 							src={this.state.user.picture}
@@ -90,8 +84,6 @@ class ProfileContainer extends Component {
 						/>
 						: <h1>You have not post a free item.</h1>
 					}
-
-				</Router>
 
 			</Grid>
 			)
