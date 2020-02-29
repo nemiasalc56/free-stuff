@@ -111,24 +111,6 @@ class App extends Component {
 								</Grid>
 
 		    			</div>
-		    			<div className="nav-container">
-		    				<div className="nav-container2">
-								<div className="nav">
-									<p>All</p>
-									<p>Electronics</p>
-									<p>Collectibles & Art</p>
-									<p>Home & Garden</p>
-									<p>Clothing</p>
-									<p>Sport</p>
-									<p>Toys</p>
-									<p>Music & Books</p>
-									<p>Entertaitment</p>
-									<p>Others</p>
-								</div>
-		    					
-		    				</div>
-		    				
-		    			</div>
 					</Header>
 	    			
 	    		</div>

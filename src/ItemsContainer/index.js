@@ -14,7 +14,8 @@ class ItemsContainer extends Component {
 		this.state = {
 			items: [],
 			NewItemForm: false,
-			itemtoShowId: -1
+			itemtoShowId: -1,
+			itemListOpen: true
 		}
 	}
 
@@ -55,7 +56,12 @@ class ItemsContainer extends Component {
 	// get item to show
 	getItemToShow = (itemId) => {
 		console.log("Trying to show an item");
-		this.setState({itemtoShowId: itemId})
+		this.setState({
+			itemtoShowId: itemId,
+		})
+
+		// switch item list off
+		this.switcher("off")
 	}
 
 	// post items
@@ -85,20 +91,52 @@ class ItemsContainer extends Component {
 		}
 	}
 
+	// switch item components off/on
+	switcher = (action) => {
+		if(action === "off"){
+			this.setState({
+				itemListOpen: false
+			})	
+		} else if(action === "all") {
+			this.setState({
+				itemListOpen: true
+			})
+		}
+	}
 
 	render() {
 		return(
 			<div>
+				<div className="nav-container">
+		    			<div className="nav-container2">
+							<div className="nav">
+								<p onClick={()=>this.switcher('all')}>All</p>
+								<p>Electronics</p>
+								<p>Collectibles & Art</p>
+								<p>Home & Garden</p>
+								<p>Clothing</p>
+								<p>Sport</p>
+								<p>Toys</p>
+								<p>Music & Books</p>
+								<p>Entertaitment</p>
+								<p>Others</p>
+							</div>		
+		    			</div>		    				
+		    	</div>
 				
 				{this.state.NewItemForm
 					? <NewItemForm postItem={this.postItem}/>
 					:null
 				}
-				
-				<ItemList 
+				{this.state.itemListOpen
+					? <ItemList 
 					items={this.state.items}
 					getItemToShow={this.getItemToShow}
-				/>
+					/>
+					: null
+				}
+				
+				
 				{this.state.itemtoShowId !== -1
 					?
 					<ShowItemContainer 

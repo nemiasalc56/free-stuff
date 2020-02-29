@@ -32,7 +32,6 @@ function ItemList(props) {
 
 	return(
 		<div className="item-list-container">
-			
 			<Card.Group itemsPerRow={3}>
 				{item}
 			</Card.Group>
