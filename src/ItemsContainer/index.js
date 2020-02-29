@@ -192,10 +192,46 @@ class ItemsContainer extends Component {
 	}
 
 	// delete item
-	deleteItem = (itemToDeleteId) =>{
+	deleteItem = async (itemToDeleteId) =>{
 		console.log("deleteItem");
 
 		console.log(itemToDeleteId);
+		// get the url
+		const url = process.env.REACT_APP_API_URL + '/api/v1/items/' + itemToDeleteId
+		try {
+			// fetch url
+			const deleteItemResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+
+			const deleteItemJson = await deleteItemResponse.json()
+			console.log(deleteItemJson);
+
+			// remove the item from my array of items in state
+			if(deleteItemJson.status === 200) {
+				const items = this.state.items
+				let index = 0
+				// find the item that was delete in state
+				for(let i = 0; i < items.length; i++) {
+					if(items[i].id === itemToDeleteId){
+						index = i
+					}
+				}
+
+				// remove the item with that index from state
+				items.splice(index, 1)
+				this.switcher("all")
+				this.setState({items: items})
+			}
+
+
+		} catch(err) {
+			console.error(err);
+		}
 	}
 
 	render() {
@@ -245,7 +281,7 @@ class ItemsContainer extends Component {
 						itemToEdit={this.getItemToEdit}
 						deleteItem={this.deleteItem}
 					/>
-					:null
+					: null
 				}
 
 				{this.state.profileOpen
