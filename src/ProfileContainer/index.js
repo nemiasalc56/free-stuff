@@ -12,6 +12,15 @@ class ProfileContainer extends Component {
 		}
 	}
 
+	// 
+	componentDidMount() {
+		this.getUserItems()
+	}
+
+	// current user items
+	getUserItems = () => {
+		console.log("Trying to see my items");
+	}
 
 	render(){
 		console.log("this is profile");
@@ -29,13 +38,15 @@ class ProfileContainer extends Component {
 				<Grid.Column width={8}>
 					<h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
 					<div>
-						<Select 
+						<Select placeholder="Account Settings"
 							options={[{key: 'se', value: 'settings', text: 'Settings'},
 								{key: 'ed', value: 'edit', text: 'Edit Account'},
 								{key: 'de', value: 'delete', text: 'Delete Account'}]}
 						/>
 					</div>
+					<Button>Make a Post</Button>
 				</Grid.Column>
+
 			</Grid>
 			)
 	}
