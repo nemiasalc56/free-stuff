@@ -203,7 +203,10 @@ class ItemsContainer extends Component {
 				}
 
 				{this.state.itemToEditId !== -1
-					? <EditItemForm />
+					? <EditItemForm 
+						itemToEdit={this.state.items.find((item)=>item.id === this.state.itemToEditId)}
+						
+					/>
 					:null
 				}
 
