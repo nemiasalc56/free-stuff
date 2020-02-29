@@ -56,19 +56,18 @@ class EditItemForm extends Component {
 
 	// method to allow user to type
 	handleChange = (e)=>{
-		console.log(e.target.value);
+
 		this.setState({
-			[e.target.name]: e.target.value,
-			[e.target.name]: e.target.value,
-			[e.target.name]: e.target.value,
-			[e.target.name]: e.target.value,
-			[e.target.name]: e.target.value,
-			[e.target.name]: e.target.value,
-			[e.target.name]: e.target.value,
-			[e.target.name]: e.target.value,
 			[e.target.name]: e.target.value
 		})
 	}
+
+	// submit changes
+	handleSubmit = (e) => {
+		e.preventDefault()
+		console.log("handleSubmit is being called");
+	}
+
 	render() {
 		console.log(this.props);
 		return(
