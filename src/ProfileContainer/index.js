@@ -76,7 +76,13 @@ class ProfileContainer extends Component {
 					<Button>Make a Post</Button>
 				</Grid.Column>
 
-			
+				{this.state.userHasItems
+					?
+					<ItemList 
+					items={this.state.myItems}
+					/>
+					: <h1>You have not post a free item.</h1>
+				}
 
 			</Grid>
 			)
