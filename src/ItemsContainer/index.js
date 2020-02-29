@@ -191,6 +191,13 @@ class ItemsContainer extends Component {
 		}
 	}
 
+	// delete item
+	deleteItem = (itemToDeleteId) =>{
+		console.log("deleteItem");
+
+		console.log(itemToDeleteId);
+	}
+
 	render() {
 		console.log('props in ItemsContainer');
 		console.log(this.props.user);
@@ -232,10 +239,10 @@ class ItemsContainer extends Component {
 				
 				{this.state.itemtoShowId !== -1
 					?
-					<ShowItemContainer 
-					item={this.state.items.find((item)=>item.id === this.state.itemtoShowId)}
-					user={this.props.user}
-					itemToEdit={this.getItemToEdit}
+					<ShowItemContainer
+						item={this.state.items.find((item)=>item.id === this.state.itemtoShowId)}
+						user={this.props.user}
+						itemToEdit={this.getItemToEdit}
 					/>
 					:null
 				}

@@ -37,7 +37,7 @@ class App extends Component {
 
 			// convert to json
 			const registerJson = await registerResponse.json()
-			console.log(registerJson);
+			
 			if(registerJson.status === 200) {
 				this.setState({
 					loggedId: true,
@@ -69,7 +69,7 @@ class App extends Component {
 			})
 			// convert our response to json
 			const loginJson = await loginResponse.json()
-			console.log(loginJson);
+			
 			if(loginJson.status === 200) {
 				this.setState({
 					loggedId: true,
@@ -97,15 +97,15 @@ class App extends Component {
 									<Grid.Row>
 									<h1>Free Stuff</h1>
 									
-									<Search size="large"
-										style={{width:"400px"}}
-									/>
-									<Button>Search</Button>
+									<Search/>
+									
 									{this.state.loggedId
 										? null
-										:<h2 className="user-name-link"
-				    					onClick={()=>this.setState({loginOpen:true})}
-				    				>Login</h2>
+										:<h2 
+											className="login-logo"
+				    						onClick={()=>this.setState({loginOpen:true})}
+				    						>Login
+				    					</h2>
 										}
 										
 									</Grid.Row>
