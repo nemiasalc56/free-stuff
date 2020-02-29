@@ -135,6 +135,13 @@ class ItemsContainer extends Component {
 	getItemToEdit = (itemToEditId) => {
 		console.log("getItemToEdit is being called");
 		console.log("the id is:", itemToEditId);
+		this.setState({
+			itemListOpen: false,
+			itemtoShowId: -1,
+			profileOpen: false,
+			NewItemForm: false,
+			itemToEditId: itemToEditId
+		})
 	}
 
 	render() {
@@ -193,6 +200,11 @@ class ItemsContainer extends Component {
 						getItemToShow={this.getItemToShow}
 						/>
 					: null
+				}
+
+				{this.state.itemToEditId !== -1
+					? <EditItemForm />
+					:null
 				}
 
 			</div>
