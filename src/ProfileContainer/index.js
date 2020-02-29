@@ -18,8 +18,22 @@ class ProfileContainer extends Component {
 	}
 
 	// current user items
-	getUserItems = () => {
-		console.log("Trying to see my items");
+	getUserItems = async () => {
+		const url = process.env.REACT_APP_API_URL + '/api/v1/items/mine'
+		// fetch url
+		try {
+			const userItemsResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log("this is userItemsResponse");
+			console.log(userItemsResponse);
+		} catch(err) {
+			console.error(err);
+		}
 	}
 
 	render(){
