@@ -19,7 +19,7 @@ function ShowItemContainer(props){
 					/>
 					{props.user.id===props.item.owner.id
 						? <div>
-							<Button onClick={props.itemToEdit}>Edit</Button>
+							<Button onClick={props.itemToEdit(props.item.id)}>Edit</Button>
 							<Button color="red">Delete</Button>
 						</div>
 						: null

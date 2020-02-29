@@ -4,6 +4,7 @@ import ItemList from './ItemList'
 import ShowItemContainer from './ShowItemContainer'
 import { Header } from 'semantic-ui-react'
 import ProfileContainer from '../ProfileContainer'
+import EditItemForm from './EditItemForm'
 
 
 
@@ -17,7 +18,8 @@ class ItemsContainer extends Component {
 			NewItemForm: false,
 			itemtoShowId: -1,
 			itemListOpen: true,
-			profileOpen: false
+			profileOpen: false,
+			itemToEditId: -1
 		}
 	}
 
@@ -99,27 +101,32 @@ class ItemsContainer extends Component {
 			this.setState({
 				itemListOpen: false,
 				profileOpen: false,
-				NewItemForm: false
+				NewItemForm: false,
+				itemToEditId: -1
+
 			})	
 		} else if(action === "all") {
 			this.setState({
 				itemListOpen: true,
 				profileOpen: false,
-				NewItemForm: false
+				NewItemForm: false,
+				itemToEditId: -1
 			})
 		} else if(action === "profile") {
 			this.setState({
 				itemListOpen: false,
 				itemtoShowId: -1,
 				profileOpen: true,
-				NewItemForm: false
+				NewItemForm: false,
+				itemToEditId: -1
 			})
 		} else if(action === "postItem"){
 			this.setState({
 				itemListOpen: false,
 				itemtoShowId: -1,
 				profileOpen: false,
-				NewItemForm: true
+				NewItemForm: true,
+				itemToEditId: -1
 			})
 		}
 	}
@@ -127,6 +134,7 @@ class ItemsContainer extends Component {
 	// get item to edit
 	getItemToEdit = (itemToEditId) => {
 		console.log("getItemToEdit is being called");
+		console.log("the id is:", itemToEditId);
 	}
 
 	render() {
