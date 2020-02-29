@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Image, Button, Select } from 'semantic-ui-react'
+import ItemList from '../ItemsContainer/ItemList'
 
 
 class ProfileContainer extends Component {
@@ -8,7 +9,8 @@ class ProfileContainer extends Component {
 
 		this.state = {
 			user: this.props.user,
-			myItems: []
+			myItems: [],
+			userHasItems: false
 		}
 	}
 
@@ -31,6 +33,19 @@ class ProfileContainer extends Component {
 			})
 			console.log("this is userItemsResponse");
 			console.log(userItemsResponse);
+
+			// get the data from the response
+			const userItemsJson = await userItemsResponse.json()
+			console.log("this is userItemsJson");
+			console.log(userItemsJson);
+			if(userItemsJson.status === 200){
+				// store items in state
+				this.setState({
+					myItems: userItemsJson.data,
+					userHasItems: true
+				})
+			}
+
 		} catch(err) {
 			console.error(err);
 		}
@@ -60,6 +75,8 @@ class ProfileContainer extends Component {
 					</div>
 					<Button>Make a Post</Button>
 				</Grid.Column>
+
+			
 
 			</Grid>
 			)
