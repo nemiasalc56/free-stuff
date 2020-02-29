@@ -52,6 +52,12 @@ class ProfileContainer extends Component {
 		}
 	}
 
+	// make a post
+	makeAPost = ()=>{
+		
+		console.log("calling make a post");
+	}
+
 	render(){
 		console.log("this is profile");
 		console.log(this.state.user);
@@ -74,7 +80,7 @@ class ProfileContainer extends Component {
 									{key: 'de', value: 'delete', text: 'Delete Account'}]}
 							/>
 						</div>
-						<Button>Make a Post</Button>
+						<Button onClick={this.makeAPost}>Make a Post</Button>
 					</Grid.Column>
 
 					{this.state.userHasItems

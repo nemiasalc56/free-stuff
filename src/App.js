@@ -14,7 +14,8 @@ class App extends Component {
 			loginOpen: false,
 			userId: -1,
 			message: '',
-			category: ''
+			category: '',
+			user: ''
 		}
 	}
 
@@ -101,8 +102,8 @@ class App extends Component {
 									/>
 									<Button>Search</Button>
 									{this.state.loggedId
-										?<h2>{this.state.user.first_name}</h2>
-										:<h2
+										? null
+										:<h2 className="user-name-link"
 				    					onClick={()=>this.setState({loginOpen:true})}
 				    				>Login</h2>
 										}
@@ -120,7 +121,7 @@ class App extends Component {
 	      				register={this.register}
 	      				login={this.login}
 	      			/>
-	      		: <ItemsContainer />
+	      		: <ItemsContainer user={this.state.user}/>
 
 	      		}
 	      	

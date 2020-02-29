@@ -3,6 +3,7 @@ import NewItemForm from './NewItemForm'
 import ItemList from './ItemList'
 import ShowItemContainer from './ShowItemContainer'
 import { Header } from 'semantic-ui-react'
+import ProfileContainer from '../ProfileContainer'
 
 
 
@@ -15,7 +16,8 @@ class ItemsContainer extends Component {
 			items: [],
 			NewItemForm: false,
 			itemtoShowId: -1,
-			itemListOpen: true
+			itemListOpen: true,
+			profileOpen: false
 		}
 	}
 
@@ -36,8 +38,7 @@ class ItemsContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log("this is itemsResponse");
-			console.log(itemsResponse);
+			
 			// convert data to json
 			const itemsJson = await itemsResponse.json()
 			console.log(itemsJson);
@@ -55,7 +56,6 @@ class ItemsContainer extends Component {
 
 	// get item to show
 	getItemToShow = (itemId) => {
-		console.log("Trying to show an item");
 		this.setState({
 			itemtoShowId: itemId,
 		})
@@ -81,7 +81,7 @@ class ItemsContainer extends Component {
 			})
 			// 
 			const itemJson = await itemResponse.json()
-			console.log(itemJson);
+			
 
 			this.setState({
 				NewItemForm: false
@@ -95,18 +95,32 @@ class ItemsContainer extends Component {
 	switcher = (action) => {
 		if(action === "off"){
 			this.setState({
-				itemListOpen: false
+				itemListOpen: false,
+				profileOpen: false
 			})	
 		} else if(action === "all") {
 			this.setState({
-				itemListOpen: true
+				itemListOpen: true,
+				profileOpen: false
+			})
+		} else if(action === "profile") {
+			this.setState({
+				itemListOpen: false,
+				itemtoShowId: -1,
+				profileOpen: true
 			})
 		}
 	}
 
 	render() {
+		console.log('props in ItemsContainer');
+		console.log(this.props.user);
 		return(
 			<div>
+				<h2 className="user-name-link" 
+					onClick={()=>this.switcher("profile")}>
+					{this.props.user.first_name}
+				</h2>
 				<div className="nav-container">
 		    			<div className="nav-container2">
 							<div className="nav">
@@ -144,6 +158,15 @@ class ItemsContainer extends Component {
 					/>
 					:null
 				}
+
+				{this.state.profileOpen
+					? <ProfileContainer 
+						user={this.props.user}
+						switcher={this.switcher}
+						/>
+					: null
+				}
+
 			</div>
 			)
 	}
