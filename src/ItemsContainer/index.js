@@ -84,6 +84,8 @@ class ItemsContainer extends Component {
 			
 
 			this.setState({
+				itemListOpen: true,
+				profileOpen: false,
 				NewItemForm: false
 			})
 			}catch(err) {
@@ -96,18 +98,28 @@ class ItemsContainer extends Component {
 		if(action === "off"){
 			this.setState({
 				itemListOpen: false,
-				profileOpen: false
+				profileOpen: false,
+				NewItemForm: false
 			})	
 		} else if(action === "all") {
 			this.setState({
 				itemListOpen: true,
-				profileOpen: false
+				profileOpen: false,
+				NewItemForm: false
 			})
 		} else if(action === "profile") {
 			this.setState({
 				itemListOpen: false,
 				itemtoShowId: -1,
-				profileOpen: true
+				profileOpen: true,
+				NewItemForm: false
+			})
+		} else if(action === "postItem"){
+			this.setState({
+				itemListOpen: false,
+				itemtoShowId: -1,
+				profileOpen: false,
+				NewItemForm: true
 			})
 		}
 	}

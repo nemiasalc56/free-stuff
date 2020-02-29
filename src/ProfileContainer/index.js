@@ -54,7 +54,8 @@ class ProfileContainer extends Component {
 
 	// make a post
 	makeAPost = ()=>{
-		
+		// it will use the switcher from props
+		this.props.switcher("postItem")
 		console.log("calling make a post");
 	}
 
