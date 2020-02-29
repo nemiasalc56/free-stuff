@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Grid, Image, Button, Select } from 'semantic-ui-react'
 import ItemList from '../ItemsContainer/ItemList'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
 
 
 class ProfileContainer extends Component {
@@ -56,33 +62,36 @@ class ProfileContainer extends Component {
 		console.log(this.state.user);
 		return(
 			<Grid>
-				<Grid.Column width={8}>
-					<Image
-						src={this.state.user.picture}
-						size='medium'
-					/>
-					
-				</Grid.Column>
-
-				<Grid.Column width={8}>
-					<h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
-					<div>
-						<Select placeholder="Account Settings"
-							options={[{key: 'se', value: 'settings', text: 'Settings'},
-								{key: 'ed', value: 'edit', text: 'Edit Account'},
-								{key: 'de', value: 'delete', text: 'Delete Account'}]}
+				<Router>
+					<Grid.Column width={8}>
+						<Image
+							src={this.state.user.picture}
+							size='medium'
 						/>
-					</div>
-					<Button>Make a Post</Button>
-				</Grid.Column>
+						
+					</Grid.Column>
 
-				{this.state.userHasItems
-					?
-					<ItemList 
-					items={this.state.myItems}
-					/>
-					: <h1>You have not post a free item.</h1>
-				}
+					<Grid.Column width={8}>
+						<h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
+						<div>
+							<Select placeholder="Account Settings"
+								options={[{key: 'se', value: 'settings', text: 'Settings'},
+									{key: 'ed', value: 'edit', text: 'Edit Account'},
+									{key: 'de', value: 'delete', text: 'Delete Account'}]}
+							/>
+						</div>
+						<Button>Make a Post</Button>
+					</Grid.Column>
+
+					{this.state.userHasItems
+						?
+						<ItemList 
+						items={this.state.myItems}
+						/>
+						: <h1>You have not post a free item.</h1>
+					}
+
+				</Router>
 
 			</Grid>
 			)
