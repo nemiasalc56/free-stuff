@@ -144,6 +144,12 @@ class ItemsContainer extends Component {
 		})
 	}
 
+	// update item method
+	updateItem = (itemInfo) =>{
+		console.log(" this is updateItem");
+		console.log(itemInfo);
+	}
+
 	render() {
 		console.log('props in ItemsContainer');
 		console.log(this.props.user);
@@ -205,7 +211,7 @@ class ItemsContainer extends Component {
 				{this.state.itemToEditId !== -1
 					? <EditItemForm 
 						itemToEdit={this.state.items.find((item)=>item.id === this.state.itemToEditId)}
-						
+						updateItem={this.updateItem}
 					/>
 					:null
 				}

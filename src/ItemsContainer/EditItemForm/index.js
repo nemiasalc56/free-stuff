@@ -65,6 +65,7 @@ class EditItemForm extends Component {
 	// submit changes
 	handleSubmit = (e) => {
 		e.preventDefault()
+		this.props.updateItem(this.state)
 		console.log("handleSubmit is being called");
 	}
 
