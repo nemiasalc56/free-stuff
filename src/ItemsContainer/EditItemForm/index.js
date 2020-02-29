@@ -66,11 +66,10 @@ class EditItemForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.updateItem(this.state)
-		console.log("handleSubmit is being called");
 	}
 
 	render() {
-		console.log(this.props);
+		
 		return(
 			<div>
 				<Grid className="center aligned">

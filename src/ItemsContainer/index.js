@@ -145,9 +145,43 @@ class ItemsContainer extends Component {
 	}
 
 	// update item method
-	updateItem = (itemInfo) =>{
-		console.log(" this is updateItem");
-		console.log(itemInfo);
+	updateItem = async (itemInfo) =>{
+		
+		const url = process.env.REACT_APP_API_URL + '/api/v1/items/' + this.state.itemToEditId
+
+		try {
+			const updateItemResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'PUT',
+				body: JSON.stringify(itemInfo),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			
+			const updateItemJson = await updateItemResponse.json()
+			if(updateItemJson.status === 200){
+				// reflect changes on the screen
+				const newItemsArray = this.state.items.map((item)=>{
+					// we want to return everything with the updated item
+					if(item.id===this.state.itemToEditId){
+						return updateItemJson.data
+					} else{
+						return item
+					}
+				})
+
+				this.setState({
+					items: newItemsArray,
+					itemListOpen: true,
+					profileOpen: false,
+					NewItemForm: false,
+					itemToEditId: -1
+				})
+			}
+		} catch(err){
+			console.error(err);
+		}
 	}
 
 	render() {
