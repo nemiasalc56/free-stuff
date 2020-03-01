@@ -33,13 +33,11 @@ class ProfileContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log("this is userItemsResponse");
-			console.log(userItemsResponse);
+			
 
 			// get the data from the response
 			const userItemsJson = await userItemsResponse.json()
-			console.log("this is userItemsJson");
-			console.log(userItemsJson);
+			
 			if(userItemsJson.status === 200){
 				// store items in state
 				this.setState({
@@ -57,12 +55,9 @@ class ProfileContainer extends Component {
 	makeAPost = ()=>{
 		// it will use the switcher from props
 		this.props.switcher("postItem")
-		console.log("calling make a post");
 	}
 
 	render(){
-		console.log("this is profile");
-		console.log(this.state.user);
 		return(
 			<Grid>
 					<Grid.Column width={8}>
@@ -94,7 +89,9 @@ class ProfileContainer extends Component {
 						: <h1>You have not post a free item.</h1>
 					}
 
-					<EditUserForm />
+					<EditUserForm 
+						user={this.state.user}
+					/>
 			</Grid>
 			)
 	}
