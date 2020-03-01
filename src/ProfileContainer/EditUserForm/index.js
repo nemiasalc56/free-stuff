@@ -35,10 +35,17 @@ class EditUserForm extends Component {
 		})
 	}
 
+	// allow user to type
+	handleChange = (e) => {
+		
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
+
 
 	render() {
-		console.log("props in EditUserForm");
-		console.log(this.props);
+		
 		return(
 			<Grid className="center aligned">
 				<Segment 
@@ -58,12 +65,14 @@ class EditUserForm extends Component {
 								type="text" 
 								name="first_name"
 								value={this.state.first_name}
+								onChange={this.handleChange}
 								placeholder="First name" />
 							<Form.Input 
 								label="Last name"
 								type="text"
 								name="last_name"
 								value={this.state.last_name}
+								onChange={this.handleChange}
 								placeholder="Last name" />
 						</Form.Group>
 						<Form.Group>
@@ -73,6 +82,7 @@ class EditUserForm extends Component {
 								type="text" 
 								name="address_1"
 								value={this.state.address_1}
+								onChange={this.handleChange}
 								placeholder="Address 1" />
 						
 							<Form.Input 
@@ -80,6 +90,7 @@ class EditUserForm extends Component {
 								type="text" 
 								name="address_2"
 								value={this.state.address_2}
+								onChange={this.handleChange}
 								placeholder="Address 2" />
 						
 							<Form.Input 
@@ -87,6 +98,7 @@ class EditUserForm extends Component {
 								type="text" 
 								name="city"
 								value={this.state.city}
+								onChange={this.handleChange}
 								placeholder="City" />
 						
 							<Form.Input 
@@ -94,6 +106,7 @@ class EditUserForm extends Component {
 								type="text" 
 								name="state"
 								value={this.state.state}
+								onChange={this.handleChange}
 								placeholder="state" />
 						
 							<Form.Input 
@@ -101,6 +114,7 @@ class EditUserForm extends Component {
 								type="text" 
 								name="zip_code"
 								value={this.state.zip_code}
+								onChange={this.handleChange}
 								placeholder="Zipcode" />
 						</Form.Group>
 
@@ -110,6 +124,7 @@ class EditUserForm extends Component {
 								type="text" 
 								name="picture"
 								value={this.state.picture}
+								onChange={this.handleChange}
 								placeholder='Image' />
 						</Form.Field>
 
@@ -119,6 +134,7 @@ class EditUserForm extends Component {
 								type="text" 
 								name="email"
 								value={this.state.email}
+								onChange={this.handleChange}
 								placeholder="Enter email" />
 						</Form.Field>
 
@@ -128,6 +144,7 @@ class EditUserForm extends Component {
 								type="password" 
 								name="password"
 								value={this.state.password}
+								onChange={this.handleChange}
 								placeholder="Enter password" />
 						</Form.Field>
 
