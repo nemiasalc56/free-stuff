@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Grid, Image } from 'semantic-ui-react'
 import './index.css'
-
+import CommentsContainer from '../CommentsContainer'
 
 
 
@@ -46,6 +46,7 @@ function ShowItemContainer(props){
 					<div width={8}>
 						<div width={4} className="comment-container">
 							<h2>Comment container will go here</h2>
+							<CommentsContainer />
 						</div>	
 					</div>
 

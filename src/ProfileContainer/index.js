@@ -188,9 +188,7 @@ class ProfileContainer extends Component {
 							      </Button>
 							    </Modal.Actions>
 							</Modal>
-
 						</Grid>
-
 
 						:null
 					}
