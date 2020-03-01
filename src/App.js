@@ -19,6 +19,39 @@ class App extends Component {
 		}
 	}
 
+	componentDidMount() {
+		this.loginStatus()
+	}
+
+	// check if the user is still logged in
+	loginStatus = async () =>{
+		const url = process.env.REACT_APP_API_URL + '/api/v1/users/logged_in'
+
+		try {
+			const loginStatusResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+
+			const loginStatusJson = await loginStatusResponse.json()
+
+			if(loginStatusJson.status === 200) {
+				this.setState({
+					loggedId: true,
+					userId: loginStatusJson.data.id,
+					message: loginStatusJson.message,
+					user: loginStatusJson.data
+				})
+			}
+		} catch(err) {
+			console.error(err);
+		}
+	}
+
+
 	// register method
 	register = async (registerInfo) =>{
 		// get our url from our enviroment variable

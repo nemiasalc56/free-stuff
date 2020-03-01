@@ -23,9 +23,11 @@ class ItemsContainer extends Component {
 		}
 	}
 
+
 	componentDidMount() {
 		this.getItems()
 	}
+
 
 	// get get all the items
 	getItems = async () => {
@@ -193,9 +195,7 @@ class ItemsContainer extends Component {
 
 	// delete item
 	deleteItem = async (itemToDeleteId) =>{
-		console.log("deleteItem");
 
-		console.log(itemToDeleteId);
 		// get the url
 		const url = process.env.REACT_APP_API_URL + '/api/v1/items/' + itemToDeleteId
 		try {
@@ -209,7 +209,6 @@ class ItemsContainer extends Component {
 			})
 
 			const deleteItemJson = await deleteItemResponse.json()
-			console.log(deleteItemJson);
 
 			// remove the item from my array of items in state
 			if(deleteItemJson.status === 200) {
