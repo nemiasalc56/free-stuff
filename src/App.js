@@ -10,7 +10,7 @@ class App extends Component {
 		super()
 
 		this.state = {
-			loggedId: false,
+			loggedIn: false,
 			loginOpen: false,
 			userId: -1,
 			message: '',
@@ -40,7 +40,7 @@ class App extends Component {
 
 			if(loginStatusJson.status === 200) {
 				this.setState({
-					loggedId: true,
+					loggedIn: true,
 					userId: loginStatusJson.data.id,
 					message: loginStatusJson.message,
 					user: loginStatusJson.data
@@ -73,7 +73,7 @@ class App extends Component {
 			
 			if(registerJson.status === 200) {
 				this.setState({
-					loggedId: true,
+					loggedIn: true,
 					userId: registerJson.data.id,
 					message: registerJson.message,
 					user: registerJson.data
@@ -105,7 +105,7 @@ class App extends Component {
 			
 			if(loginJson.status === 200) {
 				this.setState({
-					loggedId: true,
+					loggedIn: true,
 					loginOpen: false,
 					userId: loginJson.data.id,
 					message: loginJson.message,
@@ -118,6 +118,10 @@ class App extends Component {
 		}
  	}
 
+ 	// log user out
+ 	logout = () =>{
+ 		console.log("logout is being called");
+ 	}
  	
   
   	render() {
@@ -131,8 +135,11 @@ class App extends Component {
 									<h1>Free Stuff</h1>
 									
 									<Search/>
-									
-									{this.state.loggedId
+									{this.state.loggedIn
+										? <p onClick={this.logout}>Logout</p>
+										:null
+									}
+									{this.state.loggedIn
 										? null
 										:<h2 
 											className="login-logo"
