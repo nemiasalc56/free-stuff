@@ -7,13 +7,22 @@ class CommentContainer extends Component {
 		super(props)
 
 		this.state = {
-			comment: ''
+			comment: '',
+			commentList: []
 		}
 	}
 
-	
+	// allow user to type
+	handleChange = (e) => {
+		this.setState({
+			comment: e.target.value
+		})
+	}
 
-
+	handleSubmit = (e)=> {
+		e.preventDefault()
+		console.log(this.state);
+	}
 
 
 	render() {
@@ -23,18 +32,19 @@ class CommentContainer extends Component {
 				<h2>Comment Container</h2>
 
 				<Grid className="center aligned" >
-
 					
-						<Form>
-							<Form.Field>
-								<Form.Input
-									style={{width: "20em"}}
-									type="text" 
-									name="picture"
-									value={this.state.comment}
-									placeholder='Leave comment' />
-							</Form.Field>
-						</Form>
+					<Form onSubmit={this.handleSubmit}>
+						<Form.Field>
+							<Form.Input
+								style={{width: "20em"}}
+								type="text" 
+								name="comment"
+								value={this.state.comment}
+								onChange={this.handleChange}
+								placeholder='Leave comment' />
+							<Button style={{width: "20em"}} color="green">Send</Button>
+						</Form.Field>
+					</Form>
 					
 				</Grid>
 			</div>
