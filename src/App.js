@@ -119,8 +119,34 @@ class App extends Component {
  	}
 
  	// log user out
- 	logout = () =>{
+ 	logout = async () =>{
  		console.log("logout is being called");
+ 		const url = process.env.REACT_APP_API_URL + '/api/v1/users/logout'
+ 		// fetch url
+ 		const logoutResponse = await fetch(url, {
+ 			credentials: 'include',
+ 			method: 'GET',
+ 			headers: {
+ 				'Content-Type': 'application/json'
+ 			}
+ 		})
+
+ 		// convert to json
+ 		const logoutJson = await logoutResponse.json()
+ 		console.log("logoutJson");
+ 		console.log(logoutJson);
+
+ 		if(logoutJson.status === 201) {
+				this.setState({
+					loggedIn: false,
+					loginOpen: false,
+					userId: -1,
+					message: '',
+					category: '',
+					user: ''
+				})
+			}
+
  	}
  	
   
