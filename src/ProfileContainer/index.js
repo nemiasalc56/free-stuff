@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Button, Select } from 'semantic-ui-react'
+import { Grid, Image, Button, Select, Modal, Header, Icon } from 'semantic-ui-react'
 import ItemList from '../ItemsContainer/ItemList'
 import EditUserForm from './EditUserForm'
 
@@ -13,7 +13,8 @@ class ProfileContainer extends Component {
 			user: this.props.user,
 			myItems: [],
 			userHasItems: false,
-			EditUserFormOpend: false
+			EditUserFormOpend: false,
+			deleteOpen: false
 		}
 	}
 
@@ -91,12 +92,19 @@ class ProfileContainer extends Component {
 			})
 		} else if(value === "delete") {
 			console.log(value);
+			this.setState({deleteOpen: true})
 		}
 	}
+	// this is to close the modal when is open
+	close = () => this.setState({ deleteOpen: false })
+
+	
 
 	cancelEdit = () => {
 		this.setState({EditUserFormOpend: false})
 	}
+
+
 
 	render(){
 		
@@ -120,8 +128,8 @@ class ProfileContainer extends Component {
 										onChange={this.switcher}
 										placeholder="Account Settings"
 										options={[{key: 'se', value: 'settings', text: 'Settings'},
-											{key: 'ed', value: 'edit', text: 'Edit Account'},
-											{key: 'de', value: 'delete', text: 'Delete Account'}]}
+												{key: 'ed', value: 'edit', text: 'Edit Account'},
+												{key: 'de', value: 'delete', text: 'Delete Account'}]}
 									/>
 								</div>
 								<Button onClick={this.makeAPost}>Make a Post</Button>
@@ -132,9 +140,33 @@ class ProfileContainer extends Component {
 								items={this.state.myItems}
 								getItemToShow={this.props.getItemToShow}
 								/>
-								: <h1>You have not post a free item.</h1>
+								: <h1>Delete the account</h1>
 							}
+
+							<Modal open={this.state.deleteOpen}
+									onClose={this.close}
+								>
+								<Header icon='archive' content='Delete Your Account' />
+								<Modal.Content>
+							      <p>
+							        Are you sure you want to delete your account?
+							      </p>
+							    </Modal.Content>
+							    <Modal.Actions>
+							      <Button 
+							    	color='red'
+							     	onClick={this.close}
+							      	>
+							        <Icon name='remove' /> No
+							      </Button>
+							      <Button color='green'>
+							        <Icon name='checkmark' /> Yes
+							      </Button>
+							    </Modal.Actions>
+							</Modal>
+
 						</Grid>
+
 
 						:null
 					}
