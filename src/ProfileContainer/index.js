@@ -57,6 +57,11 @@ class ProfileContainer extends Component {
 		this.props.switcher("postItem")
 	}
 
+	// update user account
+	updateAccount = (newAccountInfo) => {
+		console.log("updateAccount method");
+	}
+
 	render(){
 		return(
 			<Grid>
