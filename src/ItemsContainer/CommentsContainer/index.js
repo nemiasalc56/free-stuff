@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Grid, Segment, Form, Input } from 'semantic-ui-react'
+import CommentList from './CommentList'
 
 
 class CommentContainer extends Component {
@@ -9,6 +10,38 @@ class CommentContainer extends Component {
 		this.state = {
 			comment: '',
 			commentList: []
+		}
+	}
+
+	componentDidMount() {
+		this.getComments()
+	}
+
+	// find the comments
+	getComments = async () => {
+		// set up url
+		const url = process.env.REACT_APP_API_URL + '/api/v1/comments/' + this.props.item.id
+ 		
+ 		try {
+			const getCommentsResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(getCommentsResponse);
+
+			const getCommentsJson = await getCommentsResponse.json()
+			console.log(getCommentsJson);
+			if(getCommentsJson.status === 200) {
+				this.setState({
+					commentList: getCommentsJson.data
+				})
+			}
+
+		} catch(err) {
+			console.error(err);
 		}
 	}
 
@@ -48,7 +81,7 @@ class CommentContainer extends Component {
 
 		return(
 			<div>
-				<h2>Comment Container</h2>
+				<CommentList commentList={this.state.commentList}/>
 
 				<Grid className="center aligned" >
 					
