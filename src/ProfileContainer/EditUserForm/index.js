@@ -156,6 +156,12 @@ class EditUserForm extends Component {
 						<Button color="green" className="big login-button" type='submit'>
 							Update Account
 						</Button>
+						<Button 
+							onClick={()=>this.props.cancelEdit()}
+							className="big login-button" 
+							type='submit'>
+							Cancel update
+						</Button>
 						
 					</Form>
 					
