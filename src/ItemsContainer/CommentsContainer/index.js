@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Grid, Segment, TextArea } from 'semantic-ui-react'
+import { Button, Grid, Segment, Form, Input } from 'semantic-ui-react'
 
 
 class CommentContainer extends Component {
@@ -11,6 +11,9 @@ class CommentContainer extends Component {
 		}
 	}
 
+	
+
+
 
 
 	render() {
@@ -19,10 +22,20 @@ class CommentContainer extends Component {
 			<div>
 				<h2>Comment Container</h2>
 
-				<Grid className="center aligned">
-					<Segment>
-						
-					</Segment>
+				<Grid className="center aligned" >
+
+					
+						<Form>
+							<Form.Field>
+								<Form.Input
+									style={{width: "20em"}}
+									type="text" 
+									name="picture"
+									value={this.state.comment}
+									placeholder='Leave comment' />
+							</Form.Field>
+						</Form>
+					
 				</Grid>
 			</div>
 			)

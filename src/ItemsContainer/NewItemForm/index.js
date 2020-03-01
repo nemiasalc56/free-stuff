@@ -66,8 +66,8 @@ class NewItemForm extends Component {
 						</Grid.Row>
 						<Form onSubmit={this.handleSubmit}>
 	
-								<div>
-									<Form.Field>
+							<div>
+								<Form.Field>
 									<Form.Input 
 										label="Name"
 										type="text" 
@@ -78,14 +78,14 @@ class NewItemForm extends Component {
 									
 								</Form.Field>
 								<Form.Field>
-								<label>Category</label>
-								<Select 
-									placeholder='Select a category' 
-									options={this.state.options}
-									onChange={(e, { value }) => this.setState({category: value})} 
+									<label>Category</label>
+									<Select 
+										placeholder='Select a category' 
+										options={this.state.options}
+										onChange={(e, { value }) => this.setState({category: value})} 
 
-								/>
-							</Form.Field>
+									/>
+								</Form.Field>
 								<Form.Group>
 									
 									<Form.Input 
