@@ -71,6 +71,17 @@ class CommentContainer extends Component {
 			const commentJson = await commentResponse.json()
 			console.log(commentJson);
 
+			if(commentJson.status === 200) {
+				// this is so that we can see the comment that was added showing on the page
+				const newCommentArray = this.state.commentList
+				newCommentArray.push(commentJson.data)
+
+				this.setState({
+					commentList: newCommentArray,
+					comment: ''
+				})
+			}
+
 		} catch(err) {
 			console.error(err);
 		}

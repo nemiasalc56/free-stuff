@@ -11,7 +11,7 @@ function CommentList(props) {
 
 		return(
 			<div key={comment.id}>
-				{comment.comment}
+				<p>{comment.comment}. (By: {comment.author.first_name})</p>
 			</div>
 			)
 	})
