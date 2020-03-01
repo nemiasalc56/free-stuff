@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Image, Button, Select } from 'semantic-ui-react'
 import ItemList from '../ItemsContainer/ItemList'
+import EditUserForm from './EditUserForm'
 
 
 
@@ -93,6 +94,7 @@ class ProfileContainer extends Component {
 						: <h1>You have not post a free item.</h1>
 					}
 
+					<EditUserForm />
 			</Grid>
 			)
 	}

@@ -133,8 +133,6 @@ class App extends Component {
 
  		// convert to json
  		const logoutJson = await logoutResponse.json()
- 		console.log("logoutJson");
- 		console.log(logoutJson);
 
  		if(logoutJson.status === 201) {
 				this.setState({
@@ -146,7 +144,6 @@ class App extends Component {
 					user: ''
 				})
 			}
-
  	}
  	
   
