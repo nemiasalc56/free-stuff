@@ -60,6 +60,7 @@ class ProfileContainer extends Component {
 	// update user account
 	updateAccount = (newAccountInfo) => {
 		console.log("updateAccount method");
+		console.log(newAccountInfo);
 	}
 
 	render(){
@@ -96,6 +97,7 @@ class ProfileContainer extends Component {
 
 					<EditUserForm 
 						user={this.state.user}
+						updateAccount={this.updateAccount}
 					/>
 			</Grid>
 			)

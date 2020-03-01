@@ -43,7 +43,10 @@ class EditUserForm extends Component {
 		})
 	}
 
-	
+	handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.updateAccount(this.state)
+	}
 
 
 	render() {
@@ -59,7 +62,7 @@ class EditUserForm extends Component {
 					<Grid.Row>
 						<h2>Update your account information</h2>
 					</Grid.Row>
-					<Form >
+					<Form onSubmit={this.handleSubmit}>
 						
 						<Form.Group>
 							<Form.Input 
