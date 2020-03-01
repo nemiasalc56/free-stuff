@@ -31,7 +31,7 @@ class LoginRegisterForm extends Component {
 	// switch form
 	switchForm = () => {
 		if(this.state.action === 'login'){
-			this.setState({action: 'register'})
+			this.setState({action: "register"})
 		} else {
 			this.setState({action: 'login'})
 		}
@@ -67,8 +67,7 @@ class LoginRegisterForm extends Component {
 			state: '',
 			zip_code: '',
 			email: '',
-			password: '',
-			action: 'login'
+			password: ''
 		})
 	}
 

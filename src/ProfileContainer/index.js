@@ -98,7 +98,28 @@ class ProfileContainer extends Component {
 	// this is to close the modal when is open
 	close = () => this.setState({ deleteOpen: false })
 
-	
+	// delete account method
+	deleteAccount = async () => {
+		const url = process.env.REACT_APP_API_URL + '/api/v1/users/' + this.props.user.id
+		try {
+			// fetch url
+			const deleteAccountResponse = fetch(url, {
+				credentials: 'include',
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+
+			const deleteAccountJson = deleteAccountResponse.json()
+			console.log("this is the deleteAccountJson");
+			console.log(deleteAccountJson);
+			this.setState({deleteOpen: false})
+			this.props.switcher("all")
+		}catch(err) {
+
+		}
+	}
 
 	cancelEdit = () => {
 		this.setState({EditUserFormOpend: false})
@@ -160,7 +181,10 @@ class ProfileContainer extends Component {
 							        <Icon name='remove' /> No
 							      </Button>
 							      <Button color='green'>
-							        <Icon name='checkmark' /> Yes
+							        <Icon 
+							        	name='checkmark' 
+							        	onClick={this.deleteAccount}
+							        /> Yes
 							      </Button>
 							    </Modal.Actions>
 							</Modal>
