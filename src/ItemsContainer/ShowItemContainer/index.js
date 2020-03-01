@@ -46,7 +46,7 @@ function ShowItemContainer(props){
 					<div width={8}>
 						<div width={4} className="comment-container">
 							<h2>Comment container will go here</h2>
-							<CommentsContainer />
+							<CommentsContainer item={props.item}/>
 						</div>	
 					</div>
 

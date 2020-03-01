@@ -19,9 +19,28 @@ class CommentContainer extends Component {
 		})
 	}
 
-	handleSubmit = (e)=> {
+	handleSubmit = async (e)=> {
 		e.preventDefault()
-		console.log(this.state);
+		// set up url with the item id
+		const url = process.env.REACT_APP_API_URL + '/api/v1/comments/' + this.props.item.id
+
+		try {
+			const commentResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'POST',
+				body: JSON.stringify(this.state),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(commentResponse);
+
+			const commentJson = await commentResponse.json()
+			console.log(commentJson);
+
+		} catch(err) {
+			console.error(err);
+		}
 	}
 
 
