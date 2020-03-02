@@ -121,6 +121,7 @@ class ItemsContainer extends Component {
 				itemToEditId: -1,
 				itemtoShowId: -1
 			})
+			this.getItems()
 		} else if(action === "profile") {
 			this.setState({
 				itemListOpen: false,
@@ -233,6 +234,30 @@ class ItemsContainer extends Component {
 		}
 	}
 
+	// get items by category
+	itemsByCategory = async (category) =>{
+		// get url
+		const url = process.env.REACT_APP_API_URL + '/api/v1/items/' + category +'/category'
+
+		try {
+			// fetch url
+			const categoryResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(categoryResponse);
+
+			const categoryJson = await categoryResponse.json()
+			console.log(categoryJson);
+			this.setState({items: categoryJson.data})
+		} catch(err) {
+			console.error(err);
+		}
+	}
+
 	render() {
 		console.log('props in ItemsContainer');
 		console.log(this.props.user);
@@ -246,7 +271,7 @@ class ItemsContainer extends Component {
 		    			<div className="nav-container2">
 							<div className="nav">
 								<p onClick={()=>this.switcher('all')}>All</p>
-								<p>Electronics</p>
+								<p onClick={()=>this.itemsByCategory('electronics')}>Electronics</p>
 								<p>Collectibles & Art</p>
 								<p>Home & Garden</p>
 								<p>Clothing</p>
