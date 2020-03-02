@@ -253,7 +253,15 @@ class ItemsContainer extends Component {
 			const categoryJson = await categoryResponse.json()
 			console.log(categoryJson);
 			if(categoryJson.status === 200) {
-				this.setState({items: categoryJson.data})
+				this.setState({
+					items: categoryJson.data,
+					itemListOpen: true,
+					profileOpen: false,
+					NewItemForm: false,
+					itemToEditId: -1,
+					itemtoShowId: -1
+				})
+
 			} else {
 				console.log("there is no items in this category");
 			}
