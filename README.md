@@ -160,12 +160,12 @@ class Comment(Model):
 
 
 * Feb 28th - March 1st
-	- CRUD items
-	- CRUD user
-	- List items by category
-	- Search
+	- CRUD items -
+	- CRUD user -
+	- List items by category -
 	- Set up Cloudinary API
 	- Set up GoogleMaps API
+	- Search
 
 
 

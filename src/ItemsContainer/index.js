@@ -252,7 +252,11 @@ class ItemsContainer extends Component {
 
 			const categoryJson = await categoryResponse.json()
 			console.log(categoryJson);
-			this.setState({items: categoryJson.data})
+			if(categoryJson.status === 200) {
+				this.setState({items: categoryJson.data})
+			} else {
+				console.log("there is no items in this category");
+			}
 		} catch(err) {
 			console.error(err);
 		}
@@ -272,14 +276,14 @@ class ItemsContainer extends Component {
 							<div className="nav">
 								<p onClick={()=>this.switcher('all')}>All</p>
 								<p onClick={()=>this.itemsByCategory('electronics')}>Electronics</p>
-								<p>Collectibles & Art</p>
-								<p>Home & Garden</p>
-								<p>Clothing</p>
-								<p>Sport</p>
-								<p>Toys</p>
-								<p>Music & Books</p>
-								<p>Entertaitment</p>
-								<p>Others</p>
+								<p onClick={()=>this.itemsByCategory('collectibles_and_art')}>Collectibles & Art</p>
+								<p onClick={()=>this.itemsByCategory('home_and_garden')}>Home & Garden</p>
+								<p onClick={()=>this.itemsByCategory('clothing')}>Clothing</p>
+								<p onClick={()=>this.itemsByCategory('sport')}>Sport</p>
+								<p onClick={()=>this.itemsByCategory('toys')}>Toys</p>
+								<p onClick={()=>this.itemsByCategory('music_and_books')}>Music & Books</p>
+								<p onClick={()=>this.itemsByCategory('entertaiment')}>Entertaitment</p>
+								<p onClick={()=>this.itemsByCategory('others')}>Others</p>
 							</div>		
 		    			</div>		    				
 		    	</div>

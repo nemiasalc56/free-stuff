@@ -24,12 +24,12 @@ class NewItemForm extends Component {
 	getOptions = () => {
 		const categoryOptions = [
 			{ key: 'el', value: 'electronics', text: 'Electronics' },
-			{ key: 'ca', value: 'collectibles_art', text: 'Collectibles & Art' },
-			{ key: 'hg', value: 'home_garden', text: 'Home & Garden' },
+			{ key: 'ca', value: 'collectibles_and_art', text: 'Collectibles & Art' },
+			{ key: 'hg', value: 'home_and_garden', text: 'Home & Garden' },
 			{ key: 'cl', value: 'clothing', text: 'Clothing' },
 			{ key: 'sp', value: 'sport', text: 'Sport' },
 			{ key: 'to', value: 'toys', text: 'Toys' },
-			{ key: 'mb', value: 'music_books', text: 'Music & Books' },
+			{ key: 'mb', value: 'music_and_books', text: 'Music & Books' },
 			{ key: 'en', value: 'entertaiment', text: 'Entertaiment' },
 			{ key: 'ot', value: 'other', text: 'Other' }
 		]
