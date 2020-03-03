@@ -7,7 +7,7 @@ function ItemList(props) {
 
 	// get all the items from props
 	console.log("props in ItemList");
-	const item = props.items.map((item) => {
+	const item = props.items.reverse().map((item) => {
 
 		return(
 			<Card key={item.id} onClick={()=> props.getItemToShow(item.id)}>

@@ -300,7 +300,7 @@ class ItemsContainer extends Component {
 				}
 				{this.state.itemListOpen
 					? <ItemList 
-						items={this.props.itemSearch.length === 0 ?this.state.items:this.props.itemSearch}
+						items={this.props.itemSearch.length === 0 ? this.state.items : this.props.itemSearch}
 						getItemToShow={this.getItemToShow}
 
 					/>

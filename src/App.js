@@ -22,7 +22,8 @@ class App extends Component {
 			results: [], 
 			value: '',
 			items: null,
-			data: null
+			data: null,
+			searching: false
 		}
 	}
 
@@ -212,8 +213,9 @@ class App extends Component {
   
   	handleSubmit = (e) =>{
   		e.preventDefault()
-  		console.log(this.state.results);
-
+  		console.log("this is handleSubmit");
+  		// console.log(this.state.results);
+  		
   	}
   	render() {
   		return (
@@ -223,34 +225,33 @@ class App extends Component {
 		    			<div className="main">
 								<Grid>
 									<Grid.Row>
-									<h1>Free Stuff</h1>
-									<form onSubmit={this.handleSubmit}>
-									    <div className="ui icon input">
-											<Input
-												className="search"
-												type="text"
-									        	loading={this.state.isLoading}
-									            onResultSelect={this.handleResultSelect}
-									            onChange={_.debounce(this.handleSearchChange, 500, {
-									              leading: true,
-									            })}
-									            results={this.state.results}
-									            value={this.state.value}
-									          />
-									          <i aria-hidden="true" className="search icon"></i>
-								          </div>
-								          <Button type="submite">Search</Button>
+										<h1>Free Stuff</h1>
+										<form onSubmit={this.handleSubmit}>
+										    <div className="ui icon input">
+												<Input
+													className="search"
+													type="text"
+										        	loading={this.state.isLoading}
+										            onResultSelect={this.handleResultSelect}
+										            onChange={_.debounce(this.handleSearchChange, 500, {
+										              leading: true,
+										            })}
+										            results={this.state.results}
+										            value={this.state.value}
+										          />
+										          <i aria-hidden="true" className="search icon"></i>
+									          </div>
+									          <Button type="submite">Search</Button>
+										</form>
 										
-									</form>
-									
-									{this.state.loggedIn
-										? null
-										:<h2 
-											className="login-logo"
-				    						onClick={()=>this.setState({loginOpen:true})}
-				    						>Login
-				    					</h2>
-										}
+										{this.state.loggedIn
+											? null
+											:<h2 
+												className="login-logo"
+					    						onClick={()=>this.setState({loginOpen:true})}
+					    						>Login
+					    					</h2>
+											}
 										
 									</Grid.Row>
 								</Grid>
