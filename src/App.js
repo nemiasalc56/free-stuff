@@ -4,7 +4,7 @@ import './App.css';
 import LoginRegisterForm from './LoginRegisterForm'
 import ItemsContainer from './ItemsContainer'
 import { Search, Grid, Header, Segment, Button, Input } from 'semantic-ui-react'
-import SearchExampleStandard from './Search'
+
 
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
 			isLoading: false, 
 			results: [], 
 			value: '',
-			items: []
+			items: null
 		}
 	}
 
@@ -212,6 +212,7 @@ class App extends Component {
   	handleSubmit = (e) =>{
   		e.preventDefault()
   		console.log(this.state.results);
+
   	}
   	render() {
   		return (
@@ -225,7 +226,8 @@ class App extends Component {
 									<form onSubmit={this.handleSubmit}>
 									    <div class="ui icon input">
 											<Input
-												tabindex="0" 
+												className="search"
+												tabindex="0"
 												class="prompt" 
 												autocomplete="off"
 												type="text"
@@ -268,10 +270,12 @@ class App extends Component {
 	      				register={this.register}
 	      				login={this.login}
 	      			/>
-	      		: <ItemsContainer user={this.state.user}/>
+	      		: <ItemsContainer 
+	      			user={this.state.user}
+	      			itemSearch={this.state.results}
+	      		/>
 
 	      		}
-	      		{/* <SearchExampleStandard /> */}
 	    	</div>
   		)
   	}

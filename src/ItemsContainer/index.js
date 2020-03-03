@@ -270,7 +270,7 @@ class ItemsContainer extends Component {
 	}
 
 	render() {
-		
+		console.log(this.props.itemSearch);
 		return(
 			<div>
 				<h2 className="user-name-link" 
@@ -300,8 +300,9 @@ class ItemsContainer extends Component {
 				}
 				{this.state.itemListOpen
 					? <ItemList 
-					items={this.state.items}
-					getItemToShow={this.getItemToShow}
+						items={this.props.itemSearch.length === 0 ?this.state.items:this.props.itemSearch}
+						getItemToShow={this.getItemToShow}
+
 					/>
 					: null
 				}
