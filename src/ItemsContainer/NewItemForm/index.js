@@ -46,7 +46,15 @@ class NewItemForm extends Component {
 	// handle submit
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.postItem(this.state)
+		// this.props.postItem(this.state)
+	}
+
+	// this method will handle the changes when user selects a photo
+	handleImageUpload = (e) => {
+		const file = e.target.files[0]
+		const formData = new FormData()
+		console.log(file);
+		console.log(FormData);
 	}
 
 	render() {
@@ -132,13 +140,13 @@ class NewItemForm extends Component {
 								<Form.Field>
 									<Form.Input 
 										label="Image"
-										type="text" 
-										name="picture"
+										type="file" 
+										name="file"
 										value={this.state.picture}
-										onChange={this.handleChange}
+										onChange={this.handleImageUpload}
 										placeholder='Image' />
 								</Form.Field>
-								</div>
+							</div>
 
 
 							<label>Description</label>

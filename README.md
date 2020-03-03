@@ -19,6 +19,7 @@ Keep in mind that all the items in this site are for free for the user.
 ## Installation
 ```
 $ create-react-app joke-app
+$ npm i axios
 ```
 
 ## Tables
