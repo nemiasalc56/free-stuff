@@ -32,7 +32,7 @@ class NewItemForm extends Component {
 			{ key: 'to', value: 'toys', text: 'Toys' },
 			{ key: 'mb', value: 'music_and_books', text: 'Music & Books' },
 			{ key: 'en', value: 'entertaiment', text: 'Entertaiment' },
-			{ key: 'ot', value: 'other', text: 'Other' }
+			{ key: 'ot', value: 'others', text: 'Others' }
 		]
 		return categoryOptions
 	}

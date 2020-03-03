@@ -248,10 +248,9 @@ class ItemsContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(categoryResponse);
 
 			const categoryJson = await categoryResponse.json()
-			console.log(categoryJson);
+			
 			if(categoryJson.status === 200) {
 				this.setState({
 					items: categoryJson.data,
@@ -271,8 +270,7 @@ class ItemsContainer extends Component {
 	}
 
 	render() {
-		console.log('props in ItemsContainer');
-		console.log(this.props.user);
+		
 		return(
 			<div>
 				<h2 className="user-name-link" 
