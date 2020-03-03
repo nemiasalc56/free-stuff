@@ -16,7 +16,8 @@ class NewItemForm extends Component {
 			city: '',
 			state: '',
 			zip_code: '',
-			options: this.getOptions()
+			options: this.getOptions(),
+			formData: null
 		}
 	}
 
@@ -47,14 +48,22 @@ class NewItemForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		// this.props.postItem(this.state)
+		console.log(this.state.formData);
 	}
 
 	// this method will handle the changes when user selects a photo
 	handleImageUpload = (e) => {
 		const file = e.target.files[0]
 		const formData = new FormData()
-		console.log(file);
-		console.log(FormData);
+		// console.log(file);
+		// console.log(FormData);
+		// insert the info from the file and from cloudinary in our formData
+		formData.append("upload_preset", "nehemias")
+		formData.append("file", file)
+		// store the form data in state
+		this.setState({
+			formData: formData
+		})
 	}
 
 	render() {
