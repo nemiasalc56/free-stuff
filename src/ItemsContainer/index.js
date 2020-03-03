@@ -324,6 +324,7 @@ class ItemsContainer extends Component {
 						user={this.props.user}
 						switcher={this.switcher}
 						getItemToShow={this.getItemToShow}
+						logout={this.props.logout}
 						/>
 					: null
 				}

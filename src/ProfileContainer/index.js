@@ -93,6 +93,9 @@ class ProfileContainer extends Component {
 		} else if(value === "delete") {
 			console.log(value);
 			this.setState({deleteOpen: true})
+		} else if(value === "logout") {
+			console.log(value);
+			this.props.logout()
 		}
 	}
 	// this is to close the modal when is open
@@ -150,7 +153,9 @@ class ProfileContainer extends Component {
 										placeholder="Account Settings"
 										options={[{key: 'se', value: 'settings', text: 'Settings'},
 												{key: 'ed', value: 'edit', text: 'Edit Account'},
-												{key: 'de', value: 'delete', text: 'Delete Account'}]}
+												{key: 'de', value: 'delete', text: 'Delete Account'},
+												{key: 'lo', value: 'logout', text: 'Logout'}
+												]}
 									/>
 								</div>
 								<Button onClick={this.makeAPost}>Make a Post</Button>

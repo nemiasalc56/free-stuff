@@ -21,7 +21,8 @@ class App extends Component {
 			isLoading: false, 
 			results: [], 
 			value: '',
-			items: null
+			items: null,
+			data: null
 		}
 	}
 
@@ -224,12 +225,9 @@ class App extends Component {
 									<Grid.Row>
 									<h1>Free Stuff</h1>
 									<form onSubmit={this.handleSubmit}>
-									    <div class="ui icon input">
+									    <div className="ui icon input">
 											<Input
 												className="search"
-												tabindex="0"
-												class="prompt" 
-												autocomplete="off"
 												type="text"
 									        	loading={this.state.isLoading}
 									            onResultSelect={this.handleResultSelect}
@@ -239,15 +237,12 @@ class App extends Component {
 									            results={this.state.results}
 									            value={this.state.value}
 									          />
-									          <i aria-hidden="true" class="search icon"></i>
+									          <i aria-hidden="true" className="search icon"></i>
 								          </div>
 								          <Button type="submite">Search</Button>
 										
 									</form>
-									{this.state.loggedIn
-										? <p onClick={this.logout}>Logout</p>
-										:null
-									}
+									
 									{this.state.loggedIn
 										? null
 										:<h2 
@@ -273,6 +268,7 @@ class App extends Component {
 	      		: <ItemsContainer 
 	      			user={this.state.user}
 	      			itemSearch={this.state.results}
+	      			logout={this.logout}
 	      		/>
 
 	      		}
