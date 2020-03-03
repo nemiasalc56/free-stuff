@@ -50,6 +50,7 @@ class NewItemForm extends Component {
 		// this.props.postItem(this.state)
 		console.log(this.state.formData);
 		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
+			// when the fetch is resolved we store the image url on state
 			.then(res => this.setState({picture: res.data.secure_url}))
 			.catch(err => console.log(err))
 		if(this.state.picture !== ''){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Segment, TextArea, Select } from 'semantic-ui-react'
-
+import axios from 'axios'
 
 class EditItemForm extends Component {
 	constructor(props) {
@@ -16,7 +16,8 @@ class EditItemForm extends Component {
 			city: '',
 			state: '',
 			zip_code: '',
-			options: this.getOptions()
+			options: this.getOptions(),
+			formData: null
 		}
 	}
 
@@ -62,10 +63,32 @@ class EditItemForm extends Component {
 		})
 	}
 
-	// submit changes
-	handleSubmit = (e) => {
+	// handle submit
+	handleSubmit = async (e) => {
 		e.preventDefault()
+		// this.props.postItem(this.state)
+		console.log(this.state.formData);
+		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
+			// when the fetch is resolved we store the image url on state
+			.then(res => this.setState({picture: res.data.secure_url}))
+			.catch(err => console.log(err))
 		this.props.updateItem(this.state)
+
+	}
+
+
+	// this method will handle the changes when user selects a photo
+	handleImageUpload = (e) => {
+		const file = e.target.files[0]
+		const formData = new FormData()
+		
+		// insert the info from the file and from cloudinary in our formData
+		formData.append("upload_preset", "nehemias")
+		formData.append("file", file)
+		// store the form data in state
+		this.setState({
+			formData: formData
+		})
 	}
 
 	render() {
@@ -149,10 +172,9 @@ class EditItemForm extends Component {
 								<Form.Field>
 									<Form.Input 
 										label="Image"
-										type="text" 
-										name="picture"
-										value={this.state.picture}
-										onChange={this.handleChange}
+										type="file" 
+										name="file"
+										onChange={this.handleImageUpload}
 										placeholder='Image' />
 								</Form.Field>
 								</div>
