@@ -5,6 +5,7 @@ import ShowItemContainer from './ShowItemContainer'
 import { Header } from 'semantic-ui-react'
 import ProfileContainer from '../ProfileContainer'
 import EditItemForm from './EditItemForm'
+import mapboxgl from 'mapbox-gl'
 
 
 
@@ -68,8 +69,11 @@ class ItemsContainer extends Component {
 		this.switcher("off")
 	}
 
+
+
 	// post items
 	postItem = async (itemInfo) => {
+
 		// get the url
 		const url = process.env.REACT_APP_API_URL + '/api/v1/items/'
 

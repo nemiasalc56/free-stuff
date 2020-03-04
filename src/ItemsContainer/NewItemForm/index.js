@@ -16,6 +16,8 @@ class NewItemForm extends Component {
 			city: '',
 			state: '',
 			zip_code: '',
+			lat: 0,
+			lng: 0,
 			options: this.getOptions(),
 			formData: null
 		}
@@ -39,25 +41,42 @@ class NewItemForm extends Component {
 
 	// handle change
 	handleChange = (e) => {
+
 		this.setState({
 			[e.target.name]: e.target.value
 		})
+
+	}
+	
+	// get location coordinates
+	getCoordinates = async () => {
+		// we can fetch mapbox to get latitude and longitude from that location
+		const mapboxResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address_1},${this.state.address_2},${this.state.city},${this.state.state},${this.state.zip_code}.json?types=address&limit=1&access_token=pk.eyJ1IjoibmVtaWFzYWxjIiwiYSI6ImNrN2M2NzN0YTAwdW0zZnB0OGN1M2RiaW0ifQ.QalGDzlT9KrXIhoOYr5erg`)
+
+		const mapboxJson = await mapboxResponse.json()
+
+
+		console.log("mapboxJson");
+		console.log(mapboxJson.features[0].geometry.coordinates[0]);
 	}
 
 	// handle submit
 	handleSubmit = async (e) => {
+		this.getCoordinates()
 		e.preventDefault()
-		// this.props.postItem(this.state)
+		/*// this.props.postItem(this.state)
 		console.log(this.state.formData);
 		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
 			// when the fetch is resolved we store the image url on state
 			.then(res => this.setState({picture: res.data.secure_url}))
 			.catch(err => console.log(err))
+
 		if(this.state.picture !== ''){
 			this.props.postItem(this.state)	
 		}
-
+	*/
 	}
+
 
 
 	// this method will handle the changes when user selects a photo
