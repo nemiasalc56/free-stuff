@@ -57,14 +57,18 @@ class NewItemForm extends Component {
 
 
 		console.log("mapboxJson");
-		console.log(mapboxJson.features[0].geometry.coordinates[0]);
+		console.log(mapboxJson);
+		this.setState({
+			lat: mapboxJson.features[0].geometry.coordinates[1],
+			lng: mapboxJson.features[0].geometry.coordinates[0]
+		})
 	}
 
 	// handle submit
 	handleSubmit = async (e) => {
 		this.getCoordinates()
 		e.preventDefault()
-		/*// this.props.postItem(this.state)
+		// this.props.postItem(this.state)
 		console.log(this.state.formData);
 		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
 			// when the fetch is resolved we store the image url on state
@@ -74,7 +78,7 @@ class NewItemForm extends Component {
 		if(this.state.picture !== ''){
 			this.props.postItem(this.state)	
 		}
-	*/
+
 	}
 
 
