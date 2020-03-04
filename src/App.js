@@ -65,7 +65,7 @@ class App extends Component {
 	// check if the user is still logged in
 	loginStatus = async () =>{
 		const url = process.env.REACT_APP_API_URL + '/api/v1/users/logged_in'
-		console.log("about the fetch");
+
 		try {
 			const loginStatusResponse = await fetch(url, {
 				credentials: 'include',
@@ -142,7 +142,7 @@ class App extends Component {
 			})
 			// convert our response to json
 			const loginJson = await loginResponse.json()
-			
+
 			if(loginJson.status === 200) {
 				this.setState({
 					loggedIn: true,
@@ -151,6 +151,8 @@ class App extends Component {
 					message: loginJson.message,
 					user: loginJson.data
 				})
+			}else{
+				console.log("didnt work");
 			}
 
 		}catch(err) {

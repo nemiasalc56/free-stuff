@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Segment, TextArea, Select } from 'semantic-ui-react'
+import { Button, Form, Grid, Segment, TextArea, Select, Checkbox } from 'semantic-ui-react'
 import axios from 'axios'
 
 class NewItemForm extends Component {
@@ -11,6 +11,7 @@ class NewItemForm extends Component {
 			description: '',
 			picture: '',
 			category: '',
+			useProfileAddr: false,
 			address_1: '',
 			address_2: '',
 			city: '',
@@ -65,7 +66,7 @@ class NewItemForm extends Component {
 	handleSubmit = async (e) => {
 		this.getCoordinates()
 		e.preventDefault()
-		// this.props.postItem(this.state)
+
 		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
 			// when the fetch is resolved we store the image url on state
 			.then(res => this.setState({picture: res.data.secure_url}))
@@ -77,6 +78,34 @@ class NewItemForm extends Component {
 
 	}
 
+	// use profile address
+	useProfileAddr = () => {
+		if(this.state.useProfileAddr) {
+			this.setState({
+				useProfileAddr: false,
+				address_1: '',
+				address_2: '',
+				city: '',
+				state: '',
+				zip_code: '',
+				lat: '',
+				lng: ''
+		})
+		} else {
+			this.setState({
+				useProfileAddr: true,
+				address_1: this.props.user.address.address_1,
+				address_2: this.props.user.address.address_2,
+				city: this.props.user.address.city,
+				state: this.props.user.address.state,
+				zip_code: this.props.user.address.zip_code,
+				lat: this.props.user.address.lat,
+				lng: this.props.user.address.lng
+			})
+		}
+		console.log(this.state.useProfileAddr);
+		console.log(this.props.user.address.address_1);
+	}
 
 
 	// this method will handle the changes when user selects a photo
@@ -130,14 +159,20 @@ class NewItemForm extends Component {
 
 									/>
 								</Form.Field>
-								<Form.Group>
+								<Form.Field>
+									<Checkbox 
+										onChange={this.useProfileAddr}
+										label="User your account address"/>
 									
+								</Form.Field>
+
+								<Form.Group>
 									<Form.Input 
 										label="Address 1"
 										type="text" 
 										name="address_1"
 										value={this.state.address_1}
-										onChange={this.handleChange}
+										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="Address 1" />
 								
 									<Form.Input 
@@ -145,7 +180,7 @@ class NewItemForm extends Component {
 										type="text" 
 										name="address_2"
 										value={this.state.address_2}
-										onChange={this.handleChange}
+										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="Address 2" />
 								
 									<Form.Input 
@@ -153,7 +188,7 @@ class NewItemForm extends Component {
 										type="text" 
 										name="city"
 										value={this.state.city}
-										onChange={this.handleChange}
+										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="City" />
 								
 									<Form.Input 
@@ -161,7 +196,7 @@ class NewItemForm extends Component {
 										type="text" 
 										name="state"
 										value={this.state.state}
-										onChange={this.handleChange}
+										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="state" />
 								
 									<Form.Input 
@@ -169,7 +204,7 @@ class NewItemForm extends Component {
 										type="text" 
 										name="zip_code"
 										value={this.state.zip_code}
-										onChange={this.handleChange}
+										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="Zipcode" />
 								</Form.Group>
 

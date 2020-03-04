@@ -295,7 +295,9 @@ class ItemsContainer extends Component {
 		    	</div>
 				
 				{this.state.NewItemForm
-					? <NewItemForm postItem={this.postItem}/>
+					? <NewItemForm 
+					postItem={this.postItem}
+					user={this.props.user}/>
 					:null
 				}
 				{this.state.itemListOpen
