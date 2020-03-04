@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 import './index.css'
+import mapboxgl from 'mapbox-gl'
 
 class LoginRegisterForm extends Component {
 	constructor(props) {
@@ -15,6 +16,8 @@ class LoginRegisterForm extends Component {
 			city: '',
 			state: '',
 			zip_code: '',
+			lat: '',
+			lng: '',
 			email: '',
 			password: '',
 			action: 'login'
@@ -38,19 +41,36 @@ class LoginRegisterForm extends Component {
 		this.clearForm()
 	}
 
+	// get location coordinates
+	getCoordinates = async () => {
+		// get latitude and longitude from the address
+		const mapboxResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address_1},${this.state.address_2},${this.state.city},${this.state.state},${this.state.zip_code}.json?types=address&limit=1&access_token=pk.eyJ1IjoibmVtaWFzYWxjIiwiYSI6ImNrN2M2NzN0YTAwdW0zZnB0OGN1M2RiaW0ifQ.QalGDzlT9KrXIhoOYr5erg`)
+
+		const mapboxJson = await mapboxResponse.json()
+
+
+		console.log("mapboxJson");
+		console.log(mapboxJson);
+		this.setState({
+			lat: mapboxJson.features[0].geometry.coordinates[1],
+			lng: mapboxJson.features[0].geometry.coordinates[0]
+		})
+	}
+
 	// handle submit
 	handleSubmit = (e) => {
+		this.getCoordinates()
 		e.preventDefault()
 
-		if(this.state.action === "register") {
-			this.props.register(this.state)
-
-		} else if(this.state.action === "login") {
-			this.props.login({
-				email: this.state.email,
-				password: this.state.password
-			})
-		}
+// 		if(this.state.action === "register") {
+// 			this.props.register(this.state)
+// 
+// 		} else if(this.state.action === "login") {
+// 			this.props.login({
+// 				email: this.state.email,
+// 				password: this.state.password
+// 			})
+// 		}
 
 		this.clearForm()
 	}
