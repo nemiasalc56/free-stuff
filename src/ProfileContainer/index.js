@@ -167,7 +167,7 @@ class ProfileContainer extends Component {
 								items={this.state.myItems}
 								getItemToShow={this.props.getItemToShow}
 								/>
-								: <h1>Delete the account</h1>
+								: <h1>You don't have items in this account</h1>
 							}
 
 							<Modal open={this.state.deleteOpen}

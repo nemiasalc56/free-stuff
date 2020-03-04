@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 import './index.css'
 import mapboxgl from 'mapbox-gl'
+import axios from 'axios'
 
 class LoginRegisterForm extends Component {
 	constructor(props) {
@@ -20,7 +21,8 @@ class LoginRegisterForm extends Component {
 			lng: '',
 			email: '',
 			password: '',
-			action: 'login'
+			action: 'login',
+			formData: null
 		}
 	}
 
@@ -58,19 +60,24 @@ class LoginRegisterForm extends Component {
 	}
 
 	// handle submit
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		this.getCoordinates()
 		e.preventDefault()
 
-// 		if(this.state.action === "register") {
-// 			this.props.register(this.state)
-// 
-// 		} else if(this.state.action === "login") {
-// 			this.props.login({
-// 				email: this.state.email,
-// 				password: this.state.password
-// 			})
-// 		}
+		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
+			// when the fetch is resolved we store the image url on state
+			.then(res => this.setState({picture: res.data.secure_url}))
+			.catch(err => console.log(err))
+
+		if(this.state.action === "register") {
+			this.props.register(this.state)
+
+		} else if(this.state.action === "login") {
+			this.props.login({
+				email: this.state.email,
+				password: this.state.password
+			})
+		}
 
 		this.clearForm()
 	}
