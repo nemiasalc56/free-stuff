@@ -16,6 +16,8 @@ class EditItemForm extends Component {
 			city: '',
 			state: '',
 			zip_code: '',
+			lat: '',
+			lng: '',
 			options: this.getOptions(),
 			formData: null
 		}
@@ -32,7 +34,9 @@ class EditItemForm extends Component {
 			address_2: this.props.itemToEdit.address_2,
 			city: this.props.itemToEdit.city,
 			state: this.props.itemToEdit.state,
-			zip_code: this.props.itemToEdit.zip_code
+			zip_code: this.props.itemToEdit.zip_code,
+			lat: this.props.itemToEdit.lat,
+			lng: this.props.itemToEdit.lng
 		})
 	}
 
@@ -67,7 +71,6 @@ class EditItemForm extends Component {
 	handleSubmit = async (e) => {
 		e.preventDefault()
 		// this.props.postItem(this.state)
-		console.log(this.state.formData);
 		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
 			// when the fetch is resolved we store the image url on state
 			.then(res => this.setState({picture: res.data.secure_url}))

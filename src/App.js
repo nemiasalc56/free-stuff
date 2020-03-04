@@ -3,8 +3,7 @@ import _ from 'lodash'
 import './App.css';
 import LoginRegisterForm from './LoginRegisterForm'
 import ItemsContainer from './ItemsContainer'
-import { Search, Grid, Header, Segment, Button, Input } from 'semantic-ui-react'
-
+import { Grid, Header, Button, Input } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -29,9 +28,9 @@ class App extends Component {
 
 	componentDidMount() {
 		this.loginStatus()
-		console.log(this.state.data);
+
 		this.getItems()
-		console.log(this.state.items);
+
 	}
 
 		// get get all the items
@@ -50,14 +49,13 @@ class App extends Component {
 			
 			// convert data to json
 			const itemsJson = await itemsResponse.json()
-			console.log(itemsJson);
 
 			if(itemsJson.status === 200) {
 				this.setState({
 					items: itemsJson.data
 				})
 			}
-			console.log(this.state.items);
+
 		}catch(err) {
 			console.error(err);
 		}
@@ -67,7 +65,7 @@ class App extends Component {
 	// check if the user is still logged in
 	loginStatus = async () =>{
 		const url = process.env.REACT_APP_API_URL + '/api/v1/users/logged_in'
-
+		console.log("about the fetch");
 		try {
 			const loginStatusResponse = await fetch(url, {
 				credentials: 'include',
@@ -162,7 +160,7 @@ class App extends Component {
 
  	// log user out
  	logout = async () =>{
- 		console.log("logout is being called");
+
  		const url = process.env.REACT_APP_API_URL + '/api/v1/users/logout'
  		// fetch url
  		const logoutResponse = await fetch(url, {
@@ -187,9 +185,6 @@ class App extends Component {
 				})
 			}
  	}
- 	
-
- 	handleResultSelect = (e, { result }) => this.setState({ value: result.name })
 
   	handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
@@ -212,50 +207,48 @@ class App extends Component {
   }
   
   	handleSubmit = (e) =>{
-  		e.preventDefault()
-  		console.log("this is handleSubmit");
-  		// console.log(this.state.results);
-  		
+  		e.preventDefault()		
   	}
+
   	render() {
   		return (
 	    	<div className="App">
 	    		<div className="nav-header">
 		    		<Header>
 		    			<div className="main">
-								<Grid>
-									<Grid.Row>
-										<h1>Free Stuff</h1>
-										<form onSubmit={this.handleSubmit}>
-										    <div className="ui icon input">
-												<Input
-													className="search"
-													type="text"
-										        	loading={this.state.isLoading}
-										            onResultSelect={this.handleResultSelect}
-										            onChange={_.debounce(this.handleSearchChange, 500, {
-										              leading: true,
-										            })}
-										            results={this.state.results}
-										            value={this.state.value}
-										          />
-										          <i aria-hidden="true" className="search icon"></i>
-									          </div>
-									          <Button type="submite">Search</Button>
-										</form>
-										
-										{this.state.loggedIn
-											? null
-											:<h2 
-												className="login-logo"
-					    						onClick={()=>this.setState({loginOpen:true})}
-					    						>Login
-					    					</h2>
-											}
-										
-									</Grid.Row>
-								</Grid>
+							<Grid>
+								<Grid.Row>
+									<h1>Free Stuff</h1>
+									<form onSubmit={this.handleSubmit}>
+									    <div className="ui icon input">
 
+											<Input
+												className="search"
+												type="text"
+									        	loading={this.state.isLoading}
+									            onChange={_.debounce(this.handleSearchChange, 500, {
+									              leading: true,
+									            })}
+									            results={this.state.results}
+									            value={this.state.value}
+									        />
+									        <i aria-hidden="true" className="search icon"></i>
+								          </div>
+
+								          <Button type="submite">Search</Button>
+									</form>
+									
+									{this.state.loggedIn
+										? null
+										:<h2 
+											className="login-logo"
+				    						onClick={()=>this.setState({loginOpen:true})}
+				    					>Login
+				    					</h2>
+										}
+									
+								</Grid.Row>
+							</Grid>
 		    			</div>
 					</Header>
 	    			

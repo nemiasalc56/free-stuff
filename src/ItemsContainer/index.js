@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import NewItemForm from './NewItemForm'
 import ItemList from './ItemList'
 import ShowItemContainer from './ShowItemContainer'
-import { Header } from 'semantic-ui-react'
 import ProfileContainer from '../ProfileContainer'
 import EditItemForm from './EditItemForm'
-import mapboxgl from 'mapbox-gl'
-
-
 
 
 class ItemsContainer extends Component {
@@ -46,7 +42,6 @@ class ItemsContainer extends Component {
 			
 			// convert data to json
 			const itemsJson = await itemsResponse.json()
-			console.log(itemsJson);
 
 			if(itemsJson.status === 200) {
 				this.setState({
@@ -89,7 +84,7 @@ class ItemsContainer extends Component {
 			})
 			// 
 			const itemJson = await itemResponse.json()
-			console.log(itemJson);
+
 			if(itemJson.status === 200){
 				// this is so that we can the item that was added showing on the page
 				const newItemsArray = this.state.items
@@ -147,14 +142,14 @@ class ItemsContainer extends Component {
 
 	// get item to edit
 	getItemToEdit = (itemToEditId) => {
-		console.log("getItemToEdit is being called");
-		console.log("the id is:", itemToEditId);
+
 		this.setState({
 			itemListOpen: false,
 			itemtoShowId: -1,
 			profileOpen: false,
 			NewItemForm: false,
-			itemToEditId: itemToEditId
+			itemToEditId: itemToEditId,
+			foundItemByCategory: true
 		})
 	}
 
@@ -267,6 +262,7 @@ class ItemsContainer extends Component {
 
 			} else {
 				console.log("there is no items in this category");
+				this.setState({foundItemByCategory: false})
 			}
 		} catch(err) {
 			console.error(err);
@@ -274,7 +270,7 @@ class ItemsContainer extends Component {
 	}
 
 	render() {
-		console.log(this.props.itemSearch);
+		
 		return(
 			<div>
 				<h2 className="user-name-link" 

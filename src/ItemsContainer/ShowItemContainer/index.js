@@ -5,10 +5,7 @@ import CommentsContainer from '../CommentsContainer'
 import MapContainer from './MapContainer'
 
 
-
 function ShowItemContainer(props){
-
-	console.log(props.item);
 	
 	return(
 		<div>
@@ -29,7 +26,10 @@ function ShowItemContainer(props){
 						: null
 					}
 					<div width={8} className="map-container">
-						<MapContainer />
+						<MapContainer 
+							lat={Number(props.item.lat)}
+							lng={Number(props.item.lng)}
+						/>
 					</div>
 						
 				</Grid.Column>

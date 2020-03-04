@@ -15,7 +15,8 @@ class ProfileContainer extends Component {
 			myItems: [],
 			userHasItems: false,
 			EditUserFormOpend: false,
-			deleteOpen: false
+			deleteOpen: false,
+			updated: false
 		}
 	}
 
@@ -78,7 +79,9 @@ class ProfileContainer extends Component {
 			})
 
 			const updateAccountJson = await updateAccountResponse.json()
-
+			if(updateAccountJson.status === 200) {
+				this.setState({updated: true})
+			}
 		} catch(err) {
 			console.error(err);
 		}
@@ -92,11 +95,11 @@ class ProfileContainer extends Component {
 				EditUserFormOpend: true
 			})
 		} else if(value === "delete") {
-			console.log(value);
 			this.setState({deleteOpen: true})
+			
 		} else if(value === "logout") {
-			console.log(value);
 			this.props.logout()
+			
 		}
 	}
 	// this is to close the modal when is open
@@ -107,7 +110,7 @@ class ProfileContainer extends Component {
 		const url = process.env.REACT_APP_API_URL + '/api/v1/users/' + this.props.user.id
 		try {
 			// fetch url
-			const deleteAccountResponse = fetch(url, {
+			const deleteAccountResponse = await fetch(url, {
 				credentials: 'include',
 				method: 'DELETE',
 				headers: {
@@ -115,11 +118,12 @@ class ProfileContainer extends Component {
 				}
 			})
 
-			const deleteAccountJson = deleteAccountResponse.json()
-			console.log("this is the deleteAccountJson");
-			console.log(deleteAccountJson);
-			this.setState({deleteOpen: false})
-			this.props.switcher("all")
+			const deleteAccountJson = await deleteAccountResponse.json()
+			if(this.deleteAccountJson.status === 200){
+				this.setState({deleteOpen: false})
+				this.props.switcher("all")
+				console.log(deleteAccountJson);
+			}
 		}catch(err) {
 
 		}
@@ -173,25 +177,25 @@ class ProfileContainer extends Component {
 							<Modal open={this.state.deleteOpen}
 									onClose={this.close}
 								>
-								<Header icon='archive' content='Delete Your Account' />
+								<Header icon='trash' content='Delete Your Account' />
 								<Modal.Content>
 							      <p>
 							        Are you sure you want to delete your account?
 							      </p>
 							    </Modal.Content>
 							    <Modal.Actions>
-							      <Button 
-							    	color='red'
-							     	onClick={this.close}
+							    	<Button 
+								    	color='red'
+								     	onClick={this.close}
 							      	>
-							        <Icon name='remove' /> No
-							      </Button>
-							      <Button color='green'>
-							        <Icon 
-							        	name='checkmark' 
-							        	onClick={this.deleteAccount}
-							        /> Yes
-							      </Button>
+							        	<Icon name='remove' /> No
+							      	</Button>
+							    	<Button color='green'>
+								        <Icon 
+								        	name='checkmark' 
+								        	onClick={this.deleteAccount}
+								        /> Yes
+							      	</Button>
 							    </Modal.Actions>
 							</Modal>
 						</Grid>

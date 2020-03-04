@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 import './index.css'
-import mapboxgl from 'mapbox-gl'
 import axios from 'axios'
 
 class LoginRegisterForm extends Component {
@@ -50,9 +49,6 @@ class LoginRegisterForm extends Component {
 
 		const mapboxJson = await mapboxResponse.json()
 
-
-		console.log("mapboxJson");
-		console.log(mapboxJson);
 		this.setState({
 			lat: mapboxJson.features[0].geometry.coordinates[1],
 			lng: mapboxJson.features[0].geometry.coordinates[0]
@@ -61,7 +57,10 @@ class LoginRegisterForm extends Component {
 
 	// handle submit
 	handleSubmit = async (e) => {
-		this.getCoordinates()
+		if(this.state.action === "register"){
+			this.getCoordinates()
+
+		}
 		e.preventDefault()
 
 		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
@@ -115,25 +114,25 @@ class LoginRegisterForm extends Component {
 	render() {
 		return (			
 			
-				<Grid className="center aligned">
-					<Segment 
-						style={{
-							marginTop: '200px'
-						}}
-					>
-						<Grid.Row>
-							<h2>
-								{this.state.action === "login"
-									? "Login"
-									: "Create A New Account"
-								}
-							</h2>
-						</Grid.Row>
-						<Form onSubmit={this.handleSubmit}>
-							{this.state.action === 'register'
-								?
-								<div>
-									<Form.Group>
+			<Grid className="center aligned">
+				<Segment 
+					style={{
+						marginTop: '200px'
+					}}
+				>
+					<Grid.Row>
+						<h2>
+							{this.state.action === "login"
+								? "Login"
+								: "Create A New Account"
+							}
+						</h2>
+					</Grid.Row>
+					<Form onSubmit={this.handleSubmit}>
+						{this.state.action === 'register'
+							?
+							<div>
+								<Form.Group>
 									<Form.Input 
 										label="First name"
 										type="text" 
@@ -149,8 +148,8 @@ class LoginRegisterForm extends Component {
 										onChange={this.handleChange} 
 										placeholder="Last name" />
 								</Form.Group>
+								
 								<Form.Group>
-									
 									<Form.Input 
 										label="Address 1"
 										type="text" 
@@ -158,7 +157,7 @@ class LoginRegisterForm extends Component {
 										value={this.state.address_1}
 										onChange={this.handleChange}
 										placeholder="Address 1" />
-								
+							
 									<Form.Input 
 										label="Address 2" 
 										type="text" 
@@ -200,52 +199,49 @@ class LoginRegisterForm extends Component {
 										onChange={this.handleImageUpload}
 										placeholder='Image' />
 								</Form.Field>
-								</div>
-								: null
-							} 
+							</div>
+							: null
+						}
 
-								
+						<Form.Field>
+							<label>Email</label>
+							<input 
+								type="text" 
+								name="email"
+								value={this.state.email}
+								onChange={this.handleChange}
+								placeholder="Enter email" />
+						</Form.Field>
 
-							<Form.Field>
-								<label>Email</label>
-								<input 
-									type="text" 
-									name="email"
-									value={this.state.email}
-									onChange={this.handleChange}
-									placeholder="Enter email" />
-							</Form.Field>
+						<Form.Field>
+							<label>Password</label>
+							<input 
+								type="password" 
+								name="password"
+								value={this.state.password}
+								onChange={this.handleChange}
+								placeholder="Enter password" />
+						</Form.Field>
 
-							<Form.Field>
-								<label>Password</label>
-								<input 
-									type="password" 
-									name="password"
-									value={this.state.password}
-									onChange={this.handleChange}
-									placeholder="Enter password" />
-							</Form.Field>
-
-							<Button color="green" className="big login-button" type='submit'>
+						<Button color="green" className="big login-button" type='submit'>
+							{this.state.action === "login"
+								? "Sign In"
+								: "Sign Up"
+							}
+						</Button>
+						<Grid className="center aligned option">
+							<p onClick={this.switchForm}>
 								{this.state.action === "login"
-									? "Sign In"
-									: "Sign Up"
+									? "Already have an account?"
+									: "login"
 								}
-							</Button>
-							<Grid className="center aligned option">
-								<p onClick={this.switchForm}>
-									{this.state.action === "login"
-										? "Already have an account?"
-										: "login"
-									}
-								</p>	
-							</Grid>
-						</Form>
-					
-					</Segment>
-				</Grid>
-			
-			)
+							</p>	
+						</Grid>
+					</Form>
+				
+				</Segment>
+			</Grid>
+		)
 	}
 }
 

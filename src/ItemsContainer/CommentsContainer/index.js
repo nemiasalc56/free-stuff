@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Grid, Segment, Form, Input } from 'semantic-ui-react'
+import { Button, Grid, Form } from 'semantic-ui-react'
 import CommentList from './CommentList'
 
 
@@ -30,10 +30,9 @@ class CommentContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(getCommentsResponse);
 
 			const getCommentsJson = await getCommentsResponse.json()
-			console.log(getCommentsJson);
+			
 			if(getCommentsJson.status === 200) {
 				this.setState({
 					commentList: getCommentsJson.data
@@ -66,10 +65,8 @@ class CommentContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(commentResponse);
 
 			const commentJson = await commentResponse.json()
-			console.log(commentJson);
 
 			if(commentJson.status === 200) {
 				// this is so that we can see the comment that was added showing on the page

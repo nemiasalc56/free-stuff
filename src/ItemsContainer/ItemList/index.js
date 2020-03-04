@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 
 
@@ -6,7 +6,6 @@ import { Card, Image } from 'semantic-ui-react'
 function ItemList(props) {
 
 	// get all the items from props
-	console.log("props in ItemList");
 	const item = props.items.reverse().map((item) => {
 
 		return(
