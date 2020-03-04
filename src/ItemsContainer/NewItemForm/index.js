@@ -103,8 +103,7 @@ class NewItemForm extends Component {
 				lng: this.props.user.address.lng
 			})
 		}
-		console.log(this.state.useProfileAddr);
-		console.log(this.props.user.address.address_1);
+		
 	}
 
 

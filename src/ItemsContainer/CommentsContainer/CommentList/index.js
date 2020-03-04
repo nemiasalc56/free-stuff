@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'semantic-ui-react'
 
 function CommentList(props) {
 
@@ -6,9 +7,15 @@ function CommentList(props) {
 	const comment = props.commentList.map((comment) => {
 
 		return(
-			<div key={comment.id}>
-				<p>{comment.comment}. (By: {comment.author.first_name})</p>
-			</div>
+			<Card key={comment.id}>
+				<Card.Content>
+					<p>{comment.comment}</p>
+					<p>(By: {comment.author.first_name})</p>
+					<p>(At: {comment.created_at})</p>
+					<button onClick={()=>props.deleteComment(comment.id)}>Delete</button>
+					
+				</Card.Content>
+			</Card>
 			)
 	})
 

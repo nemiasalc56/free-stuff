@@ -84,12 +84,22 @@ class CommentContainer extends Component {
 		}
 	}
 
+	// delete a comment
+	deleteComment = (commentToDeleteId) => {
+		// set up our url
+		const url = process.env.REACT_APP_API_URL + '/api/v1/comments/' + commentToDeleteId
+		console.log(commentToDeleteId);
+	}
+
 
 	render() {
 
 		return(
 			<div>
-				<CommentList commentList={this.state.commentList}/>
+				<CommentList 
+					commentList={this.state.commentList}
+					deleteComment={this.deleteComment}
+				/>
 
 				<Grid className="center aligned" >
 					
