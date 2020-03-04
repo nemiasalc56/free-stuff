@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Grid, Image, Button, Select, Modal, Header, Icon } from 'semantic-ui-react'
 import ItemList from '../ItemsContainer/ItemList'
 import EditUserForm from './EditUserForm'
+import './index.css'
 
 
 
@@ -150,7 +151,7 @@ class ProfileContainer extends Component {
 								<div>
 									<Select 
 										onChange={this.switcher}
-										placeholder="Account Settings"
+										placeholder="Settings"
 										options={[{key: 'se', value: 'settings', text: 'Settings'},
 												{key: 'ed', value: 'edit', text: 'Edit Account'},
 												{key: 'de', value: 'delete', text: 'Delete Account'},

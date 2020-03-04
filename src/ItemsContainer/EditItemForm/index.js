@@ -121,6 +121,7 @@ class EditItemForm extends Component {
 								<label>Category</label>
 								<Select 
 									placeholder='Select a category' 
+									value={this.state.category}
 									options={this.state.options}
 									onChange={(e, { value }) => this.setState({category: value})} 
 
