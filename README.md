@@ -20,6 +20,7 @@ Keep in mind that all the items in this site are for free for the user.
 ```
 $ create-react-app joke-app
 $ npm i axios
+$ npm mapbox-gl
 ```
 
 ## Tables
@@ -144,10 +145,11 @@ class Comment(Model):
 ## Technology used
 
 * Flask
-* React.js
 * Sqlite -- Postgres
+* React.js
 * Python
-* GoogleMaps API
+* Mapbox API
+* Cloudinary
 
 
 ## Development process

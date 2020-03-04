@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Grid, Image } from 'semantic-ui-react'
 import './index.css'
 import CommentsContainer from '../CommentsContainer'
+import MapContainer from './MapContainer'
 
 
 
@@ -28,7 +29,7 @@ function ShowItemContainer(props){
 						: null
 					}
 					<div width={8} className="map-container">
-						<h2>Map will go down here</h2>
+						<MapContainer />
 					</div>
 						
 				</Grid.Column>
