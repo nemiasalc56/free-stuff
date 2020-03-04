@@ -209,7 +209,8 @@ class App extends Component {
   }
   
   	handleSubmit = (e) =>{
-  		e.preventDefault()		
+  		e.preventDefault()
+  		console.log("hi im search searching");		
   	}
 
   	render() {
@@ -219,13 +220,22 @@ class App extends Component {
 		    		<Header>
 		    			<div className="main">
 							<Grid>
-								<Grid.Row>
-									<h1>Free Stuff</h1>
+								<Grid.Row style={{
+									display: "flex",
+									justifyContent: 'space-between',
+									alignItems: "center",
+									marginLeft: "25px",
+									marginRight: "25px"
+									}}>
+									<h1 >Free Stuff</h1>
 									<form onSubmit={this.handleSubmit}>
-									    <div className="ui icon input">
+									    <div className="ui icon">
 
 											<Input
-												className="search"
+												style={{
+													width: "50em"
+												}}
+												id="search"
 												type="text"
 									        	loading={this.state.isLoading}
 									            onChange={_.debounce(this.handleSearchChange, 500, {
@@ -234,20 +244,23 @@ class App extends Component {
 									            results={this.state.results}
 									            value={this.state.value}
 									        />
-									        <i aria-hidden="true" className="search icon"></i>
+									        <i onClick={this.handleSubmit} aria-hidden="true" className="search icon"></i>
 								          </div>
 
-								          <Button type="submite">Search</Button>
+								          {/* <Button id="search-btn" type="submit">Search</Button> */}
 									</form>
 									
-									{this.state.loggedIn
-										? null
-										:<h2 
-											className="login-logo"
-				    						onClick={()=>this.setState({loginOpen:true})}
-				    					>Login
-				    					</h2>
-										}
+									<div>
+										{this.state.loggedIn
+											? null
+											:<h2 
+												id="login-logo"
+					    						onClick={()=>this.setState({loginOpen:true})}
+					    					>Login
+					    					</h2>
+											}
+										
+									</div>
 									
 								</Grid.Row>
 							</Grid>

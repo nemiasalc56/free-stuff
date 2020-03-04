@@ -15,9 +15,15 @@ body {
 }
 
 
-.search {
+#search {
 	width: 600px;
+	margin: 1em;
 	border-radius: 50px;
+}
+
+.search:hover {
+	cursor: pointer;
+	color: dimgray;
 }
 
 .nav-header {
@@ -31,3 +37,16 @@ body {
 	top: 7px;
 	right: 5px;
 }
+
+#freestuff-logo {
+	margin: 1em;
+}
+
+#login-logo:hover {
+	cursor: pointer;
+	color: dimgray;
+}
+
+
+
+
