@@ -91,6 +91,20 @@ class LoginRegisterForm extends Component {
 		})
 	}
 
+	// this method will handle the changes when user selects a photo
+	handleImageUpload = (e) => {
+		const file = e.target.files[0]
+		const formData = new FormData()
+		
+		// insert the info from the file and from cloudinary in our formData
+		formData.append("upload_preset", "nehemias")
+		formData.append("file", file)
+		// store the form data in state
+		this.setState({
+			formData: formData
+		})
+	}
+
 	render() {
 		return (			
 			
@@ -174,10 +188,9 @@ class LoginRegisterForm extends Component {
 								<Form.Field>
 									<Form.Input 
 										label="Image"
-										type="text" 
-										name="picture"
-										value={this.state.picture}
-										onChange={this.handleChange}
+										type="file" 
+										name="file"
+										onChange={this.handleImageUpload}
 										placeholder='Image' />
 								</Form.Field>
 								</div>
