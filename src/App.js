@@ -177,7 +177,7 @@ class App extends Component {
  		if(logoutJson.status === 201) {
 			this.setState({
 				loggedIn: false,
-				loginOpen: false,
+				loginOpen: true,
 				userId: -1,
 				message: '',
 				category: '',
