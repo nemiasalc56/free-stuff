@@ -4,15 +4,23 @@ import { Card } from 'semantic-ui-react'
 function CommentList(props) {
 
 	// get all the comments from props
-	const comment = props.commentList.map((comment) => {
+	const commentList = props.commentList
+	console.log("props.user in CommentList >>>", props.user);
+	console.log("CommentList >>", commentList);
+	const comment = commentList.map((comment) => {
 
 		return(
-			<Card key={comment.id}>
-				<Card.Content>
+			<Card key={comment.id} style={{width: "30em"}}>
+				<Card.Content >
 					<p>{comment.comment}</p>
 					<p>(By: {comment.author.first_name})</p>
 					<p>(At: {comment.created_at})</p>
-					<button onClick={()=>props.deleteComment(comment.id)}>Delete</button>
+					{props.user.id === comment.author.id | props.user.id === comment.item.owner.id
+						?
+						<button onClick={()=>props.deleteComment(comment.id)}>Delete</button>
+
+						:null
+					}
 					
 				</Card.Content>
 			</Card>

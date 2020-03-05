@@ -6,6 +6,7 @@ import { Card, Image } from 'semantic-ui-react'
 function ItemList(props) {
 
 	// get all the items from props
+	// const items
 	const item = props.items.map((item) => {
 
 		return(

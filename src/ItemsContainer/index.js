@@ -270,7 +270,7 @@ class ItemsContainer extends Component {
 	}
 
 	render() {
-		
+		// console.log("props in ItemsContainer >>>", this.props);
 		return(
 			<div>
 				<h2 className="user-name-link" 
@@ -317,6 +317,7 @@ class ItemsContainer extends Component {
 						user={this.props.user}
 						itemToEdit={this.getItemToEdit}
 						deleteItem={this.deleteItem}
+						loggedIn={this.props.loggedIn}
 					/>
 					: null
 				}

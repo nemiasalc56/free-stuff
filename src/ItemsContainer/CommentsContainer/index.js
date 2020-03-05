@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Grid, Form } from 'semantic-ui-react'
+import { Button, Grid, Form, Segment } from 'semantic-ui-react'
 import CommentList from './CommentList'
 
 
@@ -119,28 +119,43 @@ class CommentContainer extends Component {
 
 
 	render() {
-
+		
 		return(
 			<div>
-				<CommentList 
-					commentList={this.state.commentList}
-					deleteComment={this.deleteComment}
-				/>
-
-				<Grid className="center aligned" >
+				<Grid  className="center aligned scroll">
+					<div id="comment-list-container">
+						<CommentList 
+							commentList={this.state.commentList}
+							deleteComment={this.deleteComment}
+							loggedIn={this.props.loggedIn}
+							user={this.props.user}
+						/>
+						
+					</div>
 					
-					<Form onSubmit={this.handleSubmit}>
-						<Form.Field>
-							<Form.Input
-								style={{width: "20em"}}
-								type="text" 
-								name="comment"
-								value={this.state.comment}
-								onChange={this.handleChange}
-								placeholder='Leave comment' />
-							<Button style={{width: "20em"}} color="green">Send</Button>
-						</Form.Field>
-					</Form>
+				</Grid>
+
+				<Grid  className="center aligned" id="comment-form">
+					{this.props.loggedIn
+						?
+						<Segment>
+							<Form onSubmit={this.handleSubmit}>
+								<Form.Field>
+									<Form.Input
+										style={{width: "30em"}}
+										type="text" 
+										name="comment"
+										value={this.state.comment}
+										onChange={this.handleChange}
+										placeholder='Leave comment' />
+									<Button style={{width: "30em"}} color="green">Send</Button>
+								</Form.Field>
+							</Form>
+							
+						</Segment>			
+
+						:null
+					}
 					
 				</Grid>
 			</div>

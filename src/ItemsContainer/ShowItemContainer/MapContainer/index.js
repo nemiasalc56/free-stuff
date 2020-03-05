@@ -25,7 +25,7 @@ class MapContainer extends Component {
     })
     
     map.on('load', ()=> {
-      map.loadImage('https://i.imgur.com/rdJCRXV.png', (error, image)=>{
+      map.loadImage('https://i.imgur.com/KuXHVs1.png', (error, image)=>{
         if(error) throw error
         map.addImage('marker', image)
         map.addSource('point', {
@@ -50,7 +50,7 @@ class MapContainer extends Component {
         'source': 'point',
         'layout': {
           'icon-image': 'marker',
-          'icon-size': 0.08
+          'icon-size': 0.10
         }
       })
     })

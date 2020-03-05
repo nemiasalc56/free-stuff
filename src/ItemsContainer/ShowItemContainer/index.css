@@ -1,6 +1,15 @@
 
 .comment-container {
 	border: 2px solid black;
+	justify-content: center;
+}
+
+#comment-form {
+	height: 130px;
+}
+
+#comment-list-container {
+	margin-top: 30px;
 }
 
 #show-page-image {
@@ -15,4 +24,8 @@
 
 #item-name {
 	text-align: center;
+}
+
+#item-name h1 {
+	font-size: 60px;
 }

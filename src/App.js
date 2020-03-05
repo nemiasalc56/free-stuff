@@ -280,6 +280,7 @@ class App extends Component {
 		      			user={this.state.user}
 		      			itemSearch={this.state.results}
 		      			logout={this.logout}
+		      			loggedIn={this.state.loggedIn}
 		      		/>
 		      		}
 	      			
