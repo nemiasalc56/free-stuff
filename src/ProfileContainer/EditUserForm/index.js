@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
-
+import axios from 'axios'
 
 class EditUserForm extends Component {
 	constructor(props) {
@@ -35,7 +35,8 @@ class EditUserForm extends Component {
 			zip_code: this.props.user.address.zip_code,
 			email: this.props.user.email,
 			lat: this.props.user.address.lat,
-			lng: this.props.user.address.lng
+			lng: this.props.user.address.lng,
+			formData: null
 		})
 	}
 
@@ -67,12 +68,27 @@ class EditUserForm extends Component {
 		console.log("getCoordinates in profile EditUserForm");
 		console.log(this.state.lat);
 		console.log(this.state.lng);
+		this.uploadImage()
+	}
 
+	// this method will handle the changes when user selects a photo
+	handleImageUpload = (e) => {
+		const file = e.target.files[0]
+		const formData = new FormData()
+		
+		// insert the info from the file and from cloudinary in our formData
+		formData.append("upload_preset", "nehemias")
+		formData.append("file", file)
+		// store the form data in state
+		this.setState({
+			formData: formData
+		})
+		console.log(this.state);
 	}
 
 	render() {
-		console.log(this.props);
-		console.log(this.state);
+		// console.log(this.props);
+		// console.log(this.state);
 		return(
 			<Grid className="center aligned">
 				<Segment 
@@ -148,10 +164,9 @@ class EditUserForm extends Component {
 						<Form.Field>
 							<Form.Input 
 								label="Image"
-								type="text" 
-								name="picture"
-								value={this.state.picture}
-								onChange={this.handleChange}
+								type="file" 
+								name="file"
+								onChange={this.handleImageUpload}
 								placeholder='Image' />
 						</Form.Field>
 
