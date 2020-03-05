@@ -225,9 +225,11 @@ class App extends Component {
 									marginLeft: "1em",
 									marginRight: "1em"
 									}}>
-									<h1 id="free-stuff-logo"
+									<img
+										src="https://i.imgur.com/cqGzlWY.png" 
+										id="free-stuff-logo"
 										onClick={()=>this.setState({loginOpen: false})}
-										>Free Stuff</h1>
+										/>
 									<form onSubmit={this.handleSubmit}>
 										<div className="ui icon">
 

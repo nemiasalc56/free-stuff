@@ -37,6 +37,7 @@ body {
 .nav-header {
 	background-color: rgb(95, 158, 160);
 	border-bottom: 1px solid black;
+	size: cover;
 }
 
 .user-name-link {
@@ -52,7 +53,7 @@ body {
 }
 
 #free-stuff-logo {
-	font-size: 50px;
+	height: 70px;
 }
 
 #free-stuff-logo:hover {
