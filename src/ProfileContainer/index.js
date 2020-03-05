@@ -11,7 +11,7 @@ class ProfileContainer extends Component {
 		super(props)
 
 		this.state = {
-			user: this.props.user,
+			user: '',
 			myItems: [],
 			userHasItems: false,
 			EditUserFormOpend: false,
@@ -22,6 +22,7 @@ class ProfileContainer extends Component {
 
 	// 
 	componentDidMount() {
+		this.setState({user: this.props.user})
 		this.getUserItems()
 	}
 
@@ -80,7 +81,12 @@ class ProfileContainer extends Component {
 
 			const updateAccountJson = await updateAccountResponse.json()
 			if(updateAccountJson.status === 200) {
-				this.setState({updated: true})
+
+				// this is so that we can the item that was added showing on the page
+				this.setState({
+					updated: true,
+					user: updateAccountJson.data
+				})
 			}
 		} catch(err) {
 			console.error(err);
@@ -129,8 +135,13 @@ class ProfileContainer extends Component {
 		}
 	}
 
-	cancelEdit = () => {
-		this.setState({EditUserFormOpend: false})
+	closeEditForm = () => {
+		this.setState({
+			EditUserFormOpend: false,
+			user: this.props.user
+		})
+		if(this.props.user){}
+
 	}
 
 
@@ -207,7 +218,7 @@ class ProfileContainer extends Component {
 						? <EditUserForm 
 							user={this.state.user}
 							updateAccount={this.updateAccount}
-							cancelEdit={this.cancelEdit}
+							closeEditForm={this.closeEditForm}
 						/>
 						:null
 					}

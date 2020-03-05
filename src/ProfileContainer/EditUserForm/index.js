@@ -86,9 +86,22 @@ class EditUserForm extends Component {
 		console.log(this.state);
 	}
 
+	uploadImage = async () => {
+		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
+			// when the fetch is resolved we store the image url on state
+			.then(res => this.setState({picture: res.data.secure_url}))
+			.catch(err => console.log(err))
+		console.log("uploadImage 3");
+		this.sendUpdate()
+	}
+
+	sendUpdate = () => {
+		this.props.updateAccount(this.state)
+		this.props.closeEditForm()
+	}
+
 	render() {
-		// console.log(this.props);
-		// console.log(this.state);
+
 		return(
 			<Grid className="center aligned">
 				<Segment 
@@ -194,7 +207,7 @@ class EditUserForm extends Component {
 							Update Account
 						</Button>
 						<Button 
-							onClick={()=>this.props.cancelEdit()}
+							onClick={()=>this.props.closeEditForm()}
 							className="big login-button" 
 							type='submit'>
 							Cancel update

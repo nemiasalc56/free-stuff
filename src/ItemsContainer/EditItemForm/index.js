@@ -102,7 +102,6 @@ class EditItemForm extends Component {
 
 	sendUpdate = () => {
 		this.props.updateItem(this.state)
-		console.log("sendUpdate 4");
 	}
 
 
