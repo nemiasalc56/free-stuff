@@ -5,10 +5,9 @@ function CommentList(props) {
 
 	// get all the comments from props
 	const commentList = props.commentList
-	console.log("props.user in CommentList >>>", props.user);
-	console.log("CommentList >>", commentList);
+	console.log("CommentList >>", commentList.length);
 	const comment = commentList.map((comment) => {
-
+		
 		return(
 			<Card key={comment.id} style={{width: "30em"}}>
 				<Card.Content >
@@ -29,7 +28,13 @@ function CommentList(props) {
 
 	return(
 		<div>
-			{comment}
+			{commentList.length > 0
+				? comment
+				: 
+				<div id="leave-comment">
+					<h1>You can leave a comment here</h1>
+				</div>
+			}
 		</div>
 		)
 }

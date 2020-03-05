@@ -152,39 +152,58 @@ class ProfileContainer extends Component {
 			<div>	
 					{!this.state.EditUserFormOpend
 						?
-						<Grid>
-							<Grid.Column width={8}>
-								<Image
-									src={this.state.user.picture}
-									size='medium'
-								/>
-						
-							</Grid.Column>
-
-							<Grid.Column width={8}>
-								<h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
-								<div>
-									<Select 
-										onChange={this.switcher}
-										placeholder="Settings"
-										options={[{key: 'se', value: 'settings', text: 'Settings'},
-												{key: 'ed', value: 'edit', text: 'Edit Account'},
-												{key: 'de', value: 'delete', text: 'Delete Account'},
-												{key: 'lo', value: 'logout', text: 'Logout'}
-												]}
+						<div>
+							<Grid>
+								<Grid.Column width={8}>
+									<Image
+										id="profile-image"
+										src={this.state.user.picture}
+										size='medium'
 									/>
-								</div>
-								<Button onClick={this.makeAPost}>Make a Post</Button>
-							</Grid.Column>
-							{this.state.userHasItems
-								?
-								<ItemList 
-								items={this.state.myItems}
-								getItemToShow={this.props.getItemToShow}
-								/>
-								: <h1>You don't have items in this account</h1>
-							}
+							
+								</Grid.Column>
 
+								<Grid.Column id="user-profile-info" width={8} style={{
+									textAlign: "center",
+									alignSelf: "center"
+								}}>
+									<h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
+									<div>
+										<Select 
+											onChange={this.switcher}
+											placeholder="Settings"
+											style={{
+												marginTop: '10px',
+												height: '1vh',
+												width: '40vw'
+											}}
+											options={[{key: 'se', value: 'settings', text: 'Settings'},
+													{key: 'ed', value: 'edit', text: 'Edit Account'},
+													{key: 'de', value: 'delete', text: 'Delete Account'},
+													{key: 'lo', value: 'logout', text: 'Logout'}
+													]}
+										/>
+									</div>
+									<Button 
+										id="profile-post-button" 
+										style={{
+											marginTop: '40px',
+											height: '10vh',
+											width: '40vw'
+										}} onClick={this.makeAPost}
+										>Post A Free Item</Button>
+								</Grid.Column>
+							</Grid>
+							<Grid>
+								{this.state.userHasItems
+									?
+									<ItemList 
+									items={this.state.myItems}
+									getItemToShow={this.props.getItemToShow}
+									/>
+									: <h1>You don't have items in this account</h1>
+								}
+							</Grid>
 							<Modal open={this.state.deleteOpen}
 									onClose={this.close}
 								>
@@ -209,7 +228,7 @@ class ProfileContainer extends Component {
 							      	</Button>
 							    </Modal.Actions>
 							</Modal>
-						</Grid>
+						</div>
 
 						:null
 					}

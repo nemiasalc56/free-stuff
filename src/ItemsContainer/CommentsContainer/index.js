@@ -154,7 +154,10 @@ class CommentContainer extends Component {
 							
 						</Segment>			
 
-						:null
+						:
+						<div>
+							<h1>Login to leave a comment.</h1>
+						</div>
 					}
 					
 				</Grid>

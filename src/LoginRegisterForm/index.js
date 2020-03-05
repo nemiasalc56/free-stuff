@@ -135,6 +135,7 @@ class LoginRegisterForm extends Component {
 							<div>
 								<Form.Group>
 									<Form.Input 
+										required={true}
 										label="First name"
 										type="text" 
 										name="first_name"
@@ -142,6 +143,7 @@ class LoginRegisterForm extends Component {
 										onChange={this.handleChange}
 										placeholder="First name" />
 									<Form.Input 
+										required={true}
 										label="Last name"
 										type="text"
 										name="last_name"
@@ -152,6 +154,7 @@ class LoginRegisterForm extends Component {
 								
 								<Form.Group>
 									<Form.Input 
+										required={true}
 										label="Address 1"
 										type="text" 
 										name="address_1"
@@ -168,6 +171,7 @@ class LoginRegisterForm extends Component {
 										placeholder="Address 2" />
 								
 									<Form.Input 
+										required={true}
 										label="City"
 										type="text" 
 										name="city"
@@ -176,6 +180,7 @@ class LoginRegisterForm extends Component {
 										placeholder="City" />
 								
 									<Form.Input 
+										required={true}
 										label="State" 
 										type="text" 
 										name="state"
@@ -184,6 +189,7 @@ class LoginRegisterForm extends Component {
 										placeholder="state" />
 								
 									<Form.Input 
+										required={true}
 										label="Zipcode"
 										type="text" 
 										name="zip_code"
@@ -205,10 +211,11 @@ class LoginRegisterForm extends Component {
 						}
 
 						<Form.Field>
-							<label>Email</label>
-							<input 
+							<Form.Input 
+								label="Email"
 								type="text" 
 								name="email"
+								required={true}
 								style={{width: "30em"}}
 								value={this.state.email}
 								onChange={this.handleChange}
@@ -216,10 +223,11 @@ class LoginRegisterForm extends Component {
 						</Form.Field>
 
 						<Form.Field>
-							<label>Password</label>
-							<input 
+							<Form.Input 
+								label="Password"
 								type="password" 
 								name="password"
+								required={true}
 								style={{width: "30em"}}
 								value={this.state.password}
 								onChange={this.handleChange}

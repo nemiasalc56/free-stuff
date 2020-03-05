@@ -10,7 +10,14 @@
 
 #comment-list-container {
 	margin-top: 30px;
+	margin-bottom: 20px;
+	border: 5px solid rgb(95, 108, 10);
+	border-radius: 20px;
+	overflow: scroll;
+	height: 300px;
+	width: 450px;
 }
+
 
 #show-page-image {
 	border: 5px solid gray;
