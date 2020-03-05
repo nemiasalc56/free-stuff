@@ -23,8 +23,6 @@ body {
 
 
 #search {
-	width: 30em;
-	margin: 1em;
 	border-radius: 50px;
 
 }
@@ -43,17 +41,17 @@ body {
 .user-name-link {
 	position: absolute;
 	color: black;
-	top: 25px;
+	top: 15px;
 	right: 1.7em;
+}
+
+.user-name-link:hover {
+	cursor: pointer;
 }
 
 .login-register-rendered {
 	margin-left: 3em;
 	margin-right: 3em;
-}
-
-#free-stuff-logo {
-	height: 70px;
 }
 
 #free-stuff-logo:hover {

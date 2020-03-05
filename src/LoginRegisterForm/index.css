@@ -13,3 +13,13 @@
 .item-list-container {
 	margin-top: 30px;
 }
+
+#login-link {
+	color: blue;
+	margin-bottom: 20px;
+}
+
+#login-link:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}

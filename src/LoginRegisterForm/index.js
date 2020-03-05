@@ -63,12 +63,12 @@ class LoginRegisterForm extends Component {
 		}
 		e.preventDefault()
 
-		await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
-			// when the fetch is resolved we store the image url on state
-			.then(res => this.setState({picture: res.data.secure_url}))
-			.catch(err => console.log(err))
 
 		if(this.state.action === "register") {
+			await axios.post('https://api.cloudinary.com/v1_1/free-stuff/image/upload', this.state.formData)
+				// when the fetch is resolved we store the image url on state
+				.then(res => this.setState({picture: res.data.secure_url}))
+				.catch(err => console.log(err))
 			if(this.state.picture === '') {
 
 				// if the user doesn't select a profile picture we can set this one
@@ -246,7 +246,7 @@ class LoginRegisterForm extends Component {
 							}
 						</Button>
 						<Grid className="center aligned option">
-							<p onClick={this.switchForm}>
+							<p id="login-link" onClick={this.switchForm}>
 								{this.state.action === "login"
 									? "Already have an account?"
 									: "login"

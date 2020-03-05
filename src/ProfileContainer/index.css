@@ -10,3 +10,8 @@
 	border: 5px solid black;
 	border-radius: 10px;
 }
+
+#cancel-accont-update {
+	margin-top: 20px;
+	margin-bottom: 5px;
+}

@@ -103,10 +103,10 @@ class EditUserForm extends Component {
 	render() {
 
 		return(
-			<Grid className="center aligned">
+			<Grid className="center aligned" id="user-edit-form">
 				<Segment 
 					style={{
-						marginTop: '200px'
+						marginTop: '70px'
 					}}
 				>
 					
@@ -120,6 +120,7 @@ class EditUserForm extends Component {
 								label="First name"
 								type="text" 
 								name="first_name"
+								required={true}
 								value={this.state.first_name}
 								onChange={this.handleChange}
 								placeholder="First name" />
@@ -127,6 +128,7 @@ class EditUserForm extends Component {
 								label="Last name"
 								type="text"
 								name="last_name"
+								required={true}
 								value={this.state.last_name}
 								onChange={this.handleChange}
 								placeholder="Last name" />
@@ -137,6 +139,7 @@ class EditUserForm extends Component {
 								label="Address 1"
 								type="text" 
 								name="address_1"
+								required={true}
 								value={this.state.address_1}
 								onChange={this.handleChange}
 								placeholder="Address 1" />
@@ -153,6 +156,7 @@ class EditUserForm extends Component {
 								label="City"
 								type="text" 
 								name="city"
+								required={true}
 								value={this.state.city}
 								onChange={this.handleChange}
 								placeholder="City" />
@@ -161,6 +165,7 @@ class EditUserForm extends Component {
 								label="State" 
 								type="text" 
 								name="state"
+								required={true}
 								value={this.state.state}
 								onChange={this.handleChange}
 								placeholder="state" />
@@ -169,6 +174,7 @@ class EditUserForm extends Component {
 								label="Zipcode"
 								type="text" 
 								name="zip_code"
+								required={true}
 								value={this.state.zip_code}
 								onChange={this.handleChange}
 								placeholder="Zipcode" />
@@ -184,20 +190,22 @@ class EditUserForm extends Component {
 						</Form.Field>
 
 						<Form.Field>
-							<label>Email</label>
-							<input 
+							<Form.Input 
+								label="Email"
 								type="text" 
 								name="email"
+								required={true}
 								value={this.state.email}
 								onChange={this.handleChange}
 								placeholder="Enter email" />
 						</Form.Field>
 
 						<Form.Field>
-							<label>Password</label>
-							<input 
+							<Form.Input 
+								label="Password"
 								type="password" 
 								name="password"
+								required={true}
 								value={this.state.password}
 								onChange={this.handleChange}
 								placeholder="Enter password" />
@@ -208,7 +216,8 @@ class EditUserForm extends Component {
 						</Button>
 						<Button 
 							onClick={()=>this.props.closeEditForm()}
-							className="big login-button" 
+							className="big login-button"
+							id="cancel-accont-update"
 							type='submit'>
 							Cancel update
 						</Button>

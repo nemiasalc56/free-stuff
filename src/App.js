@@ -191,8 +191,8 @@ class App extends Component {
 
     setTimeout(() => {
       if (this.state.value.length < 1) return this.setState({
-      		isLoading: false, 
-			results: [], 
+      		isLoading: false,
+			results: [],
 			value: ''
       })
 
@@ -208,7 +208,7 @@ class App extends Component {
   
   	handleSubmit = (e) =>{
   		e.preventDefault()
-  		console.log("hi im search searching");		
+
   	}
 
   	render() {
@@ -226,16 +226,22 @@ class App extends Component {
 									marginRight: "1em"
 									}}>
 									<img
+										style={{
+											width: "20vw"
+										}}
 										src="https://i.imgur.com/cqGzlWY.png" 
 										id="free-stuff-logo"
 										onClick={()=>this.setState({loginOpen: false})}
 										/>
 									<form onSubmit={this.handleSubmit}>
-										<div className="ui icon">
+										<div className="">
 
 											<Input
 												id="search"
 												type="text"
+												style={{
+													width: "40vw"
+													}}
 									        	loading={this.state.isLoading}
 									            onChange={_.debounce(this.handleSearchChange, 500, {
 									              leading: true,
@@ -244,10 +250,9 @@ class App extends Component {
 									            value={this.state.value}
 									            placeholder="Search"
 									        />
-									        <i onClick={this.handleSubmit} 
-									        	id="search-icon"
-									        	aria-hidden="true" 
-									        	className="search icon"></i>
+									        <i aria-hidden="true" className="search icon"></i>
+
+									        
 								         </div>
 
 									</form>
@@ -263,8 +268,6 @@ class App extends Component {
 											}
 									</div>
 
-									
-									
 								</Grid.Row>
 							</Grid>
 		    			</div>
