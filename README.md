@@ -167,7 +167,7 @@ class Comment(Model):
 	- CRUD user -
 	- List items by category -
 	- Set up Cloudinary API
-	- Set up GoogleMaps API
+	- Set up Mapbox Token
 	- Search
 
 

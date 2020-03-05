@@ -26,6 +26,7 @@ body {
 	width: 30em;
 	margin: 1em;
 	border-radius: 50px;
+
 }
 
 #search-icon:hover {
@@ -54,9 +55,19 @@ body {
 	font-size: 50px;
 }
 
+#free-stuff-logo:hover {
+	cursor: pointer;
+}
+
 #login-logo:hover {
 	cursor: pointer;
 	color: darkblue;
+}
+
+#login-logo-container #login-logo {
+	text-align: center;
+	align-self: center;
+	margin-right: 5px;
 }
 
 #login-logo-container {

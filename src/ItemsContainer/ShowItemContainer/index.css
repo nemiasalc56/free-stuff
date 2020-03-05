@@ -1,7 +1,18 @@
-.map-container {
-	border: 2px solid black;
-}
 
 .comment-container {
 	border: 2px solid black;
+}
+
+#show-page-image {
+	border: 5px solid gray;
+	border-radius: 20px;
+}
+
+#map {
+	border: 5px solid green;
+	border-radius: 10px;
+}
+
+#item-name {
+	text-align: center;
 }

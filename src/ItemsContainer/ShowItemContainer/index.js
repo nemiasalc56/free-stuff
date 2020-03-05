@@ -9,10 +9,10 @@ function ShowItemContainer(props){
 	
 	return(
 		<div>
-			<h2>ShowItemContainer</h2>
 			<Grid>
 				<Grid.Column width={8}>
 					<Image
+						id="show-page-image"
 						src={props.item.picture}
 					/>
 					{props.user.id===props.item.owner.id
@@ -25,7 +25,7 @@ function ShowItemContainer(props){
 						</div>
 						: null
 					}
-					<div width={8} className="map-container">
+					<div width={8}>
 						<MapContainer 
 							lat={Number(props.item.lat)}
 							lng={Number(props.item.lng)}
@@ -34,12 +34,13 @@ function ShowItemContainer(props){
 						
 				</Grid.Column>
 				<Grid.Column width={8}>
-					<h1>{props.item.name}</h1>
-
-					<div className="addres-container">
-						<p>{props.item.address_1}, apt/unit {props.item.address_2}, {props.item.city}, {props.item.state}, {props.item.zipcode}</p>					
-						
+					<div id="item-name">
+						<h1>{props.item.name}</h1>
+						<div className="addres-container">
+							<p>{props.item.address_1} {props.item.address_2} {props.item.city} {props.item.state} {props.item.zip_code}</p>
+						</div>
 					</div>
+
 					<div className="description-container">
 						<p>{props.item.description}</p>
 					</div>

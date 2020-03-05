@@ -222,10 +222,12 @@ class App extends Component {
 									display: "flex",
 									justifyContent: 'space-between',
 									alignItems: "center",
-									marginLeft: "3em",
-									marginRight: "3em"
+									marginLeft: "1em",
+									marginRight: "1em"
 									}}>
-									<h1 id="free-stuff-logo">Free Stuff</h1>
+									<h1 id="free-stuff-logo"
+										onClick={()=>this.setState({loginOpen: false})}
+										>Free Stuff</h1>
 									<form onSubmit={this.handleSubmit}>
 										<div className="ui icon">
 

@@ -117,7 +117,8 @@ class LoginRegisterForm extends Component {
 			<Grid className="center aligned">
 				<Segment 
 					style={{
-						marginTop: '200px'
+						marginTop: '7em',
+						boxShadow: '15px 10px 20px 2px #0d6b82'
 					}}
 				>
 					<Grid.Row>
@@ -208,6 +209,7 @@ class LoginRegisterForm extends Component {
 							<input 
 								type="text" 
 								name="email"
+								style={{width: "30em"}}
 								value={this.state.email}
 								onChange={this.handleChange}
 								placeholder="Enter email" />
@@ -218,6 +220,7 @@ class LoginRegisterForm extends Component {
 							<input 
 								type="password" 
 								name="password"
+								style={{width: "30em"}}
 								value={this.state.password}
 								onChange={this.handleChange}
 								placeholder="Enter password" />

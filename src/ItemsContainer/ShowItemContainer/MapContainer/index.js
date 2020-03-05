@@ -61,9 +61,12 @@ class MapContainer extends Component {
 
     return(
       <div>
-        <div style={{
+        <div 
+          id="map"
+          style={{
+            marginTop: '10px',
             height: '60vh',
-            width: '48vw'
+            width: '40vw'
           }} ref={el => this.mapContainer = el} />
       </div>
       )
