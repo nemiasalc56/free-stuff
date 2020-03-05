@@ -5,23 +5,30 @@ body {
 .nav-container2 {
 	display: flex;
 	justify-content: center;
-	margin-top: 30px;
+	margin-top: 5px;
 }
 
 .nav p {
 	margin-left: 10px;
 	margin-right: 10px;
 	display: inline-block;
+	font-size: 18px;
+}
+
+.nav p:hover {
+	cursor: pointer;
+	text-shadow: 3px 2px 20px #0d6b82;
+	color: darkblue;
 }
 
 
 #search {
-	width: 600px;
+	width: 30em;
 	margin: 1em;
 	border-radius: 50px;
 }
 
-.search:hover {
+#search-icon:hover {
 	cursor: pointer;
 	color: dimgray;
 }
@@ -34,19 +41,28 @@ body {
 .user-name-link {
 	position: absolute;
 	color: black;
-	top: 7px;
-	right: 5px;
+	top: 25px;
+	right: 1.7em;
 }
 
-#freestuff-logo {
-	margin: 1em;
+.login-register-rendered {
+	margin-left: 3em;
+	margin-right: 3em;
+}
+
+#free-stuff-logo {
+	font-size: 50px;
 }
 
 #login-logo:hover {
 	cursor: pointer;
-	color: dimgray;
+	color: darkblue;
 }
 
+#login-logo-container {
+	height: 25px;
+	width: 110px;
+}
 
 
 

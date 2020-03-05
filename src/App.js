@@ -3,7 +3,7 @@ import _ from 'lodash'
 import './App.css';
 import LoginRegisterForm from './LoginRegisterForm'
 import ItemsContainer from './ItemsContainer'
-import { Grid, Header, Button, Input } from 'semantic-ui-react'
+import { Grid, Header, Input } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -151,8 +151,6 @@ class App extends Component {
 					message: loginJson.message,
 					user: loginJson.data
 				})
-			}else{
-				console.log("didnt work");
 			}
 
 		}catch(err) {
@@ -177,15 +175,15 @@ class App extends Component {
  		const logoutJson = await logoutResponse.json()
 
  		if(logoutJson.status === 201) {
-				this.setState({
-					loggedIn: false,
-					loginOpen: false,
-					userId: -1,
-					message: '',
-					category: '',
-					user: ''
-				})
-			}
+			this.setState({
+				loggedIn: false,
+				loginOpen: false,
+				userId: -1,
+				message: '',
+				category: '',
+				user: ''
+			})
+		}
  	}
 
   	handleSearchChange = (e, { value }) => {
@@ -224,17 +222,14 @@ class App extends Component {
 									display: "flex",
 									justifyContent: 'space-between',
 									alignItems: "center",
-									marginLeft: "25px",
-									marginRight: "25px"
+									marginLeft: "3em",
+									marginRight: "3em"
 									}}>
-									<h1 >Free Stuff</h1>
+									<h1 id="free-stuff-logo">Free Stuff</h1>
 									<form onSubmit={this.handleSubmit}>
-									    <div className="ui icon">
+										<div className="ui icon">
 
 											<Input
-												style={{
-													width: "50em"
-												}}
 												id="search"
 												type="text"
 									        	loading={this.state.isLoading}
@@ -243,14 +238,17 @@ class App extends Component {
 									            })}
 									            results={this.state.results}
 									            value={this.state.value}
+									            placeholder="Search"
 									        />
-									        <i onClick={this.handleSubmit} aria-hidden="true" className="search icon"></i>
-								          </div>
+									        <i onClick={this.handleSubmit} 
+									        	id="search-icon"
+									        	aria-hidden="true" 
+									        	className="search icon"></i>
+								         </div>
 
-								          {/* <Button id="search-btn" type="submit">Search</Button> */}
 									</form>
 									
-									<div>
+									<div id="login-logo-container">
 										{this.state.loggedIn
 											? null
 											:<h2 
@@ -259,8 +257,9 @@ class App extends Component {
 					    					>Login
 					    					</h2>
 											}
-										
 									</div>
+
+									
 									
 								</Grid.Row>
 							</Grid>
@@ -269,18 +268,20 @@ class App extends Component {
 	    			
 	    		</div>
 	      		{/* this is so that we can render conditionally */}
-	      		{this.state.loginOpen
-	      			? <LoginRegisterForm 
-	      				register={this.register}
-	      				login={this.login}
-	      			/>
-	      		: <ItemsContainer 
-	      			user={this.state.user}
-	      			itemSearch={this.state.results}
-	      			logout={this.logout}
-	      		/>
-
-	      		}
+	      		<div className="login-register-rendered">
+		      		{this.state.loginOpen
+		      			? <LoginRegisterForm 
+		      				register={this.register}
+		      				login={this.login}
+		      			/>
+		      		: <ItemsContainer 
+		      			user={this.state.user}
+		      			itemSearch={this.state.results}
+		      			logout={this.logout}
+		      		/>
+		      		}
+	      			
+	      		</div>
 	    	</div>
   		)
   	}

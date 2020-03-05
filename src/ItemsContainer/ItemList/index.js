@@ -6,12 +6,13 @@ import { Card, Image } from 'semantic-ui-react'
 function ItemList(props) {
 
 	// get all the items from props
-	const item = props.items.reverse().map((item) => {
+	const item = props.items.map((item) => {
 
 		return(
 			<Card key={item.id} onClick={()=> props.getItemToShow(item.id)}>
 
 				<Image
+					id="item-image"
 					src={item.picture}
 					size='medium'
 					target='_blank'
