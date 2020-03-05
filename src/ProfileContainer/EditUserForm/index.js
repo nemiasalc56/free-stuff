@@ -16,7 +16,9 @@ class EditUserForm extends Component {
 			state: '',
 			zip_code: '',
 			email: '',
-			password: ''
+			password: '',
+			lat: '',
+			lng: ''
 		}
 	}
 
@@ -31,7 +33,9 @@ class EditUserForm extends Component {
 			city: this.props.user.address.city,
 			state: this.props.user.address.state,
 			zip_code: this.props.user.address.zip_code,
-			email: this.props.user.email
+			email: this.props.user.email,
+			lat: this.props.user.address.lat,
+			lng: this.props.user.address.lng
 		})
 	}
 
@@ -45,12 +49,30 @@ class EditUserForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.updateAccount(this.state)
+		// this.props.updateAccount(this.state)
+		this.getCoordinates()
 	}
 
+	// get location coordinates
+	getCoordinates = async () => {
+		// we can fetch mapbox to get latitude and longitude from that location
+		const mapboxResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address_1} ${this.state.address_2} ${this.state.city} ${this.state.state} ${this.state.zip_code}.json?types=address&limit=1&access_token=pk.eyJ1IjoibmVtaWFzYWxjIiwiYSI6ImNrN2M2NzN0YTAwdW0zZnB0OGN1M2RiaW0ifQ.QalGDzlT9KrXIhoOYr5erg`)
+
+		const mapboxJson = await mapboxResponse.json()
+		console.log(mapboxJson);
+		this.setState({
+			lat: mapboxJson.features[0].geometry.coordinates[1],
+			lng: mapboxJson.features[0].geometry.coordinates[0]
+		})
+		console.log("getCoordinates in profile EditUserForm");
+		console.log(this.state.lat);
+		console.log(this.state.lng);
+
+	}
 
 	render() {
-		
+		console.log(this.props);
+		console.log(this.state);
 		return(
 			<Grid className="center aligned">
 				<Segment 

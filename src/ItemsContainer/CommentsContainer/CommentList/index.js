@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 function CommentList(props) {
 
@@ -13,11 +13,11 @@ function CommentList(props) {
 			<Card key={comment.id} style={{width: "30em"}}>
 				<Card.Content >
 					<p>{comment.comment}</p>
-					<p>(By: {comment.author.first_name})</p>
-					<p>(At: {comment.created_at})</p>
+					<p>By: {comment.author.first_name}</p>
+					<p>At: {comment.created_at}</p>
 					{props.user.id === comment.author.id | props.user.id === comment.item.owner.id
 						?
-						<button onClick={()=>props.deleteComment(comment.id)}>Delete</button>
+						<Button basic color="red" onClick={()=>props.deleteComment(comment.id)}>Delete</Button>
 
 						:null
 					}
