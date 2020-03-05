@@ -69,6 +69,11 @@ class LoginRegisterForm extends Component {
 			.catch(err => console.log(err))
 
 		if(this.state.action === "register") {
+			if(this.state.picture === '') {
+
+				// if the user doesn't select a profile picture we can set this one
+				this.setState({picture: "https://i.imgur.com/NNwipjI.png"})
+			}
 			this.props.register(this.state)
 
 		} else if(this.state.action === "login") {
