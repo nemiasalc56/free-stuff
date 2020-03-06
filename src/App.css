@@ -19,6 +19,7 @@ body {
 	cursor: pointer;
 	text-shadow: 3px 2px 20px #0d6b82;
 	color: darkblue;
+	text-decoration: underline;
 }
 
 

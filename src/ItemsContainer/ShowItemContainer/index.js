@@ -12,7 +12,11 @@ function ShowItemContainer(props){
 			<div>
 				<Grid>
 					<Grid.Column width={8}>
-						<Image
+						<img
+							style={{
+								width: "90%",
+								height: "60vh"
+							}}
 							id="show-page-image"
 							src={props.item.picture}
 						/>
@@ -34,7 +38,8 @@ function ShowItemContainer(props){
 						<div id="item-name">
 							<h1>{props.item.name}</h1>
 							<div className="addres-container">
-								<p>{props.item.address_1} {props.item.address_2} {props.item.city} {props.item.state} {props.item.zip_code}</p>
+
+								<p>Pick up at: {props.item.address_1} {props.item.address_2} {props.item.city} {props.item.state} {props.item.zip_code}</p>
 							</div>
 						
 							<p>{props.item.description}</p>
