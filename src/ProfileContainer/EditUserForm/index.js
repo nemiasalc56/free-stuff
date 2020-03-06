@@ -50,7 +50,7 @@ class EditUserForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		// this.props.updateAccount(this.state)
+		
 		this.getCoordinates()
 	}
 
@@ -60,14 +60,12 @@ class EditUserForm extends Component {
 		const mapboxResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address_1} ${this.state.address_2} ${this.state.city} ${this.state.state} ${this.state.zip_code}.json?types=address&limit=1&access_token=pk.eyJ1IjoibmVtaWFzYWxjIiwiYSI6ImNrN2M2NzN0YTAwdW0zZnB0OGN1M2RiaW0ifQ.QalGDzlT9KrXIhoOYr5erg`)
 
 		const mapboxJson = await mapboxResponse.json()
-		console.log(mapboxJson);
+		
 		this.setState({
 			lat: mapboxJson.features[0].geometry.coordinates[1],
 			lng: mapboxJson.features[0].geometry.coordinates[0]
 		})
-		console.log("getCoordinates in profile EditUserForm");
-		console.log(this.state.lat);
-		console.log(this.state.lng);
+		
 		this.uploadImage()
 	}
 
@@ -83,7 +81,7 @@ class EditUserForm extends Component {
 		this.setState({
 			formData: formData
 		})
-		console.log(this.state);
+		
 	}
 
 	uploadImage = async () => {
