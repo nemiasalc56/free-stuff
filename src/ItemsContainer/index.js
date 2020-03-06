@@ -270,9 +270,9 @@ class ItemsContainer extends Component {
 	}
 
 	render() {
-		// console.log("props in ItemsContainer >>>", this.props);
+	
 		return(
-			<div>
+			<div id="main-contianer">
 				<h2 className="user-name-link" 
 					onClick={()=>this.switcher("profile")}>
 					{this.props.user.first_name}

@@ -9,7 +9,7 @@ class MapContainer extends Component {
     this.state = {
       lat: this.props.lat,
       lng: this.props.lng,
-      zoom: 13.73
+      zoom: 12.73
     }
   }
 

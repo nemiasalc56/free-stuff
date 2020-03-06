@@ -12,10 +12,14 @@ function ItemList(props) {
 		return(
 			<Card key={item.id} onClick={()=> props.getItemToShow(item.id)}>
 
-				<Image
+				<img
 					id="item-image"
 					src={item.picture}
 					size='medium'
+					style={{
+						width: "100%",
+						height: "50vh"
+						}}
 					target='_blank'
 					wrapped ui={false}
 				/>
