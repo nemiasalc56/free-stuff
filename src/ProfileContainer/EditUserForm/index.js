@@ -15,7 +15,6 @@ class EditUserForm extends Component {
 			city: '',
 			state: '',
 			zip_code: '',
-			email: '',
 			password: '',
 			lat: '',
 			lng: ''
@@ -33,7 +32,6 @@ class EditUserForm extends Component {
 			city: this.props.user.address.city,
 			state: this.props.user.address.state,
 			zip_code: this.props.user.address.zip_code,
-			email: this.props.user.email,
 			lat: this.props.user.address.lat,
 			lng: this.props.user.address.lng,
 			formData: null
@@ -185,17 +183,6 @@ class EditUserForm extends Component {
 								name="file"
 								onChange={this.handleImageUpload}
 								placeholder='Image' />
-						</Form.Field>
-
-						<Form.Field>
-							<Form.Input 
-								label="Email"
-								type="text" 
-								name="email"
-								required={true}
-								value={this.state.email}
-								onChange={this.handleChange}
-								placeholder="Enter email" />
 						</Form.Field>
 
 						<Form.Field>
