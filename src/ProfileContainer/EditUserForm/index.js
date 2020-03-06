@@ -89,7 +89,7 @@ class EditUserForm extends Component {
 			// when the fetch is resolved we store the image url on state
 			.then(res => this.setState({picture: res.data.secure_url}))
 			.catch(err => console.log(err))
-		console.log("uploadImage 3");
+		
 		this.sendUpdate()
 	}
 
