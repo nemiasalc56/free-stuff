@@ -124,11 +124,12 @@ class EditItemForm extends Component {
 			<div>
 				<Grid className="center aligned">
 					<Segment 
+						id="edit-item-form"
 						style={{
-							marginTop: '200px'
+							marginTop: '80px'
 						}}
 					>
-						<Grid.Row>
+						<Grid.Row style={{textAlign: "center"}}>
 							<h2>Edit this item</h2>
 						</Grid.Row>
 						<Form onSubmit={this.handleSubmit}>

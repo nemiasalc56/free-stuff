@@ -21,7 +21,6 @@ function ItemList(props) {
 						height: "50vh"
 						}}
 					target='_blank'
-					wrapped ui={false}
 				/>
 				<Card.Content>
 					<Card.Header key={item.id}>

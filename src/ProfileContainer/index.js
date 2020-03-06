@@ -113,6 +113,7 @@ class ProfileContainer extends Component {
 
 	// delete account method
 	deleteAccount = async () => {
+
 		const url = process.env.REACT_APP_API_URL + '/api/v1/users/' + this.props.user.id
 		try {
 			// fetch url
@@ -125,11 +126,12 @@ class ProfileContainer extends Component {
 			})
 
 			const deleteAccountJson = await deleteAccountResponse.json()
-			if(this.deleteAccountJson.status === 200){
-				this.setState({deleteOpen: false})
-				this.props.switcher("all")
-				console.log(deleteAccountJson);
-			}
+			
+			this.setState({deleteOpen: false})
+			this.props.switcher("all")
+			this.props.switchLoginStatus()
+
+			
 		}catch(err) {
 
 		}
@@ -220,11 +222,11 @@ class ProfileContainer extends Component {
 						      	>
 						        	<Icon name='remove' /> No
 						      	</Button>
-						    	<Button color='green'>
+						    	<Button 
+						    		onClick={this.deleteAccount}
+						    		color='green'>
 							        <Icon 
-							        	name='checkmark' 
-							        	onClick={this.deleteAccount}
-							        /> Yes
+							        	name='checkmark'/> Yes
 						      	</Button>
 						    </Modal.Actions>
 						</Modal>

@@ -87,6 +87,10 @@ body {
 	box-shadow: 3px 2px 20px red;
 }
 
+#edit-item-form {
+	box-shadow: 3px 2px 20px black;
+}
+
 .edit-delete-buttom {
 	width: 19vw;
 }
@@ -94,6 +98,10 @@ body {
 #main-contianer {
 	margin-left: 30px;
 	margin-right: 30px;
+}
+
+#item-new-form {
+	box-shadow: 3px 2px 20px black;
 }
 
 

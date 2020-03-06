@@ -275,7 +275,10 @@ class ItemsContainer extends Component {
 			<div id="main-contianer">
 				<h2 className="user-name-link" 
 					onClick={()=>this.switcher("profile")}>
-					{this.props.user.first_name}
+					{this.props.loggedIn
+						?this.props.user.first_name
+						:null
+					}
 				</h2>
 				<div className="nav-container">
 		    			<div className="nav-container2">
@@ -328,6 +331,7 @@ class ItemsContainer extends Component {
 						switcher={this.switcher}
 						getItemToShow={this.getItemToShow}
 						logout={this.props.logout}
+						switchLoginStatus={this.props.switchLoginStatus}
 						/>
 					: null
 				}

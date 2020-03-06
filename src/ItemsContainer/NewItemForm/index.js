@@ -135,11 +135,12 @@ class NewItemForm extends Component {
 
 				<Grid className="center aligned">
 					<Segment 
+						id="item-new-form"
 						style={{
 							marginTop: '50px'
 						}}
 					>
-						<Grid.Row>
+						<Grid.Row style={{textAlign: "center"}}>
 							<h2>Post a Free Item</h2>
 						</Grid.Row>
 						<Form onSubmit={this.handleSubmit}>

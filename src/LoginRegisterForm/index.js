@@ -135,7 +135,7 @@ class LoginRegisterForm extends Component {
 						boxShadow: '15px 10px 20px 2px #0d6b82'
 					}}
 				>
-					<Grid.Row>
+					<Grid.Row style={{textAlign: "center"}}>
 						<h2>
 							{this.state.action === "login"
 								? "Login"
@@ -230,7 +230,7 @@ class LoginRegisterForm extends Component {
 								type="text" 
 								name="email"
 								required={true}
-								style={{width: "50em"}}
+								style={{width: "100%"}}
 								value={this.state.email}
 								onChange={this.handleChange}
 								placeholder="Enter email" />
@@ -242,7 +242,7 @@ class LoginRegisterForm extends Component {
 								type="password" 
 								name="password"
 								required={true}
-								style={{width: "50em"}}
+								style={{width: "100%"}}
 								value={this.state.password}
 								onChange={this.handleChange}
 								placeholder="Enter password" />

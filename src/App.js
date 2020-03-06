@@ -218,6 +218,10 @@ class App extends Component {
   		this.setState({message: ''})
   	}
 
+  	switchLoginStatus = () => {
+		this.setState({loggedIn: false})
+	}
+
   	render() {
   		return (
 	    	<div className="App">
@@ -296,6 +300,7 @@ class App extends Component {
 		      			itemSearch={this.state.results}
 		      			logout={this.logout}
 		      			loggedIn={this.state.loggedIn}
+		      			switchLoginStatus={this.switchLoginStatus}
 		      		/>
 		      		}
 	      			
