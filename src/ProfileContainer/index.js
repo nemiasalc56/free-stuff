@@ -150,97 +150,97 @@ class ProfileContainer extends Component {
 		
 		return(
 			<div>	
-					{!this.state.EditUserFormOpend
-						?
-						<div>
-							<Grid>
-								<Grid.Column width={8}>
-									<Image
-										id="profile-image"
-										src={this.state.user.picture}
-										size='medium'
-									/>
-							
-								</Grid.Column>
+				{!this.state.EditUserFormOpend
+					?
+					<div>
+						<Grid>
+							<Grid.Column width={8}>
+								<Image
+									id="profile-image"
+									src={this.state.user.picture}
+									size='medium'
+								/>
+						
+							</Grid.Column>
 
-								<Grid.Column id="user-profile-info" width={8} style={{
-									textAlign: "center",
-									alignSelf: "center"
-								}}>
-									<h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
-									<div>
-										<Select 
-											onChange={this.switcher}
-											placeholder="Settings"
-											style={{
-												marginTop: '10px',
-												height: '1vh',
-												width: '40vw'
-											}}
-											options={[{key: 'se', value: 'settings', text: 'Settings'},
-													{key: 'ed', value: 'edit', text: 'Edit Account'},
-													{key: 'de', value: 'delete', text: 'Delete Account'},
-													{key: 'lo', value: 'logout', text: 'Logout'}
-													]}
-										/>
-									</div>
-									<Button 
-										id="profile-post-button" 
+							<Grid.Column id="user-profile-info" width={8} style={{
+								textAlign: "center",
+								alignSelf: "center"
+							}}>
+								<h1 id="user-name">{this.state.user.first_name} {this.state.user.last_name}</h1>
+								<div>
+									<Select 
+										onChange={this.switcher}
+										placeholder="Settings"
 										style={{
-											marginTop: '40px',
-											height: '10vh',
+											marginTop: '10px',
+											height: '1vh',
 											width: '40vw'
-										}} onClick={this.makeAPost}
-										>Post A Free Item</Button>
-								</Grid.Column>
-							</Grid>
-							<Grid>
-								{this.state.userHasItems
-									?
-									<ItemList 
-									items={this.state.myItems}
-									getItemToShow={this.props.getItemToShow}
+										}}
+										options={[{key: 'se', value: 'settings', text: 'Settings'},
+												{key: 'ed', value: 'edit', text: 'Edit Account'},
+												{key: 'de', value: 'delete', text: 'Delete Account'},
+												{key: 'lo', value: 'logout', text: 'Logout'}
+												]}
 									/>
-									: <h1>You don't have items in this account</h1>
-								}
-							</Grid>
-							<Modal open={this.state.deleteOpen}
-									onClose={this.close}
-								>
-								<Header icon='trash' content='Delete Your Account' />
-								<Modal.Content>
-							      <p>
-							        Are you sure you want to delete your account?
-							      </p>
-							    </Modal.Content>
-							    <Modal.Actions>
-							    	<Button 
-								    	color='red'
-								     	onClick={this.close}
-							      	>
-							        	<Icon name='remove' /> No
-							      	</Button>
-							    	<Button color='green'>
-								        <Icon 
-								        	name='checkmark' 
-								        	onClick={this.deleteAccount}
-								        /> Yes
-							      	</Button>
-							    </Modal.Actions>
-							</Modal>
-						</div>
+								</div>
+								<Button 
+									id="profile-post-button" 
+									style={{
+										marginTop: '40px',
+										height: '10vh',
+										width: '40vw'
+									}} onClick={this.makeAPost}
+									>Post A Free Item</Button>
+							</Grid.Column>
+						</Grid>
+						<Grid>
+							{this.state.userHasItems
+								?
+								<ItemList 
+								items={this.state.myItems}
+								getItemToShow={this.props.getItemToShow}
+								/>
+								: <h1>You don't have items in this account</h1>
+							}
+						</Grid>
+						<Modal open={this.state.deleteOpen}
+								onClose={this.close}
+							>
+							<Header icon='trash' content='Delete Your Account' />
+							<Modal.Content>
+						      <p>
+						        Are you sure you want to delete your account?
+						      </p>
+						    </Modal.Content>
+						    <Modal.Actions>
+						    	<Button 
+							    	color='red'
+							     	onClick={this.close}
+						      	>
+						        	<Icon name='remove' /> No
+						      	</Button>
+						    	<Button color='green'>
+							        <Icon 
+							        	name='checkmark' 
+							        	onClick={this.deleteAccount}
+							        /> Yes
+						      	</Button>
+						    </Modal.Actions>
+						</Modal>
+					</div>
 
-						:null
-					}
+					:null
+				}
 
-					{this.state.EditUserFormOpend
-						? <EditUserForm 
-							user={this.state.user}
-							updateAccount={this.updateAccount}
-							closeEditForm={this.closeEditForm}
-						/>
-						:null
-					}
+				{this.state.EditUserFormOpend
+					? <EditUserForm 
+						user={this.state.user}
+						updateAccount={this.updateAccount}
+						closeEditForm={this.closeEditForm}
+					/>
+					:null
+				}
 			</div>
 			)
 	}

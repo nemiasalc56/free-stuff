@@ -43,6 +43,7 @@ body {
 	color: black;
 	top: 15px;
 	right: 1.7em;
+	text-transform: capitalize;
 }
 
 .user-name-link:hover {
@@ -74,6 +75,20 @@ body {
 	width: 110px;
 }
 
+#warning-message {
+	bottom: 650px;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	color: red;
+	border: 1px solid red;
+	border-radius: 10px;
+	box-shadow: 3px 2px 20px red;
+}
+
+.edit-delete-buttom {
+	width: 20vw;
+}
 
 
 

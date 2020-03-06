@@ -140,6 +140,7 @@ class EditItemForm extends Component {
 										label="Name"
 										type="text" 
 										name="name"
+										required={true}
 										value={this.state.name}
 										onChange={this.handleChange}
 										placeholder="Name" />
@@ -151,6 +152,7 @@ class EditItemForm extends Component {
 									placeholder='Select a category' 
 									value={this.state.category}
 									options={this.state.options}
+									required={true}
 									onChange={(e, { value }) => this.setState({category: value})} 
 
 								/>
@@ -161,6 +163,7 @@ class EditItemForm extends Component {
 										label="Address 1"
 										type="text" 
 										name="address_1"
+										required={true}
 										value={this.state.address_1}
 										onChange={this.handleChange}
 										placeholder="Address 1" />
@@ -168,8 +171,7 @@ class EditItemForm extends Component {
 									<Form.Input 
 										label="Address 2" 
 										type="text" 
-										name="address_2"
-										value={this.state.address_2}
+										name="address_2"										value={this.state.address_2}
 										onChange={this.handleChange}
 										placeholder="Address 2" />
 								
@@ -177,6 +179,7 @@ class EditItemForm extends Component {
 										label="City"
 										type="text" 
 										name="city"
+										required={true}
 										value={this.state.city}
 										onChange={this.handleChange}
 										placeholder="City" />
@@ -185,6 +188,7 @@ class EditItemForm extends Component {
 										label="State" 
 										type="text" 
 										name="state"
+										required={true}
 										value={this.state.state}
 										onChange={this.handleChange}
 										placeholder="state" />
@@ -193,6 +197,7 @@ class EditItemForm extends Component {
 										label="Zipcode"
 										type="text" 
 										name="zip_code"
+										required={true}
 										value={this.state.zip_code}
 										onChange={this.handleChange}
 										placeholder="Zipcode" />

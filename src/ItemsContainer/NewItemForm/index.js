@@ -132,12 +132,11 @@ class NewItemForm extends Component {
 
 		return(
 			<div>
-				<h2>NewItemForm</h2>
 
 				<Grid className="center aligned">
 					<Segment 
 						style={{
-							marginTop: '200px'
+							marginTop: '50px'
 						}}
 					>
 						<Grid.Row>
@@ -151,6 +150,7 @@ class NewItemForm extends Component {
 										label="Name"
 										type="text" 
 										name="name"
+										required={true}
 										value={this.state.name}
 										onChange={this.handleChange}
 										placeholder="Name" />
@@ -159,7 +159,8 @@ class NewItemForm extends Component {
 								<Form.Field>
 									<label>Category</label>
 									<Select 
-										placeholder='Select a category' 
+										placeholder='Select a category'
+										required={true}
 										options={this.state.options}
 										onChange={(e, { value }) => this.setState({category: value})} 
 
@@ -168,7 +169,7 @@ class NewItemForm extends Component {
 								<Form.Field>
 									<Checkbox 
 										onChange={this.useProfileAddr}
-										label="User your account address"/>
+										label="Use your account address"/>
 									
 								</Form.Field>
 
@@ -177,6 +178,7 @@ class NewItemForm extends Component {
 										label="Address 1"
 										type="text" 
 										name="address_1"
+										required={true}
 										value={this.state.address_1}
 										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="Address 1" />
@@ -193,6 +195,7 @@ class NewItemForm extends Component {
 										label="City"
 										type="text" 
 										name="city"
+										required={true}
 										value={this.state.city}
 										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="City" />
@@ -201,6 +204,7 @@ class NewItemForm extends Component {
 										label="State" 
 										type="text" 
 										name="state"
+										required={true}
 										value={this.state.state}
 										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="state" />
@@ -209,6 +213,7 @@ class NewItemForm extends Component {
 										label="Zipcode"
 										type="text" 
 										name="zip_code"
+										required={true}
 										value={this.state.zip_code}
 										onChange={this.state.useProfileAddr?null:this.handleChange}
 										placeholder="Zipcode" />
@@ -219,6 +224,7 @@ class NewItemForm extends Component {
 										label="Image"
 										type="file" 
 										name="file"
+										required={true}
 										onChange={this.handleImageUpload}
 										placeholder='Image' />
 								</Form.Field>

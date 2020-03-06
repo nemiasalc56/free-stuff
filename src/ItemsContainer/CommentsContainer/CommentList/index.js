@@ -5,7 +5,7 @@ function CommentList(props) {
 
 	// get all the comments from props
 	const commentList = props.commentList
-	console.log("CommentList >>", commentList.length);
+	
 	const comment = commentList.map((comment) => {
 		
 		return(

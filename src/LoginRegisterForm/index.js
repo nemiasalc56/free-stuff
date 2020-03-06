@@ -83,7 +83,6 @@ class LoginRegisterForm extends Component {
 			})
 		}
 
-		this.clearForm()
 	}
 
 	// clear form
@@ -100,6 +99,7 @@ class LoginRegisterForm extends Component {
 			email: '',
 			password: ''
 		})
+		this.props.resetMessage()
 	}
 
 	// this method will handle the changes when user selects a photo
@@ -120,6 +120,15 @@ class LoginRegisterForm extends Component {
 		return (			
 			
 			<Grid className="center aligned">
+
+				{this.props.message !== ''
+					?
+					<p id="warning-message">
+						{this.props.message}
+					</p>
+					:null
+				}
+
 				<Segment 
 					style={{
 						marginTop: '7em',
@@ -221,7 +230,7 @@ class LoginRegisterForm extends Component {
 								type="text" 
 								name="email"
 								required={true}
-								style={{width: "30em"}}
+								style={{width: "50em"}}
 								value={this.state.email}
 								onChange={this.handleChange}
 								placeholder="Enter email" />
@@ -233,12 +242,12 @@ class LoginRegisterForm extends Component {
 								type="password" 
 								name="password"
 								required={true}
-								style={{width: "30em"}}
+								style={{width: "50em"}}
 								value={this.state.password}
 								onChange={this.handleChange}
 								placeholder="Enter password" />
 						</Form.Field>
-
+						
 						<Button color="green" className="big login-button" type='submit'>
 							{this.state.action === "login"
 								? "Sign In"
@@ -248,8 +257,8 @@ class LoginRegisterForm extends Component {
 						<Grid className="center aligned option">
 							<p id="login-link" onClick={this.switchForm}>
 								{this.state.action === "login"
-									? "Already have an account?"
-									: "login"
+									? "Create an account"
+									: "Already have an account?"
 								}
 							</p>	
 						</Grid>

@@ -118,6 +118,8 @@ class App extends Component {
 					message: registerJson.message,
 					user: registerJson.data
 				})
+			} else{
+				this.setState({message: registerJson.message})
 			}
 
 		}catch(err) {
@@ -151,6 +153,8 @@ class App extends Component {
 					message: loginJson.message,
 					user: loginJson.data
 				})
+			} else{
+				this.setState({message: loginJson.message})
 			}
 
 		}catch(err) {
@@ -181,7 +185,7 @@ class App extends Component {
 				userId: -1,
 				message: '',
 				category: '',
-				user: ''
+				user: '',
 			})
 		}
  	}
@@ -208,7 +212,10 @@ class App extends Component {
   
   	handleSubmit = (e) =>{
   		e.preventDefault()
+  	}
 
+  	resetMessage = () => {
+  		this.setState({message: ''})
   	}
 
   	render() {
@@ -226,6 +233,7 @@ class App extends Component {
 									marginRight: "1em"
 									}}>
 									<img
+										alt="text"
 										style={{
 											width: "20vw"
 										}}
@@ -280,6 +288,8 @@ class App extends Component {
 		      			? <LoginRegisterForm 
 		      				register={this.register}
 		      				login={this.login}
+		      				message={this.state.message}
+		      				resetMessage={this.resetMessage}
 		      			/>
 		      		: <ItemsContainer 
 		      			user={this.state.user}

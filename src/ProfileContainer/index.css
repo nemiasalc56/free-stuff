@@ -15,3 +15,7 @@
 	margin-top: 20px;
 	margin-bottom: 5px;
 }
+
+#user-name {
+	text-transform: capitalize;
+}

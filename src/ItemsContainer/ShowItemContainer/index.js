@@ -6,7 +6,7 @@ import MapContainer from './MapContainer'
 
 
 function ShowItemContainer(props){
-	console.log(props);
+
 	return(
 		<div>
 			<div>
@@ -18,8 +18,10 @@ function ShowItemContainer(props){
 						/>
 						{props.user.id===props.item.owner.id
 							? <div>
-								<Button onClick={()=>props.itemToEdit(props.item.id)}>Edit</Button>
+								<Button className="edit-delete-buttom" basic color="green" onClick={()=>props.itemToEdit(props.item.id)}>Edit</Button>
 								<Button 
+									className="edit-delete-buttom"
+									basic
 									color="red"
 									onClick={()=>props.deleteItem(props.item.id)}
 								>Delete</Button>
