@@ -241,7 +241,11 @@ class NewItemForm extends Component {
 							/>
 								
 
-							<Button color="green" className="big" type='submit'>
+							<Button 
+								style={{width: "100%"}} 
+								color="green" 
+								className="big" 
+								type='submit'>
 								Post Free Item
 							</Button>
 							
