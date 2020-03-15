@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Grid, Image } from 'semantic-ui-react'
+import { Button, Grid } from 'semantic-ui-react'
 import './index.css'
 import CommentsContainer from '../CommentsContainer'
 import MapContainer from './MapContainer'
@@ -13,6 +13,7 @@ function ShowItemContainer(props){
 				<Grid>
 					<Grid.Column width={8}>
 						<img
+							alt="text"
 							style={{
 								width: "90%",
 								height: "60vh"

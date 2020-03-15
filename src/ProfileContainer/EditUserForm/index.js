@@ -157,7 +157,7 @@ class EditUserForm extends Component {
 								onChange={this.handleChange}
 								placeholder="City" />
 						
-							<Form.Input 
+							<Form.Input
 								label="State" 
 								type="text" 
 								name="state"
@@ -166,7 +166,7 @@ class EditUserForm extends Component {
 								onChange={this.handleChange}
 								placeholder="state" />
 						
-							<Form.Input 
+							<Form.Input
 								label="Zipcode"
 								type="text" 
 								name="zip_code"
@@ -199,7 +199,7 @@ class EditUserForm extends Component {
 						<Button color="green" className="big login-button" type='submit'>
 							Update Account
 						</Button>
-						<Button 
+						<Button
 							onClick={()=>this.props.closeEditForm()}
 							className="big login-button"
 							id="cancel-accont-update"

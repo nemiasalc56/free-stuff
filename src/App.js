@@ -185,13 +185,12 @@ class App extends Component {
 				userId: -1,
 				message: '',
 				category: '',
-				user: '',
+				user: ''
 			})
 		}
  	}
 
   	handleSearchChange = (e, { value }) => {
-    this.setState({ isLoading: true, value })
 
     setTimeout(() => {
       if (this.state.value.length < 1) return this.setState({

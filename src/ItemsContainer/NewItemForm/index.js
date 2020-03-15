@@ -110,7 +110,6 @@ class NewItemForm extends Component {
 				lng: this.props.user.address.lng
 			})
 		}
-		
 	}
 
 

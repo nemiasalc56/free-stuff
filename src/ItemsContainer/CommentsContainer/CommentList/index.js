@@ -20,7 +20,6 @@ function CommentList(props) {
 
 						:null
 					}
-					
 				</Card.Content>
 			</Card>
 			)

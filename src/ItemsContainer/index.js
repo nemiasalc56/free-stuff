@@ -261,7 +261,7 @@ class ItemsContainer extends Component {
 				})
 
 			} else {
-				console.log("there is no items in this category");
+				
 				this.setState({foundItemByCategory: false})
 			}
 		} catch(err) {

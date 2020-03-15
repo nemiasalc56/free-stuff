@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 
 
@@ -13,6 +13,7 @@ function ItemList(props) {
 			<Card key={item.id} onClick={()=> props.getItemToShow(item.id)}>
 
 				<img
+					alt="text"
 					id="item-image"
 					src={item.picture}
 					size='medium'
