@@ -142,10 +142,11 @@ class App extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
+			
 			// convert our response to json
 			const loginJson = await loginResponse.json()
 			console.log(loginJson);
-			
+
 			if(loginJson.status === 200) {
 				this.setState({
 					loggedIn: true,
