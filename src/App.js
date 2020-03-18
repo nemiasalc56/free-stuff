@@ -144,7 +144,7 @@ class App extends Component {
 			})
 			// convert our response to json
 			const loginJson = await loginResponse.json()
-
+			console.log(loginJson);
 			if(loginJson.status === 200) {
 				this.setState({
 					loggedIn: true,
@@ -161,7 +161,7 @@ class App extends Component {
 			console.error(err);
 		}
  	}
- 	
+
 
  	// log user out
  	logout = async () =>{
@@ -193,22 +193,22 @@ class App extends Component {
 
   	handleSearchChange = (e, { value }) => {
 
-    setTimeout(() => {
-      if (this.state.value.length < 1) return this.setState({
-      		isLoading: false,
-			results: [],
-			value: ''
-      })
+	    setTimeout(() => {
+	      if (this.state.value.length < 1) return this.setState({
+	      		isLoading: false,
+				results: [],
+				value: ''
+	      })
 
-      const re = new RegExp(this.state.value, 'i')
-      const isMatch = (result) => re.test(result.name)
+	      const re = new RegExp(this.state.value, 'i')
+	      const isMatch = (result) => re.test(result.name)
 
-      this.setState({
-        isLoading: false,
-        results: _.filter(this.state.items, isMatch),
-      })
-    }, 300)
-  }
+	      this.setState({
+	        isLoading: false,
+	        results: _.filter(this.state.items, isMatch),
+	      })
+	    }, 300)
+  	}
   
   	handleSubmit = (e) =>{
   		e.preventDefault()
