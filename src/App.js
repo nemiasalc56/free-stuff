@@ -161,6 +161,7 @@ class App extends Component {
 			console.error(err);
 		}
  	}
+ 	
 
  	// log user out
  	logout = async () =>{
