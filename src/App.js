@@ -142,7 +142,7 @@ class App extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			
+
 			// convert our response to json
 			const loginJson = await loginResponse.json()
 			console.log(loginJson);
@@ -211,6 +211,7 @@ class App extends Component {
 	      })
 	    }, 300)
   	}
+  
   
   	handleSubmit = (e) =>{
   		e.preventDefault()
